@@ -6,7 +6,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:8900/api/v1/"
+      "url": "http://localhost:8900/api/v1"
     }
   ],
   "paths": {
@@ -19,36 +19,65 @@
             "description": "Accepted"
           }
         },
+        "description": "",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer {access_token}",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID ",
+            "description": "Request identifier",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Content-Type",
+            "description": "Media type of the resource",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "country",
+            "description": "country code by 3166-1 alpha-2",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "lang",
+            "description": "language code by ISO",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "testMode",
+            "description": "Test entity creation flag"
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "firstName": {
-                    "type": "string"
-                  },
-                  "lastName": {
-                    "type": "string"
-                  },
-                  "email": {
-                    "type": "string"
-                  },
-                  "dateOfBirth": {
-                    "type": "string",
-                    "format": "date"
-                  }
-                },
-                "required": [
-                  "firstName",
-                  "lastName",
-                  "email",
-                  "dateOfBirth"
-                ]
-              },
-              "examples": {}
-            },
-            "application/xml": {
               "schema": {
                 "description": "",
                 "type": "object",
@@ -100,8 +129,8 @@
                     "planning": {
                       "budget": {
                         "period": {
-                          "startDate": "2022-03-15T12:42:13.908Z",
-                          "endDate": "2022-03-15T12:42:13.908Z"
+                          "startDate": "2022-03-15T13:33:25.564Z",
+                          "endDate": "2022-03-15T13:33:25.564Z"
                         }
                       },
                       "rationale": "string"
@@ -372,8 +401,7 @@
                       "name",
                       "identifier",
                       "address",
-                      "contactPoint",
-                      "details"
+                      "contactPoint"
                     ],
                     "properties": {
                       "name": {
@@ -597,67 +625,11 @@
                   "planning",
                   "buyer"
                 ]
-              }
+              },
+              "examples": {}
             }
-          },
-          "description": ""
-        },
-        "description": "",
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "Authorization",
-            "description": "Bearer {access_token}",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-OPERATION-ID ",
-            "description": "Request identifier",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "Content-Type",
-            "description": "Media type of the resource",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "name": "country",
-            "description": "country code by 3166-1 alpha-2",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "name": "lang",
-            "description": "language code by ISO",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "boolean"
-            },
-            "in": "query",
-            "name": "testMode",
-            "description": "Test entity creation flag"
           }
-        ]
+        }
       },
       "parameters": []
     }
