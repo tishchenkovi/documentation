@@ -652,7 +652,7 @@
     "/do/fs/{ocid}/{cpid}": {
       "post": {
         "summary": "Update Funding Source",
-        "operationId": "",
+        "operationId": "do-fs-ocid-cpid",
         "responses": {
           "200": {
             "description": "OK"
