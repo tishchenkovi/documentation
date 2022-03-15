@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Financial Source",
+    "title": "Open Tender",
     "version": "1.0",
     "description": ""
   },
@@ -11,6 +11,39 @@
     }
   ],
   "paths": {
+    "/do/ei": {
+      "post": {
+        "summary": "",
+        "operationId": "post-do-ei",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": ""
+      }
+    },
+    "/do/ei/{cpid}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "",
+        "operationId": "post-do-ei-cpid",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/do/fs/{cpid}": {
       "post": {
         "summary": "Create Funding Source",
@@ -1273,7 +1306,7 @@
           }
         },
         "tags": [
-          "Tender"
+          "Budget "
         ]
       },
       "parameters": [
@@ -1296,6 +1329,47 @@
           "description": "Funding Source identifier"
         }
       ]
+    },
+    "/do/pn": {
+      "post": {
+        "summary": "",
+        "operationId": "post-do-pn",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/do/pn/{cpid}/{ocid}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "",
+        "operationId": "post-do-pn-cpid-ocid",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": ""
+      }
     }
   },
   "components": {
