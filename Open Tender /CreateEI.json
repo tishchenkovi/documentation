@@ -13,7 +13,7 @@
     "/do/ei": {
       "post": {
         "summary": "Create Expenditure Item",
-        "operationId": "",
+        "operationId": "post-do-ei",
         "responses": {
           "202": {
             "description": "Accepted"
@@ -629,7 +629,10 @@
               "examples": {}
             }
           }
-        }
+        },
+        "tags": [
+          "Budget"
+        ]
       },
       "parameters": []
     }
