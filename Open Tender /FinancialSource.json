@@ -1,13 +1,13 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Financial Source ",
+    "title": "Financial Source",
     "version": "1.0",
     "description": ""
   },
   "servers": [
     {
-      "url": "http://localhost:8900/api/v1"
+      "url": "http://{host}:8900/api/v1"
     }
   ],
   "paths": {
@@ -636,6 +636,9 @@
             "name": "Content-Type",
             "description": "Media type of the resource"
           }
+        ],
+        "tags": [
+          "Budget"
         ]
       },
       "parameters": [
@@ -1268,7 +1271,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Tender"
+        ]
       },
       "parameters": [
         {
@@ -1294,10 +1300,5 @@
   },
   "components": {
     "schemas": {}
-  },
-  "tags": [
-    {
-      "name": "Budget"
-    }
-  ]
+  }
 }
