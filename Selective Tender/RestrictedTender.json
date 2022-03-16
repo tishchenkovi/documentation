@@ -3662,7 +3662,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Tender"
+        ]
       }
     },
     "/cancel/lot/{cpid}/{ocid}/{lotId}": {
@@ -3827,6 +3830,9 @@
             "name": "Content-Type",
             "description": "тип данных в теле запроса"
           }
+        ],
+        "tags": [
+          "Tender"
         ]
       }
     },
@@ -4129,7 +4135,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Tender"
+        ]
       }
     },
     "/confirm/amendment/{cpid}/{ocid}/{amendment}": {
@@ -4204,6 +4213,49 @@
             "description": "тип данных в теле запроса",
             "required": true
           }
+        ],
+        "tags": [
+          "Tender"
+        ]
+      }
+    },
+    "/cancel/amendment/{cpid}/{ocid}/{amendment}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "amendment",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "Tender or lot amendment cancellation",
+        "operationId": "post-cancel-amendment-cpid-ocid-amendment",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "tags": [
+          "Tender"
         ]
       }
     }
