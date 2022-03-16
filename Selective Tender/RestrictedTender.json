@@ -27,26 +27,8 @@
               "type": "string"
             },
             "in": "header",
-            "name": "Authorization",
-            "description": "Bearer {access_token}",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
             "name": "X-OPERATION-ID",
             "description": "Request identifier",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "Content-Type",
-            "description": "Media type of the resource",
             "required": true
           },
           {
@@ -661,26 +643,8 @@
               "type": "string"
             },
             "in": "header",
-            "name": "Authorization",
-            "description": "Bearer {access_token}",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
             "name": "X-OPERATION-ID",
             "description": "Request identifier",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "Content-Type",
-            "description": "Media type of the resource",
             "required": true
           },
           {
@@ -1535,26 +1499,8 @@
             },
             "in": "header",
             "required": true,
-            "name": "Authorization",
-            "description": "Bearer {access_token}"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "required": true,
             "name": "X-OPERATION-ID",
             "description": "Request identifier"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "required": true,
-            "name": "Content-Type",
-            "description": "Media type of the resource"
           }
         ],
         "tags": [
@@ -1588,27 +1534,9 @@
               "type": "string"
             },
             "in": "header",
-            "name": "Authorization",
-            "required": true,
-            "description": "Bearer {access_token}"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
             "name": "X-OPERATION-ID",
             "required": true,
             "description": "Request identifier"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "Content-Type",
-            "required": true,
-            "description": "Media type of the resource"
           }
         ],
         "requestBody": {
@@ -2233,23 +2161,7 @@
               "type": "string"
             },
             "in": "header",
-            "name": "Authorization",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
             "name": "X-OPERATION-ID",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "Content-Type",
             "required": true
           },
           {
@@ -3041,27 +2953,9 @@
               "type": "string"
             },
             "in": "header",
-            "name": "Authorization",
-            "required": true,
-            "description": "bearer {access_token}"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
             "name": "X-OPERATION-ID",
             "required": true,
             "description": "Request identifier"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "Content-Type",
-            "required": true,
-            "description": "Media type of the resource"
           },
           {
             "schema": {
@@ -3543,15 +3437,6 @@
               "type": "string"
             },
             "in": "header",
-            "name": "Authorization",
-            "required": true,
-            "description": "Bearer {access_token}"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
             "name": "X-OPERATION-ID",
             "required": true,
             "description": "ID транзакции"
@@ -3564,15 +3449,6 @@
             "name": "X-TOKEN",
             "required": true,
             "description": "токен тендера"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "Content-Type",
-            "required": true,
-            "description": "тип данных в теле запроса"
           }
         ],
         "requestBody": {
@@ -3810,16 +3686,9 @@
               "type": "string"
             },
             "in": "header",
-            "name": "Authorization",
-            "description": "Bearer {access_token}"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
             "name": "X-OPERATION-ID",
-            "description": "ID транзакции"
+            "description": "ID транзакции",
+            "required": true
           },
           {
             "schema": {
@@ -3827,15 +3696,8 @@
             },
             "in": "header",
             "name": "X-TOKEN",
-            "description": "токен тендера"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "Content-Type",
-            "description": "тип данных в теле запроса"
+            "description": "токен тендера",
+            "required": true
           }
         ],
         "tags": [
@@ -3884,15 +3746,6 @@
               "type": "string"
             },
             "in": "header",
-            "name": "Authorization",
-            "description": "Bearer {access_token}",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
             "name": "X-OPERATION-ID",
             "description": "ID транзакции",
             "required": true
@@ -3904,15 +3757,6 @@
             "in": "header",
             "name": "X-TOKEN",
             "description": "токен аварда",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "Content-Type",
-            "description": "тип данных в теле запроса",
             "required": true
           }
         ],
@@ -4185,15 +4029,6 @@
               "type": "string"
             },
             "in": "header",
-            "name": "Authorization",
-            "description": "Bearer {access_token}",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
             "name": "X-OPERATION-ID",
             "description": "ID транзакции",
             "required": true
@@ -4205,15 +4040,6 @@
             "in": "header",
             "name": "X-TOKEN",
             "description": "токен amendment",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "Content-Type",
-            "description": "тип данных в теле запроса",
             "required": true
           }
         ],
@@ -4259,6 +4085,26 @@
         },
         "tags": [
           "Tender"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "description": "ID транзакции",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "description": "токен amendment",
+            "required": true
+          }
         ]
       }
     },
@@ -4296,26 +4142,8 @@
             },
             "in": "header",
             "required": true,
-            "name": "Authorization",
-            "description": "Bearer {access_token}"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "required": true,
             "name": "X-OPERATION-ID",
             "description": "ID транзакции"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "required": true,
-            "name": "Content-Type",
-            "description": "тип данных в теле запроса"
           }
         ],
         "requestBody": {
@@ -4520,13 +4348,9 @@
                               "minLength": 1
                             },
                             "value": {
-                              "type": [
-                                "string",
-                                "number",
-                                "integer",
-                                "boolean"
-                              ],
-                              "minLength": 1
+                              "type": "string",
+                              "minLength": 1,
+                              "example": "Can be other types: boolean, number, integer"
                             },
                             "requirement": {
                               "type": "object",
@@ -5252,7 +5076,8 @@
                 "required": [
                   "submission"
                 ]
-              }
+              },
+              "examples": {}
             }
           }
         },
@@ -5303,26 +5128,8 @@
             },
             "in": "header",
             "required": true,
-            "name": "Authorization",
-            "description": "Bearer {access_token}"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "required": true,
             "name": "X-OPERATION-ID",
             "description": "ID транзакции"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "required": true,
-            "name": "Content-Type",
-            "description": "тип данных в теле запроса"
           },
           {
             "schema": {
@@ -5383,15 +5190,6 @@
               "type": "string"
             },
             "in": "header",
-            "name": "Authorization",
-            "required": true,
-            "description": "Bearer {access_token}"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
             "name": "X-OPERATION-ID",
             "required": true,
             "description": "ID транзакции"
@@ -5404,15 +5202,6 @@
             "name": "X-TOKEN",
             "required": true,
             "description": "токен qualification"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "Content-Type",
-            "required": true,
-            "description": "тип данных в теле запроса"
           }
         ],
         "requestBody": {
@@ -5479,7 +5268,7 @@
                       },
                       "value": {
                         "type": "string",
-                        "example": "Can be other types: string"
+                        "example": "Can be other types: boolean, number, integer"
                       },
                       "relatedTenderer": {
                         "type": "object",
@@ -5648,33 +5437,31 @@
           "Tender"
         ]
       }
-    },
-    "/test": {
-      "get": {
-        "summary": "Your GET endpoint",
-        "tags": [
-          "Contract"
-        ],
-        "responses": {},
-        "operationId": "get-test"
-      }
     }
   },
   "components": {
-    "schemas": {}
+    "schemas": {},
+    "securitySchemes": {
+      "accessToken": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
   },
   "tags": [
     {
       "name": "Budget"
     },
     {
-      "name": "Contract"
-    },
-    {
       "name": "Plan"
     },
     {
       "name": "Tender"
+    }
+  ],
+  "security": [
+    {
+      "accessToken": []
     }
   ]
 }
