@@ -5649,6 +5649,16 @@
           "Tender"
         ]
       }
+    },
+    "/test": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Contract"
+        ],
+        "responses": {},
+        "operationId": "get-test"
+      }
     }
   },
   "components": {
