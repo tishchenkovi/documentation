@@ -3502,6 +3502,635 @@
           "Plan"
         ]
       }
+    },
+    "/cancel/tender/{cpid}/{ocid}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "Cancel Tender",
+        "operationId": "post-cancel-tender-cpid-ocid",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "description": "Bearer {access_token}"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "required": true,
+            "description": "ID транзакции"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "required": true,
+            "description": "токен тендера"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Content-Type",
+            "required": true,
+            "description": "тип данных в теле запроса"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "amendments": [
+                      {
+                        "rationale": "string",
+                        "description": "string",
+                        "documents": [
+                          {
+                            "documentType": "cancellationDetails",
+                            "id": "835b8d03-80dc-4d1b-8b1c-fe2b1a23366c-1573211196021",
+                            "title": "string",
+                            "description": "string"
+                          }
+                        ],
+                        "id": "d87939bb-6523-4984-a374-8c71dd05efb5"
+                      }
+                    ]
+                  }
+                },
+                "properties": {
+                  "amendments": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "minItems": 1,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "rationale": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "description": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "documents": {
+                          "type": "array",
+                          "uniqueItems": true,
+                          "minItems": 1,
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "documentType": {
+                                "type": "string",
+                                "minLength": 1,
+                                "enum": [
+                                  "cancellationDetails"
+                                ]
+                              },
+                              "id": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "title": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "description": {
+                                "type": "string",
+                                "minLength": 1
+                              }
+                            },
+                            "required": [
+                              "documentType",
+                              "id",
+                              "title"
+                            ]
+                          }
+                        },
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "format": "uuid"
+                        }
+                      },
+                      "required": [
+                        "rationale",
+                        "id"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "amendments"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cancel/lot/{cpid}/{ocid}/{lotId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "lotId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "Cancel Lot",
+        "operationId": "post-cancel-lot-cpid-ocid-lotId",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "amendments": [
+                      {
+                        "rationale": "string",
+                        "description": "string",
+                        "documents": [
+                          {
+                            "documentType": "cancellationDetails",
+                            "id": "835b8d03-80dc-4d1b-8b1c-fe2b1a23366c-1573211196021",
+                            "title": "string",
+                            "description": "string"
+                          }
+                        ],
+                        "id": "a00f8fe5-98cc-40e1-9b12-c0f3eaf112cf"
+                      }
+                    ]
+                  }
+                },
+                "properties": {
+                  "amendments": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "minItems": 1,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "rationale": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "description": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "documents": {
+                          "type": "array",
+                          "uniqueItems": true,
+                          "minItems": 1,
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "documentType": {
+                                "type": "string",
+                                "minLength": 1,
+                                "enum": [
+                                  "cancellationDetails"
+                                ]
+                              },
+                              "id": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "title": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "description": {
+                                "type": "string",
+                                "minLength": 1
+                              }
+                            },
+                            "required": [
+                              "documentType",
+                              "id",
+                              "title"
+                            ]
+                          }
+                        },
+                        "id": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "required": [
+                        "rationale",
+                        "id"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "amendments"
+                ]
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer {access_token}"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "description": "ID транзакции"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "description": "токен тендера"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Content-Type",
+            "description": "тип данных в теле запроса"
+          }
+        ]
+      }
+    },
+    "/do/declaration/{cpid}/{ocid}/{awardId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "awardId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "Declare non conflict of interest",
+        "operationId": "post-do-declaration-cpid-ocid-awardId",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer {access_token}",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "description": "ID транзакции",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "description": "токен аварда",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Content-Type",
+            "description": "тип данных в теле запроса",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "requirementResponse": {
+                      "id": "string",
+                      "value": true,
+                      "relatedTenderer": {
+                        "id": "string"
+                      },
+                      "responder": {
+                        "title": "string",
+                        "name": "string",
+                        "identifier": {
+                          "scheme": "string",
+                          "id": "string",
+                          "uri": "string"
+                        },
+                        "bussinessFunctions": [
+                          {
+                            "id": "string",
+                            "type": "contactPoint",
+                            "jobTitle": "string",
+                            "period": {
+                              "startDate": "2020-02-12T12:14:12Z"
+                            },
+                            "documents": [
+                              {
+                                "id": "9004ab09-ca9b-4cb7-95f4-525a3bf64734-1574862409148",
+                                "documentType": "regulatoryDocument",
+                                "title": "string",
+                                "description": "string"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "requirement": {
+                        "id": "d87939bb-6523-4984-a374-8c71dd05efb5"
+                      }
+                    }
+                  }
+                },
+                "properties": {
+                  "requirementResponse": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "value",
+                      "relatedTenderer",
+                      "responder",
+                      "requirement"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "value": {
+                        "type": [
+                          "boolean",
+                          "string",
+                          "number",
+                          "integer"
+                        ]
+                      },
+                      "relatedTenderer": {
+                        "type": "object",
+                        "required": [
+                          "id"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "minLength": 1
+                          }
+                        }
+                      },
+                      "responder": {
+                        "type": "object",
+                        "required": [
+                          "title",
+                          "name",
+                          "identifier",
+                          "bussinessFunctions"
+                        ],
+                        "properties": {
+                          "title": {
+                            "type": "string",
+                            "minLength": 1,
+                            "enum": [
+                              "Mr.",
+                              "Ms.",
+                              "Mrs.",
+                              "Mr.",
+                              "Ms.",
+                              "Mrs."
+                            ]
+                          },
+                          "name": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "identifier": {
+                            "type": "object",
+                            "required": [
+                              "scheme",
+                              "id"
+                            ],
+                            "properties": {
+                              "scheme": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "id": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "uri": {
+                                "type": "string",
+                                "minLength": 1
+                              }
+                            }
+                          },
+                          "bussinessFunctions": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "minItems": 1,
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "jobTitle": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "period": {
+                                  "type": "object",
+                                  "required": [
+                                    "startDate"
+                                  ],
+                                  "properties": {
+                                    "startDate": {
+                                      "type": "string",
+                                      "minLength": 1,
+                                      "format": "date-time"
+                                    }
+                                  }
+                                },
+                                "documents": {
+                                  "type": "array",
+                                  "uniqueItems": true,
+                                  "minItems": 1,
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "minLength": 1
+                                      },
+                                      "documentType": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "enum": [
+                                          "regulatoryDocument"
+                                        ]
+                                      },
+                                      "title": {
+                                        "type": "string",
+                                        "minLength": 1
+                                      },
+                                      "description": {
+                                        "type": "string",
+                                        "minLength": 1
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "documentType",
+                                      "title"
+                                    ]
+                                  }
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "type",
+                                "jobTitle",
+                                "period"
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      "requirement": {
+                        "type": "object",
+                        "required": [
+                          "id"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "minLength": 1
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "requirementResponse"
+                ]
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
