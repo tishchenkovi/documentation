@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Open Tender",
+    "title": "Restricted Tender",
     "version": "1.0",
     "description": "Open-Tender"
   },
