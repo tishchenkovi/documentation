@@ -5468,7 +5468,10 @@
             "description": "OK"
           }
         },
-        "description": ""
+        "description": "",
+        "tags": [
+          "Plan"
+        ]
       }
     },
     "/do/cn/{cpid}/{ocid}": {
@@ -6690,7 +6693,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Tender"
+        ]
       }
     },
     "/do/cn/{cpid}/{cn_ocid}": {
@@ -7612,6 +7618,906 @@
                 "required": [
                   "tender"
                 ]
+              }
+            }
+          }
+        },
+        "tags": [
+          "Tender"
+        ]
+      }
+    },
+    "/do/division/lot/{cpid}/{ocid}/{lotId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Notice identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "lotId",
+          "in": "path",
+          "required": true,
+          "description": "Lot identifier"
+        }
+      ],
+      "post": {
+        "summary": "Divide Lot",
+        "operationId": "post-do-division-lot-cpid-ocid-lotId",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "description": "Request identifier",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "description": "Tender token",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "tender": {
+                      "lots": [
+                        {
+                          "id": "string",
+                          "internalId": "string",
+                          "title": "string",
+                          "description": "string",
+                          "value": {
+                            "amount": 0,
+                            "currency": "string"
+                          },
+                          "contractPeriod": {
+                            "startDate": "2022-03-17T12:17:20.984Z",
+                            "endDate": "2022-03-17T12:17:20.984Z"
+                          },
+                          "placeOfPerformance": {
+                            "address": {
+                              "streetAddress": "string",
+                              "postalCode": "string",
+                              "addressDetails": {
+                                "country": {
+                                  "id": "string",
+                                  "description": "string",
+                                  "scheme": "string"
+                                },
+                                "region": {
+                                  "id": "string",
+                                  "description": "string",
+                                  "scheme": "string"
+                                },
+                                "locality": {
+                                  "id": "string",
+                                  "description": "string",
+                                  "scheme": "string"
+                                }
+                              }
+                            },
+                            "description": "string"
+                          },
+                          "hasOptions": true,
+                          "options": [
+                            {
+                              "description": "string",
+                              "period": {
+                                "durationInDays": 0,
+                                "startDate": "2022-03-17T12:17:20.984Z",
+                                "endDate": "2022-03-17T12:17:20.984Z",
+                                "maxExtentDate": "2022-03-17T12:17:20.984Z"
+                              }
+                            }
+                          ],
+                          "hasRecurrence": true,
+                          "recurrence": {
+                            "dates": [
+                              {
+                                "startDate": "2022-03-17T12:17:20.984Z"
+                              }
+                            ],
+                            "description": "string"
+                          },
+                          "hasRenewal": true,
+                          "renewal": {
+                            "description": "string",
+                            "minimumRenewals": 0,
+                            "maximumRenewals": 0,
+                            "period": {
+                              "durationInDays": 0,
+                              "startDate": "2022-03-17T12:17:20.984Z",
+                              "endDate": "2022-03-17T12:17:20.984Z",
+                              "maxExtentDate": "2022-03-17T12:17:20.984Z"
+                            }
+                          }
+                        }
+                      ],
+                      "items": [
+                        {
+                          "id": "string",
+                          "relatedLot": "string"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "properties": {
+                  "tender": {
+                    "type": "object",
+                    "required": [
+                      "lots",
+                      "items"
+                    ],
+                    "properties": {
+                      "lots": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "minItems": 1,
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "internalId": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "title": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "description": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "value": {
+                              "type": "object",
+                              "required": [
+                                "amount",
+                                "currency"
+                              ],
+                              "properties": {
+                                "amount": {
+                                  "type": "number"
+                                },
+                                "currency": {
+                                  "type": "string",
+                                  "minLength": 1
+                                }
+                              }
+                            },
+                            "contractPeriod": {
+                              "type": "object",
+                              "required": [
+                                "startDate",
+                                "endDate"
+                              ],
+                              "properties": {
+                                "startDate": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "format": "date-time"
+                                },
+                                "endDate": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "format": "date-time"
+                                }
+                              }
+                            },
+                            "placeOfPerformance": {
+                              "type": "object",
+                              "required": [
+                                "address"
+                              ],
+                              "properties": {
+                                "address": {
+                                  "type": "object",
+                                  "required": [
+                                    "streetAddress",
+                                    "addressDetails"
+                                  ],
+                                  "properties": {
+                                    "streetAddress": {
+                                      "type": "string",
+                                      "minLength": 1
+                                    },
+                                    "postalCode": {
+                                      "type": "string",
+                                      "minLength": 1
+                                    },
+                                    "addressDetails": {
+                                      "type": "object",
+                                      "required": [
+                                        "country",
+                                        "region",
+                                        "locality"
+                                      ],
+                                      "properties": {
+                                        "country": {
+                                          "type": "object",
+                                          "required": [
+                                            "id",
+                                            "description",
+                                            "scheme"
+                                          ],
+                                          "properties": {
+                                            "id": {
+                                              "type": "string",
+                                              "minLength": 1
+                                            },
+                                            "description": {
+                                              "type": "string",
+                                              "minLength": 1
+                                            },
+                                            "scheme": {
+                                              "type": "string",
+                                              "minLength": 1
+                                            }
+                                          }
+                                        },
+                                        "region": {
+                                          "type": "object",
+                                          "required": [
+                                            "id",
+                                            "description",
+                                            "scheme"
+                                          ],
+                                          "properties": {
+                                            "id": {
+                                              "type": "string",
+                                              "minLength": 1
+                                            },
+                                            "description": {
+                                              "type": "string",
+                                              "minLength": 1
+                                            },
+                                            "scheme": {
+                                              "type": "string",
+                                              "minLength": 1
+                                            }
+                                          }
+                                        },
+                                        "locality": {
+                                          "type": "object",
+                                          "required": [
+                                            "id",
+                                            "description",
+                                            "scheme"
+                                          ],
+                                          "properties": {
+                                            "id": {
+                                              "type": "string",
+                                              "minLength": 1
+                                            },
+                                            "description": {
+                                              "type": "string",
+                                              "minLength": 1
+                                            },
+                                            "scheme": {
+                                              "type": "string",
+                                              "minLength": 1
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "description": {
+                                  "type": "string",
+                                  "minLength": 1
+                                }
+                              }
+                            },
+                            "hasOptions": {
+                              "type": "boolean"
+                            },
+                            "options": {
+                              "type": "array",
+                              "uniqueItems": true,
+                              "minItems": 1,
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "description": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "period": {
+                                    "type": "object",
+                                    "properties": {
+                                      "durationInDays": {
+                                        "type": "number"
+                                      },
+                                      "startDate": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "format": "date-time"
+                                      },
+                                      "endDate": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "format": "date-time"
+                                      },
+                                      "maxExtentDate": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "format": "date-time"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "hasRecurrence": {
+                              "type": "boolean"
+                            },
+                            "recurrence": {
+                              "type": "object",
+                              "properties": {
+                                "dates": {
+                                  "type": "array",
+                                  "uniqueItems": true,
+                                  "minItems": 1,
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "startDate": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "format": "date-time"
+                                      }
+                                    },
+                                    "required": [
+                                      "startDate"
+                                    ]
+                                  }
+                                },
+                                "description": {
+                                  "type": "string",
+                                  "minLength": 1
+                                }
+                              },
+                              "required": [
+                                "dates",
+                                "description"
+                              ]
+                            },
+                            "hasRenewal": {
+                              "type": "boolean"
+                            },
+                            "renewal": {
+                              "type": "object",
+                              "properties": {
+                                "description": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "minimumRenewals": {
+                                  "type": "number"
+                                },
+                                "maximumRenewals": {
+                                  "type": "number"
+                                },
+                                "period": {
+                                  "type": "object",
+                                  "properties": {
+                                    "durationInDays": {
+                                      "type": "number"
+                                    },
+                                    "startDate": {
+                                      "type": "string",
+                                      "minLength": 1,
+                                      "format": "date-time"
+                                    },
+                                    "endDate": {
+                                      "type": "string",
+                                      "minLength": 1,
+                                      "format": "date-time"
+                                    },
+                                    "maxExtentDate": {
+                                      "type": "string",
+                                      "minLength": 1,
+                                      "format": "date-time"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "title",
+                            "description",
+                            "value",
+                            "contractPeriod",
+                            "placeOfPerformance",
+                            "hasOptions"
+                          ]
+                        }
+                      },
+                      "items": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "minItems": 1,
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "relatedLot": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "relatedLot"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "tender"
+                ]
+              }
+            }
+          }
+        },
+        "tags": [
+          "Tender"
+        ]
+      }
+    },
+    "/do/enquiry/{cpid}/{ocid}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Notice identifier"
+        }
+      ],
+      "post": {
+        "summary": "Enquiry",
+        "operationId": "post-do-enquiry-cpid-ocid",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "description": "Request identifier"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "enquiry": {
+                      "author": {
+                        "name": "string",
+                        "identifier": {
+                          "scheme": "string",
+                          "id": "string",
+                          "legalName": "string",
+                          "uri": "string"
+                        },
+                        "additionalIdentifiers": [
+                          {
+                            "scheme": "string",
+                            "id": "string",
+                            "legalName": "string",
+                            "uri": "string"
+                          }
+                        ],
+                        "address": {
+                          "streetAddress": "string",
+                          "postalCode": "string",
+                          "addressDetails": {
+                            "country": {
+                              "id": "string"
+                            },
+                            "region": {
+                              "id": "string"
+                            },
+                            "locality": {
+                              "scheme": "string",
+                              "id": "string",
+                              "description": "string"
+                            }
+                          }
+                        },
+                        "details": {
+                          "scale": "string"
+                        },
+                        "contactPoint": {
+                          "name": "string",
+                          "email": "string",
+                          "telephone": "string",
+                          "faxNumber": "string",
+                          "url": "string"
+                        }
+                      },
+                      "title": "string",
+                      "description": "string",
+                      "relatedLot": "string"
+                    }
+                  }
+                },
+                "properties": {
+                  "enquiry": {
+                    "type": "object",
+                    "required": [
+                      "author",
+                      "title",
+                      "description"
+                    ],
+                    "properties": {
+                      "author": {
+                        "type": "object",
+                        "required": [
+                          "name",
+                          "identifier",
+                          "address",
+                          "details",
+                          "contactPoint"
+                        ],
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "identifier": {
+                            "type": "object",
+                            "required": [
+                              "scheme",
+                              "id",
+                              "legalName"
+                            ],
+                            "properties": {
+                              "scheme": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "id": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "legalName": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "uri": {
+                                "type": "string",
+                                "minLength": 1
+                              }
+                            }
+                          },
+                          "additionalIdentifiers": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "minItems": 1,
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "scheme": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "id": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "legalName": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "uri": {
+                                  "type": "string",
+                                  "minLength": 1
+                                }
+                              },
+                              "required": [
+                                "scheme",
+                                "id",
+                                "legalName"
+                              ]
+                            }
+                          },
+                          "address": {
+                            "type": "object",
+                            "required": [
+                              "streetAddress",
+                              "addressDetails"
+                            ],
+                            "properties": {
+                              "streetAddress": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "postalCode": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "addressDetails": {
+                                "type": "object",
+                                "required": [
+                                  "country",
+                                  "region",
+                                  "locality"
+                                ],
+                                "properties": {
+                                  "country": {
+                                    "type": "object",
+                                    "required": [
+                                      "id"
+                                    ],
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "minLength": 1
+                                      }
+                                    }
+                                  },
+                                  "region": {
+                                    "type": "object",
+                                    "required": [
+                                      "id"
+                                    ],
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "minLength": 1
+                                      }
+                                    }
+                                  },
+                                  "locality": {
+                                    "type": "object",
+                                    "required": [
+                                      "scheme",
+                                      "id",
+                                      "description"
+                                    ],
+                                    "properties": {
+                                      "scheme": {
+                                        "type": "string",
+                                        "minLength": 1
+                                      },
+                                      "id": {
+                                        "type": "string",
+                                        "minLength": 1
+                                      },
+                                      "description": {
+                                        "type": "string",
+                                        "minLength": 1
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "details": {
+                            "type": "object",
+                            "required": [
+                              "scale"
+                            ],
+                            "properties": {
+                              "scale": {
+                                "type": "string",
+                                "minLength": 1
+                              }
+                            }
+                          },
+                          "contactPoint": {
+                            "type": "object",
+                            "required": [
+                              "name",
+                              "email",
+                              "telephone"
+                            ],
+                            "properties": {
+                              "name": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "email": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "telephone": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "faxNumber": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "url": {
+                                "type": "string",
+                                "minLength": 1
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "title": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "description": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "relatedLot": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "enquiry"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/do/enquiry/{cpid}/{ocid}/{enquiryId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Notice identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "enquiryId",
+          "in": "path",
+          "required": true,
+          "description": "Enquiry identifier"
+        }
+      ],
+      "post": {
+        "summary": "Answer",
+        "operationId": "post-do-enquiry-cpid-ocid-enquiryId",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "description": "Request identifier",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "description": "Enquiry token",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "enquiry": {
+                    "type": "object",
+                    "properties": {
+                      "answer": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "answer"
+                    ]
+                  }
+                },
+                "required": [
+                  "enquiry"
+                ],
+                "x-examples": {
+                  "example-1": {
+                    "enquiry": {
+                      "answer": "string"
+                    }
+                  }
+                }
               }
             }
           }
