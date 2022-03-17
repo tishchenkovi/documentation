@@ -10137,8 +10137,8 @@
               "type": "string"
             },
             "in": "header",
-            "name": "Content-Type",
-            "description": "Media type of the resource",
+            "name": "X-TOKEN",
+            "description": "Award token",
             "required": true
           }
         ],
