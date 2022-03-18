@@ -12980,6 +12980,9 @@
             "description": "qualification token",
             "required": true
           }
+        ],
+        "tags": [
+          "Tender"
         ]
       }
     },
@@ -13031,6 +13034,9 @@
             "description": "qualification token",
             "required": true
           }
+        ],
+        "tags": [
+          "Tender"
         ]
       }
     }
