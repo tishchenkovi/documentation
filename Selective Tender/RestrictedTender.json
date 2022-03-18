@@ -10659,7 +10659,10 @@
           "202": {
             "description": "Accepted"
           }
-        }
+        },
+        "tags": [
+          "Tender"
+        ]
       }
     },
     "/cancel/amendment/{cpid}/{ocid}/{amendmentId}": {
@@ -12671,6 +12674,161 @@
         ]
       }
     },
+    "/do/qualification/{cpid}/{ocid}/{qualification}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "tender process cpid"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "process ocid"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "qualification",
+          "in": "path",
+          "required": true,
+          "description": "qualification identifier "
+        }
+      ],
+      "post": {
+        "summary": "Qualification",
+        "operationId": "post-do-qualification-cpid-ocid-qualification",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "tags": [
+          "Tender"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID ",
+            "description": "transaction ID",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "description": "qualification token",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "qualification": {
+                      "statusDetails": "active",
+                      "internalId": "string",
+                      "description": "string",
+                      "documents": [
+                        {
+                          "id": "string",
+                          "documentType": "notice",
+                          "title": "string",
+                          "description": "string"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "properties": {
+                  "qualification": {
+                    "type": "object",
+                    "required": [
+                      "statusDetails"
+                    ],
+                    "properties": {
+                      "statusDetails": {
+                        "type": "string",
+                        "minLength": 1,
+                        "enum": [
+                          "active",
+                          "unsuccessful"
+                        ]
+                      },
+                      "internalId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "description": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "documents": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "minItems": 1,
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "documentType": {
+                              "type": "string",
+                              "minLength": 1,
+                              "enum": [
+                                "notice",
+                                "evaluationReports",
+                                "conflictOfInterest"
+                              ]
+                            },
+                            "title": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "description": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "documentType",
+                            "title"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "qualification"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
     "/issue/contract/{cpid}/{ocid}": {
       "parameters": [
         {
@@ -12759,7 +12917,121 @@
               }
             }
           }
+        },
+        "tags": [
+          "Contract"
+        ]
+      }
+    },
+    "/do/consideration/qualification/{cpid}/{ocid}/{qualificationId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "tender process cpid"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "process ocid"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "qualificationId",
+          "in": "path",
+          "required": true,
+          "description": "qualification identifier "
         }
+      ],
+      "post": {
+        "summary": "Qualification Consideration",
+        "operationId": "post-do-consideration-qualification-cpid-ocid-qualificationId",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "description": "transaction ID",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "description": "qualification token",
+            "required": true
+          }
+        ]
+      }
+    },
+    "/do/protocol/qualification/{cpid}/{ocid}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "tender process cpid"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "process ocid"
+        }
+      ],
+      "post": {
+        "summary": "Qualification Protocol",
+        "operationId": "post-do-protocol-qualification-cpid-ocid",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "description": "transaction ID",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "description": "qualification token",
+            "required": true
+          }
+        ]
       }
     }
   },
