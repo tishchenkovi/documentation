@@ -3138,7 +3138,27 @@
                             },
                             "documentType": {
                               "type": "string",
-                              "minLength": 1
+                              "minLength": 1,
+                              "enum": [
+                                "tenderNotice",
+                                "biddingDocuments",
+                                "technicalSpecifications",
+                                "evaluationCriteria",
+                                "clarifications",
+                                "eligibilityCriteria",
+                                "riskProvisions",
+                                "billOfQuantity",
+                                "conflictOfInterest",
+                                "procurementPlan",
+                                "contractDraft",
+                                "complaints",
+                                "illustration",
+                                "cancellationDetails",
+                                "evaluationReports",
+                                "shortlistedFirms",
+                                "contractArrangements",
+                                "contractGuarantees"
+                              ]
                             },
                             "description": {
                               "type": "string",
@@ -5577,7 +5597,10 @@
                       "tenderPeriod",
                       "enquiryPeriod",
                       "lots",
-                      "items"
+                      "items",
+                      "secondStage",
+                      "maximumCandidates",
+                      "otherCriteria"
                     ],
                     "properties": {
                       "procurementMethodRationale": {
@@ -6492,6 +6515,158 @@
                             "title",
                             "documentType"
                           ]
+                        }
+                      },
+                      "secondStage": {
+                        "type": "object",
+                        "required": [
+                          "minimumCandidates",
+                          "maximumCandidates"
+                        ],
+                        "properties": {
+                          "minimumCandidates": {
+                            "type": "number"
+                          },
+                          "maximumCandidates": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "maximumCandidates": {
+                        "type": "object",
+                        "required": [
+                          "scheme",
+                          "description",
+                          "id"
+                        ],
+                        "properties": {
+                          "scheme": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "otherCriteria": {
+                        "type": "object",
+                        "required": [
+                          "qualificationSystemMethods",
+                          "reductionCriteria"
+                        ],
+                        "properties": {
+                          "qualificationSystemMethods": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "reductionCriteria": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "additionalProcurementCategories": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "hasOptions": {
+                        "type": "boolean"
+                      },
+                      "options": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "description": {
+                              "type": "string"
+                            },
+                            "period": {
+                              "type": "object",
+                              "properties": {
+                                "durationInDays": {
+                                  "type": "number"
+                                },
+                                "startDate": {
+                                  "type": "string",
+                                  "format": "date-time"
+                                },
+                                "endDate": {
+                                  "type": "string",
+                                  "format": "date-time"
+                                },
+                                "maxExtentDate": {
+                                  "type": "string",
+                                  "format": "date-time"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "hasRecurrence": {
+                        "type": "boolean"
+                      },
+                      "recurrence": {
+                        "type": "object",
+                        "properties": {
+                          "dates": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "startDate": {
+                                  "type": "string",
+                                  "format": "date-time"
+                                }
+                              }
+                            }
+                          },
+                          "description": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "hasRenewal": {
+                        "type": "boolean"
+                      },
+                      "renewal": {
+                        "type": "object",
+                        "properties": {
+                          "description": {
+                            "type": "string"
+                          },
+                          "minimumRenewals": {
+                            "type": "number"
+                          },
+                          "maximumRenewals": {
+                            "type": "number"
+                          },
+                          "period": {
+                            "type": "object",
+                            "properties": {
+                              "durationInDays": {
+                                "type": "number"
+                              },
+                              "startDate": {
+                                "type": "string",
+                                "format": "date-time"
+                              },
+                              "endDate": {
+                                "type": "string",
+                                "format": "date-time"
+                              },
+                              "maxExtentDate": {
+                                "type": "string",
+                                "format": "date-time"
+                              }
+                            }
+                          }
                         }
                       }
                     }
@@ -9704,7 +9879,14 @@
                           "properties": {
                             "documentType": {
                               "type": "string",
-                              "minLength": 1
+                              "minLength": 1,
+                              "enum": [
+                                "illustration",
+                                "submissionDocuments",
+                                "x_qualificationDocuments",
+                                "x_eligibilityDocuments",
+                                "x_technicalDocuments"
+                              ]
                             },
                             "id": {
                               "type": "string",
@@ -9831,7 +10013,6 @@
                     "type": "object",
                     "required": [
                       "statusDetails",
-                      "description",
                       "documents"
                     ],
                     "properties": {
