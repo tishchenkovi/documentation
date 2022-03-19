@@ -9659,11 +9659,6 @@
                                 },
                                 "legalForm": {
                                   "type": "object",
-                                  "required": [
-                                    "scheme",
-                                    "id",
-                                    "description"
-                                  ],
                                   "properties": {
                                     "scheme": {
                                       "type": "string",
@@ -9681,7 +9676,12 @@
                                       "type": "string",
                                       "minLength": 1
                                     }
-                                  }
+                                  },
+                                  "required": [
+                                    "scheme",
+                                    "id",
+                                    "description"
+                                  ]
                                 }
                               }
                             }
@@ -9698,10 +9698,7 @@
                       "relatedLots": {
                         "type": "array",
                         "items": {
-                          "type": [
-                            "object",
-                            "string"
-                          ]
+                          "type": "string"
                         }
                       },
                       "documents": {
