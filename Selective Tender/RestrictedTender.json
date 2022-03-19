@@ -1957,7 +1957,7 @@
             "in": "query",
             "name": "pmd",
             "required": true,
-            "description": "procurement method details"
+            "description": "procurement method details "
           },
           {
             "schema": {
@@ -2684,7 +2684,7 @@
         "tags": [
           "Plan"
         ],
-        "description": "Create PN"
+        "description": "Create PN for pmd = GPA, TestGPA, RT, TestRT"
       }
     },
     "/do/pn/{cpid}/{ocid}": {
@@ -2714,7 +2714,7 @@
             "description": "Accepted"
           }
         },
-        "description": "Update PN",
+        "description": "Update PN for pmd = GPA, TestGPA, RT, TestRT",
         "parameters": [
           {
             "schema": {
@@ -5235,7 +5235,7 @@
             "description": "Accepted"
           }
         },
-        "description": "",
+        "description": "Cancel PN for pmd = GPA, TestGPA, RT, TestRT",
         "tags": [
           "Plan"
         ],
