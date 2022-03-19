@@ -6922,13 +6922,29 @@
                       },
                       "budget": {
                         "type": "object",
-                        "required": [
-                          "description"
-                        ],
                         "properties": {
                           "description": {
                             "type": "string",
                             "minLength": 1
+                          }
+                        },
+                        "required": [
+                          "description"
+                        ]
+                      }
+                    }
+                  },
+                  "preQualification": {
+                    "type": "object",
+                    "properties": {
+                      "period": {
+                        "type": "object",
+                        "properties": {
+                          "startDate": {
+                            "type": "string"
+                          },
+                          "endDate": {
+                            "type": "string"
                           }
                         }
                       }
@@ -6937,22 +6953,12 @@
                   "tender": {
                     "type": "object",
                     "required": [
-                      "title",
-                      "description",
                       "tenderPeriod",
                       "enquiryPeriod",
                       "lots",
                       "items"
                     ],
                     "properties": {
-                      "title": {
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "description": {
-                        "type": "string",
-                        "minLength": 1
-                      },
                       "procurementMethodRationale": {
                         "type": "string",
                         "minLength": 1
@@ -6998,9 +7004,6 @@
                       },
                       "electronicAuctions": {
                         "type": "object",
-                        "required": [
-                          "details"
-                        ],
                         "properties": {
                           "details": {
                             "type": "array",
@@ -7054,13 +7057,13 @@
                               ]
                             }
                           }
-                        }
+                        },
+                        "required": [
+                          "details"
+                        ]
                       },
                       "procuringEntity": {
                         "type": "object",
-                        "required": [
-                          "id"
-                        ],
                         "properties": {
                           "id": {
                             "type": "string",
@@ -7195,7 +7198,10 @@
                               ]
                             }
                           }
-                        }
+                        },
+                        "required": [
+                          "id"
+                        ]
                       },
                       "lots": {
                         "type": "array",
@@ -7595,6 +7601,31 @@
                             "documentType",
                             "description"
                           ]
+                        }
+                      },
+                      "secondStage": {
+                        "type": "object",
+                        "properties": {
+                          "minimumCandidates": {
+                            "type": "number"
+                          },
+                          "maximumCandidates": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "otherCriteria": {
+                        "type": "object",
+                        "properties": {
+                          "qualificationSystemMethods": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "reductionCriteria": {
+                            "type": "string"
+                          }
                         }
                       }
                     }
