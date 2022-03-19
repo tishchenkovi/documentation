@@ -5457,7 +5457,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "PN/PIN ocid"
+          "description": "PN ocid"
         }
       ],
       "post": {
@@ -10793,7 +10793,8 @@
                     ]
                   }
                 }
-              }
+              },
+              "examples": {}
             }
           }
         },
