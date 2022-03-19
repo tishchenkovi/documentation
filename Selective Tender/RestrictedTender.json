@@ -607,8 +607,7 @@
                   "planning",
                   "buyer"
                 ]
-              },
-              "examples": {}
+              }
             }
           }
         },
@@ -5457,7 +5456,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "PN ocid"
+          "description": "Planning Notice ocid"
         }
       ],
       "post": {
@@ -5471,6 +5470,26 @@
         "description": "",
         "tags": [
           "Plan"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "description": "transaction id",
+            "required": true,
+            "name": "X-OPERATION-ID "
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "required": true,
+            "description": "Planning Notice token",
+            "name": "X-TOKEN"
+          }
         ]
       }
     },
