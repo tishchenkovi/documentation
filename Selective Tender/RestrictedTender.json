@@ -1934,7 +1934,8 @@
           },
           {
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "MD"
             },
             "in": "query",
             "name": "country",
@@ -1943,7 +1944,8 @@
           },
           {
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "RO RU EN"
             },
             "in": "query",
             "name": "lang",
@@ -2695,7 +2697,8 @@
           },
           "name": "cpid",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Contract Process identifier"
         },
         {
           "schema": {
@@ -2703,7 +2706,8 @@
           },
           "name": "ocid",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Planning Notice identifier"
         }
       ],
       "post": {
@@ -3180,7 +3184,8 @@
           },
           "name": "cpid",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Contract Process identifier"
         },
         {
           "schema": {
@@ -3188,7 +3193,8 @@
           },
           "name": "ocid",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Contract Notice identifier "
         }
       ],
       "post": {
@@ -3327,7 +3333,8 @@
           },
           "name": "cpid",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Contract Process identifier"
         },
         {
           "schema": {
@@ -3335,7 +3342,8 @@
           },
           "name": "ocid",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Contract Notice identifier"
         },
         {
           "schema": {
@@ -3343,7 +3351,8 @@
           },
           "name": "lotId",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "lot identifier "
         }
       ],
       "post": {
@@ -3481,7 +3490,8 @@
           },
           "name": "cpid",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Contract Process identifier"
         },
         {
           "schema": {
@@ -3489,7 +3499,8 @@
           },
           "name": "ocid",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Contract Notice identifier"
         },
         {
           "schema": {
@@ -3497,7 +3508,8 @@
           },
           "name": "awardId",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Award identifier"
         }
       ],
       "post": {
@@ -3764,7 +3776,8 @@
           },
           "name": "cpid",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Contract Process identifier"
         },
         {
           "schema": {
@@ -3772,7 +3785,8 @@
           },
           "name": "ocid",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Contract Notice identifier"
         },
         {
           "schema": {
@@ -3780,7 +3794,8 @@
           },
           "name": "amendment",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Amendment identifier"
         }
       ],
       "post": {
@@ -3824,7 +3839,8 @@
           },
           "name": "cpid",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Contract Process identifier"
         },
         {
           "schema": {
@@ -3832,7 +3848,8 @@
           },
           "name": "ocid",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Contract Notice identifier"
         },
         {
           "schema": {
@@ -3840,7 +3857,8 @@
           },
           "name": "amendment",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Amendment identifier"
         }
       ],
       "post": {
@@ -3884,7 +3902,8 @@
           },
           "name": "cpid",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Contract Process identifier"
         },
         {
           "schema": {
@@ -3892,7 +3911,8 @@
           },
           "name": "ocid",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Contract Notice identifier"
         }
       ],
       "post": {
@@ -4862,7 +4882,8 @@
           },
           "name": "cpid",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Contract Process identifier"
         },
         {
           "schema": {
@@ -4870,7 +4891,8 @@
           },
           "name": "ocid",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Contract Notice identifier"
         },
         {
           "schema": {
@@ -4878,7 +4900,8 @@
           },
           "name": "submissionId",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Submission identifier"
         }
       ],
       "post": {
@@ -4923,7 +4946,7 @@
           "name": "cpid",
           "in": "path",
           "required": true,
-          "description": "tender process identifier"
+          "description": "Contract Process identifier"
         },
         {
           "schema": {
@@ -4932,7 +4955,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "ocid identifier"
+          "description": "Contract Notice identifier"
         },
         {
           "schema": {
@@ -5215,7 +5238,7 @@
           "name": "cpid",
           "in": "path",
           "required": true,
-          "description": "tender process identifier"
+          "description": "Contract Process identifier"
         },
         {
           "schema": {
@@ -8325,7 +8348,8 @@
           },
           "name": "cpid",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Contract Process identifier"
         },
         {
           "schema": {
@@ -8333,7 +8357,8 @@
           },
           "name": "ocid",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Contract Notice identifier"
         }
       ],
       "post": {
@@ -9726,7 +9751,8 @@
           },
           "name": "cpid",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Contract Process identifier"
         },
         {
           "schema": {
@@ -9734,7 +9760,8 @@
           },
           "name": "ocid",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Contract Notice identifier"
         },
         {
           "schema": {
@@ -9742,7 +9769,8 @@
           },
           "name": "awardId",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Award identifier"
         }
       ],
       "post": {
@@ -10599,7 +10627,7 @@
           "name": "cpid",
           "in": "path",
           "required": true,
-          "description": "tender process cpid"
+          "description": "Contract Process identifier"
         },
         {
           "schema": {
@@ -10608,7 +10636,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "process ocid"
+          "description": "Contract Notice identifier"
         },
         {
           "schema": {
@@ -10754,7 +10782,7 @@
           "name": "cpid",
           "in": "path",
           "required": true,
-          "description": "tender process cpid"
+          "description": "Contract Process identifier"
         },
         {
           "schema": {
@@ -10763,7 +10791,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "process ocid"
+          "description": "Contract Notice identifier"
         },
         {
           "schema": {
@@ -10817,7 +10845,7 @@
           "name": "cpid",
           "in": "path",
           "required": true,
-          "description": "tender process cpid"
+          "description": "Contract Process identifier"
         },
         {
           "schema": {
@@ -10826,7 +10854,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "process ocid"
+          "description": "Contract Notice identifier"
         }
       ],
       "post": {
@@ -10871,7 +10899,7 @@
           "name": "cpid",
           "in": "path",
           "required": true,
-          "description": "tender process cpid"
+          "description": "Contract Process identifier"
         },
         {
           "schema": {
@@ -10880,7 +10908,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "protocol identifier "
+          "description": "Contract Notice identifier"
         }
       ],
       "post": {
@@ -10925,7 +10953,7 @@
           "name": "cpid",
           "in": "path",
           "required": true,
-          "description": "tender process cpid"
+          "description": "Contract Process identifier"
         },
         {
           "schema": {
@@ -10934,7 +10962,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "tender stage identifier "
+          "description": "Contract Notice identifier"
         }
       ],
       "post": {
@@ -11024,7 +11052,7 @@
           "name": "cpid",
           "in": "path",
           "required": true,
-          "description": "tender process cpid"
+          "description": "Contract Process identifier"
         },
         {
           "schema": {
@@ -11033,7 +11061,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "tender stage identifier "
+          "description": "Contract Notice identifier"
         }
       ],
       "post": {
