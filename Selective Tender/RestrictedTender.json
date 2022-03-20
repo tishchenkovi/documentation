@@ -10005,7 +10005,21 @@
                           "properties": {
                             "documentType": {
                               "type": "string",
-                              "minLength": 1
+                              "minLength": 1,
+                              "enum": [
+                                "awardNotice",
+                                "evaluationReports",
+                                "contractDraft",
+                                "winningBid",
+                                "complaints",
+                                "bidders",
+                                "conflictOfInterest",
+                                "cancellationDetails",
+                                "submissionDocuments",
+                                "contractArrangements",
+                                "contractSchedule",
+                                "shortlistedFirms"
+                              ]
                             },
                             "id": {
                               "type": "string",
@@ -10223,7 +10237,10 @@
                               "properties": {
                                 "documentType": {
                                   "type": "string",
-                                  "minLength": 1
+                                  "minLength": 1,
+                                  "enum": [
+                                    "evaluationReports"
+                                  ]
                                 },
                                 "id": {
                                   "type": "string",
@@ -10774,7 +10791,10 @@
                       "properties": {
                         "documentType": {
                           "type": "string",
-                          "minLength": 1
+                          "minLength": 1,
+                          "enum": [
+                            "evaluationReports"
+                          ]
                         },
                         "id": {
                           "type": "string",
