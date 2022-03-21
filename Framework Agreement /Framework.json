@@ -5112,6 +5112,383 @@
         }
       }
     },
+    "/do/consideration/qualification/{cpid}/{ocid}/{qualificationId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Notice identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "qualificationId",
+          "in": "path",
+          "required": true,
+          "description": "qualification identifier "
+        }
+      ],
+      "post": {
+        "summary": "Qualification Consideration",
+        "operationId": "post-do-consideration-qualification-cpid-ocid-qualificationId",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "description": "transaction ID",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "description": "qualification token",
+            "required": true
+          }
+        ],
+        "tags": [
+          "Tender"
+        ]
+      }
+    },
+    "/do/qualification/{cpid}/{ocid}/{qualificationId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Notice identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "qualificationId",
+          "in": "path",
+          "required": true,
+          "description": "qualification identifier"
+        }
+      ],
+      "post": {
+        "summary": "Qualification",
+        "operationId": "post-do-declaration-qualification-cpid-ocid-qualificationId",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "required": true,
+            "description": "Request identifier"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "required": true,
+            "description": "qualification token"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "qualification": {
+                      "statusDetails": "active",
+                      "internalId": "string",
+                      "description": "string",
+                      "documents": [
+                        {
+                          "id": "string",
+                          "documentType": "notice",
+                          "title": "string",
+                          "description": "string"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "properties": {
+                  "qualification": {
+                    "type": "object",
+                    "required": [
+                      "statusDetails"
+                    ],
+                    "properties": {
+                      "statusDetails": {
+                        "type": "string",
+                        "minLength": 1,
+                        "enum": [
+                          "active",
+                          "unsuccessful"
+                        ]
+                      },
+                      "internalId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "description": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "documents": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "minItems": 1,
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "documentType": {
+                              "type": "string",
+                              "minLength": 1,
+                              "enum": [
+                                "notice",
+                                "evaluationReports",
+                                "conflictOfInterest"
+                              ]
+                            },
+                            "title": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "description": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "documentType",
+                            "title"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "qualification"
+                ]
+              }
+            }
+          }
+        },
+        "tags": [
+          "Tender"
+        ]
+      }
+    },
+    "/do/protocol/qualification/{cpid}/{ocid}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Notice identifier"
+        }
+      ],
+      "post": {
+        "summary": "Qualification Protocol",
+        "operationId": "post-do-protocol-qualification-cpid-ocid",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "description": "Request identifier",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "description": "qualification token",
+            "required": true
+          }
+        ],
+        "tags": [
+          "Tender"
+        ]
+      }
+    },
+    "/cancel/protocol/{cpid}/{ocid}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Notice identifier"
+        }
+      ],
+      "post": {
+        "summary": "Withdraw Qualification Protocol",
+        "operationId": "post-cancel-protocol-cpid-ocid",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID ",
+            "description": "Request identifier",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "description": "tender token ",
+            "required": true,
+            "name": "X-TOKEN"
+          }
+        ],
+        "tags": [
+          "Tender"
+        ]
+      }
+    },
+    "/complete/qualification/{cpid}/{ocid}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Notice identifier of FE record "
+        }
+      ],
+      "post": {
+        "summary": "Complete Qualification",
+        "operationId": "post-complete-qualification-cpid-ocid",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "required": true,
+            "description": "Request identifier"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "required": true,
+            "description": "FE token "
+          }
+        ]
+      }
+    },
     "/разделение": {
       "get": {
         "summary": "Your GET endpoint",
@@ -9801,415 +10178,6 @@
         ]
       }
     },
-    "/do/consideration/qualification/{cpid}/{ocid}/{qualificationId}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "cpid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Process identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "ocid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Notice identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "qualificationId",
-          "in": "path",
-          "required": true,
-          "description": "qualification identifier "
-        }
-      ],
-      "post": {
-        "summary": "Qualification Consideration",
-        "operationId": "post-do-consideration-qualification-cpid-ocid-qualificationId",
-        "responses": {
-          "202": {
-            "description": "Accepted"
-          }
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-OPERATION-ID",
-            "description": "transaction ID",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-TOKEN",
-            "description": "qualification token",
-            "required": true
-          }
-        ],
-        "tags": [
-          "Tender"
-        ]
-      }
-    },
-    "/do/declaration/qualification/{cpid}/{ocid}/{qualificationId}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "cpid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Process identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "ocid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Notice identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "qualificationId",
-          "in": "path",
-          "required": true,
-          "description": "qualification identifier"
-        }
-      ],
-      "post": {
-        "summary": "Qualification declare non conflict of interest",
-        "operationId": "post-do-declaration-qualification-cpid-ocid-qualificationId",
-        "responses": {
-          "202": {
-            "description": "Accepted"
-          }
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-OPERATION-ID",
-            "required": true,
-            "description": "Request identifier"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-TOKEN",
-            "required": true,
-            "description": "qualification token"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "description": "",
-                "type": "object",
-                "x-examples": {
-                  "example-1": {
-                    "requirementResponse": {
-                      "id": "string",
-                      "value": true,
-                      "relatedTenderer": {
-                        "id": "string"
-                      },
-                      "responder": {
-                        "title": "string",
-                        "name": "string",
-                        "identifier": {
-                          "scheme": "string",
-                          "id": "string",
-                          "uri": "string"
-                        },
-                        "businessFunctions": [
-                          {
-                            "id": "string",
-                            "type": "contactPoint",
-                            "jobTitle": "string",
-                            "period": {
-                              "startDate": "2020-02-12T12:14:12Z"
-                            },
-                            "documents": [
-                              {
-                                "id": "9004ab09-ca9b-4cb7-95f4-525a3bf64734-1574862409148",
-                                "documentType": "regulatoryDocument",
-                                "title": "string",
-                                "description": "string"
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "requirement": {
-                        "id": "d87939bb-6523-4984-a374-8c71dd05efb5"
-                      }
-                    }
-                  }
-                },
-                "properties": {
-                  "requirementResponse": {
-                    "type": "object",
-                    "required": [
-                      "id",
-                      "value",
-                      "relatedTenderer",
-                      "responder",
-                      "requirement"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "value": {
-                        "type": "string",
-                        "example": "Can be other types: boolean, number, integer"
-                      },
-                      "relatedTenderer": {
-                        "type": "object",
-                        "required": [
-                          "id"
-                        ],
-                        "properties": {
-                          "id": {
-                            "type": "string",
-                            "minLength": 1
-                          }
-                        }
-                      },
-                      "responder": {
-                        "type": "object",
-                        "required": [
-                          "title",
-                          "name",
-                          "identifier",
-                          "businessFunctions"
-                        ],
-                        "properties": {
-                          "title": {
-                            "type": "string",
-                            "minLength": 1,
-                            "enum": [
-                              "Mr.",
-                              "Ms.",
-                              "Mrs."
-                            ]
-                          },
-                          "name": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "identifier": {
-                            "type": "object",
-                            "required": [
-                              "scheme",
-                              "id"
-                            ],
-                            "properties": {
-                              "scheme": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "id": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "uri": {
-                                "type": "string",
-                                "minLength": 1
-                              }
-                            }
-                          },
-                          "businessFunctions": {
-                            "type": "array",
-                            "uniqueItems": true,
-                            "minItems": 1,
-                            "items": {
-                              "type": "object",
-                              "properties": {
-                                "id": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "type": {
-                                  "type": "string",
-                                  "minLength": 1,
-                                  "enum": [
-                                    "chairman",
-                                    "procurmentOfficer",
-                                    "contactPoint",
-                                    "technicalEvaluator",
-                                    "technicalOpener",
-                                    "priceOpener",
-                                    "priceEvaluator"
-                                  ]
-                                },
-                                "jobTitle": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "period": {
-                                  "type": "object",
-                                  "required": [
-                                    "startDate"
-                                  ],
-                                  "properties": {
-                                    "startDate": {
-                                      "type": "string",
-                                      "minLength": 1,
-                                      "format": "date-time"
-                                    }
-                                  }
-                                },
-                                "documents": {
-                                  "type": "array",
-                                  "uniqueItems": true,
-                                  "minItems": 1,
-                                  "items": {
-                                    "type": "object",
-                                    "properties": {
-                                      "id": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      },
-                                      "documentType": {
-                                        "type": "string",
-                                        "minLength": 1,
-                                        "enum": [
-                                          "regulatoryDocument"
-                                        ]
-                                      },
-                                      "title": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      },
-                                      "description": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      }
-                                    },
-                                    "required": [
-                                      "id",
-                                      "documentType",
-                                      "title"
-                                    ]
-                                  }
-                                }
-                              },
-                              "required": [
-                                "id",
-                                "type",
-                                "jobTitle",
-                                "period"
-                              ]
-                            }
-                          }
-                        }
-                      },
-                      "requirement": {
-                        "type": "object",
-                        "required": [
-                          "id"
-                        ],
-                        "properties": {
-                          "id": {
-                            "type": "string",
-                            "minLength": 1
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                "required": [
-                  "requirementResponse"
-                ]
-              }
-            }
-          }
-        },
-        "tags": [
-          "Tender"
-        ]
-      }
-    },
-    "/do/protocol/qualification/{cpid}/{ocid}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "cpid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Process identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "ocid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Notice identifier"
-        }
-      ],
-      "post": {
-        "summary": "Qualification Protocol",
-        "operationId": "post-do-protocol-qualification-cpid-ocid",
-        "responses": {
-          "202": {
-            "description": "Accepted"
-          }
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-OPERATION-ID",
-            "description": "transaction ID",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-TOKEN",
-            "description": "qualification token",
-            "required": true
-          }
-        ],
-        "tags": [
-          "Tender"
-        ]
-      }
-    },
     "/apply/protocol/{cpid}/{ocid}": {
       "parameters": [
         {
@@ -10257,60 +10225,6 @@
             "name": "X-TOKEN",
             "description": "tender token ",
             "required": true
-          }
-        ],
-        "tags": [
-          "Tender"
-        ]
-      }
-    },
-    "/cancel/protocol/{cpid}/{ocid}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "cpid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Process identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "ocid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Notice identifier"
-        }
-      ],
-      "post": {
-        "summary": "Withdraw Qualification Protocol",
-        "operationId": "post-cancel-protocol-cpid-ocid",
-        "responses": {
-          "202": {
-            "description": "Accepted"
-          }
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-OPERATION-ID ",
-            "description": "transaction ID",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "description": "tender token ",
-            "required": true,
-            "name": "X-TOKEN"
           }
         ],
         "tags": [
