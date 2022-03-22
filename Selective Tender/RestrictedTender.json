@@ -613,7 +613,7 @@
           }
         },
         "tags": [
-          "Budget"
+          "1.Budgets"
         ]
       }
     },
@@ -658,7 +658,7 @@
           }
         ],
         "tags": [
-          "Budget"
+          "1.Budgets"
         ],
         "description": "Update Expenditure Item ",
         "requestBody": {
@@ -1532,7 +1532,7 @@
           }
         ],
         "tags": [
-          "Budget"
+          "1.Budgets"
         ]
       },
       "parameters": [
@@ -2148,10 +2148,10 @@
             }
           }
         },
+        "description": "Update Funding Source ",
         "tags": [
-          "Budget"
-        ],
-        "description": "Update Funding Source "
+          "1.Budgets"
+        ]
       },
       "parameters": [
         {
@@ -2947,10 +2947,10 @@
             }
           }
         },
+        "description": "Create PN for pmd = GPA, TestGPA, RT, TestRT",
         "tags": [
-          "Plan"
-        ],
-        "description": "Create PN for pmd = GPA, TestGPA, RT, TestRT"
+          "2.Plans"
+        ]
       }
     },
     "/do/pn/{cpid}/{ocid}": {
@@ -3447,7 +3447,7 @@
           }
         },
         "tags": [
-          "Plan"
+          "2.Plans"
         ]
       }
     },
@@ -3481,9 +3481,6 @@
           }
         },
         "description": "Cancel PN for pmd = GPA, TEST_GPA, RT, TEST_RT",
-        "tags": [
-          "Plan"
-        ],
         "parameters": [
           {
             "schema": {
@@ -3503,6 +3500,9 @@
             "description": "Planning Notice token",
             "name": "X-TOKEN"
           }
+        ],
+        "tags": [
+          "2.Plans"
         ]
       }
     },
@@ -4771,7 +4771,7 @@
           }
         },
         "tags": [
-          "Tender"
+          "3.Tenders"
         ]
       }
     },
@@ -5658,7 +5658,7 @@
           }
         },
         "tags": [
-          "Tender"
+          "3.Tenders"
         ]
       }
     },
@@ -5980,7 +5980,7 @@
           }
         },
         "tags": [
-          "Tender"
+          "3.Tenders"
         ]
       }
     },
@@ -6077,7 +6077,7 @@
           }
         },
         "tags": [
-          "Tender"
+          "3.Tenders"
         ]
       }
     },
@@ -7056,7 +7056,7 @@
           }
         },
         "tags": [
-          "Tender"
+          "3.Tenders"
         ]
       }
     },
@@ -7119,7 +7119,7 @@
           }
         ],
         "tags": [
-          "Tender"
+          "3.Tenders"
         ]
       }
     },
@@ -7182,7 +7182,7 @@
           }
         ],
         "tags": [
-          "Tender"
+          "3.Tenders"
         ]
       }
     },
@@ -7474,7 +7474,7 @@
           }
         },
         "tags": [
-          "Tender"
+          "3.Tenders"
         ]
       }
     },
@@ -7516,9 +7516,6 @@
             "description": "Accepted"
           }
         },
-        "tags": [
-          "Tender"
-        ],
         "parameters": [
           {
             "schema": {
@@ -7630,7 +7627,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "3.Tenders"
+        ]
       }
     },
     "/do/protocol/qualification/{cpid}/{ocid}": {
@@ -7683,7 +7683,7 @@
           }
         ],
         "tags": [
-          "Tender"
+          "3.Tenders"
         ]
       }
     },
@@ -7737,7 +7737,7 @@
           }
         ],
         "tags": [
-          "Tender"
+          "3.Tenders"
         ]
       }
     },
@@ -7791,7 +7791,7 @@
           }
         ],
         "tags": [
-          "Tender"
+          "3.Tenders"
         ]
       }
     },
@@ -7833,9 +7833,6 @@
             "description": "Accepted"
           }
         },
-        "tags": [
-          "Tender"
-        ],
         "parameters": [
           {
             "schema": {
@@ -7855,6 +7852,9 @@
             "description": "Tender token",
             "required": true
           }
+        ],
+        "tags": [
+          "3.Tenders"
         ]
       }
     },
@@ -7953,7 +7953,7 @@
           }
         ],
         "tags": [
-          "Tender"
+          "3.Tenders"
         ]
       }
     },
@@ -8102,7 +8102,7 @@
           }
         },
         "tags": [
-          "Tender"
+          "3.Tenders"
         ]
       }
     },
@@ -8259,7 +8259,7 @@
           }
         ],
         "tags": [
-          "Tender"
+          "3.Tenders"
         ]
       }
     },
@@ -8303,9 +8303,6 @@
             "description": "Request identifier",
             "required": true
           }
-        ],
-        "tags": [
-          "Tender"
         ],
         "requestBody": {
           "content": {
@@ -9416,7 +9413,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "3.Tenders"
+        ]
       }
     },
     "/cancel/bid/{cpid}/{ocid}/{bidId}": {
@@ -9478,7 +9478,7 @@
           }
         ],
         "tags": [
-          "Tender"
+          "3.Tenders"
         ]
       }
     },
@@ -9647,7 +9647,7 @@
           }
         },
         "tags": [
-          "Tender"
+          "3.Tenders"
         ]
       }
     },
@@ -9710,7 +9710,7 @@
           }
         ],
         "tags": [
-          "Tender"
+          "3.Tenders"
         ]
       }
     },
@@ -9864,7 +9864,7 @@
           }
         },
         "tags": [
-          "Tender"
+          "3.Tenders"
         ]
       }
     },
@@ -9927,7 +9927,7 @@
           }
         ],
         "tags": [
-          "Tender"
+          "3.Tenders"
         ]
       }
     },
@@ -9990,7 +9990,7 @@
           }
         ],
         "tags": [
-          "Tender"
+          "3.Tenders"
         ]
       }
     },
@@ -10032,9 +10032,6 @@
             "description": "Accepted"
           }
         },
-        "tags": [
-          "Tender"
-        ],
         "parameters": [
           {
             "schema": {
@@ -10054,6 +10051,9 @@
             "description": "amendment token",
             "required": true
           }
+        ],
+        "tags": [
+          "3.Tenders"
         ]
       }
     },
@@ -10114,9 +10114,6 @@
             "description": "Bid token",
             "required": true
           }
-        ],
-        "tags": [
-          "Tender"
         ],
         "requestBody": {
           "content": {
@@ -10201,7 +10198,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "3.Tenders"
+        ]
       }
     },
     "/do/document/can/{cpid}/{ocid}/{canId}": {
@@ -10333,11 +10333,11 @@
           }
         },
         "tags": [
-          "Tender"
+          "3.Tenders"
         ]
       }
     },
-    "/do/declaration/{cpid}/{ocid}/{awardId}": {
+    "/do/contract/{cpid}/{ocid}": {
       "parameters": [
         {
           "schema": {
@@ -10346,7 +10346,7 @@
           "name": "cpid",
           "in": "path",
           "required": true,
-          "description": "Contract Process identifier"
+          "description": "tender process cpid"
         },
         {
           "schema": {
@@ -10355,26 +10355,20 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "Contract Notice identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "awardId",
-          "in": "path",
-          "required": true,
-          "description": "Award identifier"
+          "description": "tender process ocid"
         }
       ],
       "post": {
-        "summary": "Declare non conflict of interest",
-        "operationId": "post-do-declaration-cpid-ocid-awardId",
+        "summary": "Create Contract",
+        "operationId": "post-do-contract-cpid-ocid",
         "responses": {
           "202": {
             "description": "Accepted"
           }
         },
+        "tags": [
+          "4.Contracts"
+        ],
         "parameters": [
           {
             "schema": {
@@ -10382,8 +10376,8 @@
             },
             "in": "header",
             "name": "X-OPERATION-ID",
-            "description": "Request identifier",
-            "required": true
+            "required": true,
+            "description": "Request identifier"
           },
           {
             "schema": {
@@ -10391,8 +10385,8 @@
             },
             "in": "header",
             "name": "X-TOKEN",
-            "description": "award token",
-            "required": true
+            "required": true,
+            "description": "tender token "
           }
         ],
         "requestBody": {
@@ -10403,224 +10397,33 @@
                 "type": "object",
                 "x-examples": {
                   "example-1": {
-                    "requirementResponse": {
-                      "id": "string",
-                      "value": true,
-                      "relatedTenderer": {
+                    "contracts": [
+                      {
                         "id": "string"
-                      },
-                      "responder": {
-                        "title": "string",
-                        "name": "string",
-                        "identifier": {
-                          "scheme": "string",
-                          "id": "string",
-                          "uri": "string"
-                        },
-                        "bussinessFunctions": [
-                          {
-                            "id": "string",
-                            "type": "contactPoint",
-                            "jobTitle": "string",
-                            "period": {
-                              "startDate": "2020-02-12T12:14:12Z"
-                            },
-                            "documents": [
-                              {
-                                "id": "9004ab09-ca9b-4cb7-95f4-525a3bf64734-1574862409148",
-                                "documentType": "regulatoryDocument",
-                                "title": "string",
-                                "description": "string"
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "requirement": {
-                        "id": "d87939bb-6523-4984-a374-8c71dd05efb5"
                       }
-                    }
+                    ]
                   }
                 },
                 "properties": {
-                  "requirementResponse": {
-                    "type": "object",
-                    "required": [
-                      "id",
-                      "value",
-                      "relatedTenderer",
-                      "responder",
-                      "requirement"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "value": {
-                        "type": "string",
-                        "example": "Can be other types: boolean, number, integer "
-                      },
-                      "relatedTenderer": {
-                        "type": "object",
-                        "required": [
-                          "id"
-                        ],
-                        "properties": {
-                          "id": {
-                            "type": "string",
-                            "minLength": 1
-                          }
-                        }
-                      },
-                      "responder": {
-                        "type": "object",
-                        "required": [
-                          "title",
-                          "name",
-                          "identifier",
-                          "bussinessFunctions"
-                        ],
-                        "properties": {
-                          "title": {
-                            "type": "string",
-                            "minLength": 1,
-                            "enum": [
-                              "Mr.",
-                              "Ms.",
-                              "Mrs.",
-                              "Mr.",
-                              "Ms.",
-                              "Mrs."
-                            ]
-                          },
-                          "name": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "identifier": {
-                            "type": "object",
-                            "required": [
-                              "scheme",
-                              "id"
-                            ],
-                            "properties": {
-                              "scheme": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "id": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "uri": {
-                                "type": "string",
-                                "minLength": 1
-                              }
-                            }
-                          },
-                          "bussinessFunctions": {
-                            "type": "array",
-                            "uniqueItems": true,
-                            "minItems": 1,
-                            "items": {
-                              "type": "object",
-                              "properties": {
-                                "id": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "type": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "jobTitle": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "period": {
-                                  "type": "object",
-                                  "required": [
-                                    "startDate"
-                                  ],
-                                  "properties": {
-                                    "startDate": {
-                                      "type": "string",
-                                      "minLength": 1,
-                                      "format": "date-time"
-                                    }
-                                  }
-                                },
-                                "documents": {
-                                  "type": "array",
-                                  "uniqueItems": true,
-                                  "minItems": 1,
-                                  "items": {
-                                    "type": "object",
-                                    "properties": {
-                                      "id": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      },
-                                      "documentType": {
-                                        "type": "string",
-                                        "minLength": 1,
-                                        "enum": [
-                                          "regulatoryDocument"
-                                        ]
-                                      },
-                                      "title": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      },
-                                      "description": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      }
-                                    },
-                                    "required": [
-                                      "id",
-                                      "documentType",
-                                      "title"
-                                    ]
-                                  }
-                                }
-                              },
-                              "required": [
-                                "id",
-                                "type",
-                                "jobTitle",
-                                "period"
-                              ]
-                            }
-                          }
-                        }
-                      },
-                      "requirement": {
-                        "type": "object",
-                        "required": [
-                          "id"
-                        ],
-                        "properties": {
-                          "id": {
-                            "type": "string",
-                            "minLength": 1
-                          }
+                  "contracts": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "minItems": 1,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1
                         }
                       }
                     }
                   }
-                },
-                "required": [
-                  "requirementResponse"
-                ]
+                }
               }
             }
           }
-        },
-        "tags": [
-          "Tender"
-        ]
+        }
       }
     }
   },
@@ -10633,23 +10436,23 @@
       }
     }
   },
-  "tags": [
-    {
-      "name": "Budget"
-    },
-    {
-      "name": "Contract"
-    },
-    {
-      "name": "Plan"
-    },
-    {
-      "name": "Tender"
-    }
-  ],
   "security": [
     {
       "accessToken": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "1.Budgets"
+    },
+    {
+      "name": "2.Plans"
+    },
+    {
+      "name": "3.Tenders"
+    },
+    {
+      "name": "4.Contracts"
     }
   ]
 }
