@@ -33,7 +33,10 @@
           },
           {
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": [
+                "LT"
+              ]
             },
             "in": "query",
             "name": "country",
@@ -42,7 +45,10 @@
           },
           {
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": [
+                "EN"
+              ]
             },
             "in": "query",
             "name": "lang",
@@ -2196,7 +2202,9 @@
           {
             "schema": {
               "type": "string",
-              "example": "MD"
+              "enum": [
+                "LT"
+              ]
             },
             "in": "query",
             "name": "country",
@@ -2206,7 +2214,9 @@
           {
             "schema": {
               "type": "string",
-              "example": "RO RU EN"
+              "enum": [
+                "EN"
+              ]
             },
             "in": "query",
             "name": "lang",
@@ -2215,7 +2225,8 @@
           },
           {
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "Create PN for pmd = GPA, TEST_GPA, RT, TEST_RT"
             },
             "in": "query",
             "name": "pmd",
@@ -2435,6 +2446,13 @@
                   },
                   "tender": {
                     "type": "object",
+                    "required": [
+                      "title",
+                      "description",
+                      "legalBasis",
+                      "tenderPeriod",
+                      "procuringEntity"
+                    ],
                     "properties": {
                       "title": {
                         "type": "string",
@@ -2930,24 +2948,18 @@
                           ]
                         }
                       }
-                    },
-                    "required": [
-                      "title",
-                      "description",
-                      "legalBasis",
-                      "tenderPeriod",
-                      "procuringEntity"
-                    ]
+                    }
                   }
                 },
                 "required": [
-                  "planning"
+                  "planning",
+                  "tender"
                 ]
               }
             }
           }
         },
-        "description": "Create PN for pmd = GPA, TestGPA, RT, TestRT",
+        "description": "",
         "tags": [
           "2.Plans"
         ]
@@ -3535,7 +3547,7 @@
             "description": "Accepted"
           }
         },
-        "description": "create CN on PN for pmd = GPA, RT",
+        "description": "create CN on PN for pmd = GPA, TEST_GPA, RT, TEST_RT",
         "parameters": [
           {
             "schema": {
@@ -3801,9 +3813,7 @@
                       "lots",
                       "items",
                       "documents",
-                      "maximumCandidates",
-                      "otherCriteria",
-                      "preQualification"
+                      "otherCriteria"
                     ],
                     "properties": {
                       "procurementMethodRationale": {
@@ -3833,9 +3843,6 @@
                       },
                       "electronicAuctions": {
                         "type": "object",
-                        "required": [
-                          "details"
-                        ],
                         "properties": {
                           "details": {
                             "type": "array",
@@ -3889,13 +3896,13 @@
                               ]
                             }
                           }
-                        }
+                        },
+                        "required": [
+                          "details"
+                        ]
                       },
                       "procuringEntity": {
                         "type": "object",
-                        "required": [
-                          "id"
-                        ],
                         "properties": {
                           "id": {
                             "type": "string",
@@ -4030,7 +4037,10 @@
                               ]
                             }
                           }
-                        }
+                        },
+                        "required": [
+                          "id"
+                        ]
                       },
                       "criteria": {
                         "type": "array",
@@ -4704,25 +4714,6 @@
                           }
                         }
                       },
-                      "maximumCandidates": {
-                        "type": "object",
-                        "required": [
-                          "scheme",
-                          "description",
-                          "id"
-                        ],
-                        "properties": {
-                          "scheme": {
-                            "type": "string"
-                          },
-                          "description": {
-                            "type": "string"
-                          },
-                          "id": {
-                            "type": "string"
-                          }
-                        }
-                      },
                       "otherCriteria": {
                         "type": "object",
                         "required": [
@@ -4740,23 +4731,23 @@
                             "type": "string"
                           }
                         }
-                      },
-                      "preQualification": {
+                      }
+                    }
+                  },
+                  "preQualification": {
+                    "type": "object",
+                    "required": [
+                      "period"
+                    ],
+                    "properties": {
+                      "period": {
                         "type": "object",
                         "required": [
-                          "period"
+                          "endDate"
                         ],
                         "properties": {
-                          "period": {
-                            "type": "object",
-                            "required": [
-                              "endDate"
-                            ],
-                            "properties": {
-                              "endDate": {
-                                "type": "string"
-                              }
-                            }
+                          "endDate": {
+                            "type": "string"
                           }
                         }
                       }
@@ -4764,7 +4755,8 @@
                   }
                 },
                 "required": [
-                  "tender"
+                  "tender",
+                  "preQualification"
                 ]
               }
             }
@@ -4775,7 +4767,7 @@
         ]
       }
     },
-    "/do/cn/{cpid}/{cn_ocid}": {
+    "/do/cn/{cpid}/{ocidCN}": {
       "parameters": [
         {
           "schema": {
@@ -4790,7 +4782,7 @@
           "schema": {
             "type": "string"
           },
-          "name": "cn_ocid",
+          "name": "ocidCN",
           "in": "path",
           "required": true,
           "description": "Contract Notice identifier"
@@ -5006,10 +4998,6 @@
                 "properties": {
                   "planning": {
                     "type": "object",
-                    "required": [
-                      "rationale",
-                      "budget"
-                    ],
                     "properties": {
                       "rationale": {
                         "type": "string",
@@ -5058,9 +5046,7 @@
                       "procurementMethodRationale",
                       "procurementMethodAdditionalInfo",
                       "lots",
-                      "items",
-                      "secondStage",
-                      "otherCriteria"
+                      "items"
                     ],
                     "properties": {
                       "procurementMethodRationale": {
@@ -5614,10 +5600,6 @@
                       },
                       "secondStage": {
                         "type": "object",
-                        "required": [
-                          "minimumCandidates",
-                          "maximumCandidates"
-                        ],
                         "properties": {
                           "minimumCandidates": {
                             "type": "number"
@@ -5649,7 +5631,6 @@
                   }
                 },
                 "required": [
-                  "planning",
                   "preQualification",
                   "tender"
                 ]
