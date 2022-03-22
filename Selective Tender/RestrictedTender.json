@@ -2226,7 +2226,7 @@
           {
             "schema": {
               "type": "string",
-              "example": "Create PN for pmd = GPA, TEST_GPA, RT, TEST_RT"
+              "example": "GPA, TEST_GPA, RT, TEST_RT"
             },
             "in": "query",
             "name": "pmd",
