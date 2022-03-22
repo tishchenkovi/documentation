@@ -3327,15 +3327,15 @@
                             },
                             "classification": {
                               "type": "object",
+                              "required": [
+                                "id"
+                              ],
                               "properties": {
                                 "id": {
                                   "type": "string",
                                   "minLength": 1
                                 }
-                              },
-                              "required": [
-                                "id"
-                              ]
+                              }
                             },
                             "additionalClassifications": {
                               "type": "array",
@@ -3380,7 +3380,7 @@
                           },
                           "required": [
                             "id",
-                            "internalId",
+                            "classification",
                             "quantity",
                             "description",
                             "relatedLot"
