@@ -6335,7 +6335,12 @@
                             },
                             "relatesTo": {
                               "type": "string",
-                              "minLength": 1
+                              "minLength": 1,
+                              "enum": [
+                                "lot",
+                                "item",
+                                "tender"
+                              ]
                             },
                             "requirementGroups": {
                               "type": "array",
@@ -6373,7 +6378,8 @@
                                         },
                                         "dataType": {
                                           "type": "string",
-                                          "minLength": 1
+                                          "minLength": 1,
+                                          "example": "Can be other types: number, integer, boolean"
                                         },
                                         "period": {
                                           "type": "object",
@@ -6394,15 +6400,16 @@
                                         },
                                         "expectedValue": {
                                           "type": "string",
-                                          "minLength": 1
+                                          "minLength": 1,
+                                          "example": "Can be other types: number, integer, boolean"
                                         },
                                         "minValue": {
-                                          "type": "string",
-                                          "minLength": 1
+                                          "type": "number",
+                                          "example": "Can also be integer "
                                         },
                                         "maxValue": {
-                                          "type": "string",
-                                          "minLength": 1
+                                          "type": "number",
+                                          "example": "Can also be integer "
                                         },
                                         "eligibleEvidences": {
                                           "type": "array",
@@ -6425,7 +6432,11 @@
                                               },
                                               "type": {
                                                 "type": "string",
-                                                "minLength": 1
+                                                "minLength": 1,
+                                                "enum": [
+                                                  "reference",
+                                                  "document"
+                                                ]
                                               },
                                               "relatedDocument": {
                                                 "type": "object",
@@ -6443,7 +6454,6 @@
                                             "required": [
                                               "id",
                                               "title",
-                                              "description",
                                               "type"
                                             ]
                                           }
@@ -6452,18 +6462,14 @@
                                       "required": [
                                         "id",
                                         "title",
-                                        "description",
-                                        "dataType",
-                                        "expectedValue",
-                                        "minValue",
-                                        "maxValue"
+                                        "dataType"
                                       ]
                                     }
                                   }
                                 },
                                 "required": [
                                   "id",
-                                  "description"
+                                  "requirements"
                                 ]
                               }
                             },
@@ -6473,6 +6479,10 @@
                             },
                             "classification": {
                               "type": "object",
+                              "required": [
+                                "id",
+                                "scheme"
+                              ],
                               "properties": {
                                 "id": {
                                   "type": "string",
@@ -6482,19 +6492,15 @@
                                   "type": "string",
                                   "minLength": 1
                                 }
-                              },
-                              "required": [
-                                "id",
-                                "scheme"
-                              ]
+                              }
                             }
                           },
                           "required": [
                             "id",
                             "title",
-                            "description",
                             "relatesTo",
-                            "relatedItem"
+                            "requirementGroups",
+                            "classification"
                           ]
                         }
                       },
@@ -6523,6 +6529,10 @@
                             },
                             "classification": {
                               "type": "object",
+                              "required": [
+                                "id",
+                                "scheme"
+                              ],
                               "properties": {
                                 "id": {
                                   "type": "string",
@@ -6530,20 +6540,18 @@
                                 },
                                 "scheme": {
                                   "type": "string",
-                                  "minLength": 1
+                                  "minLength": 1,
+                                  "enum": [
+                                    "CPV"
+                                  ]
                                 }
-                              },
-                              "required": [
-                                "id",
-                                "scheme"
-                              ]
+                              }
                             }
                           },
                           "required": [
                             "id",
                             "title",
-                            "description",
-                            "internalId"
+                            "classification"
                           ]
                         }
                       },
@@ -6560,6 +6568,10 @@
                             },
                             "classification": {
                               "type": "object",
+                              "required": [
+                                "id",
+                                "scheme"
+                              ],
                               "properties": {
                                 "id": {
                                   "type": "string",
@@ -6567,13 +6579,12 @@
                                 },
                                 "scheme": {
                                   "type": "string",
-                                  "minLength": 1
+                                  "minLength": 1,
+                                  "enum": [
+                                    "CPV"
+                                  ]
                                 }
-                              },
-                              "required": [
-                                "id",
-                                "scheme"
-                              ]
+                              }
                             },
                             "description": {
                               "type": "string",
@@ -6584,15 +6595,15 @@
                             },
                             "unit": {
                               "type": "object",
+                              "required": [
+                                "id"
+                              ],
                               "properties": {
                                 "id": {
                                   "type": "string",
                                   "minLength": 1
                                 }
-                              },
-                              "required": [
-                                "id"
-                              ]
+                              }
                             },
                             "relatedLot": {
                               "type": "string",
@@ -6605,24 +6616,26 @@
                           },
                           "required": [
                             "id",
+                            "classification",
                             "description",
                             "quantity",
-                            "relatedLot",
-                            "internalId"
+                            "unit",
+                            "relatedLot"
                           ]
                         }
                       },
                       "tenderPeriod": {
                         "type": "object",
-                        "required": [
-                          "endDate"
-                        ],
                         "properties": {
                           "endDate": {
                             "type": "string",
-                            "minLength": 1
+                            "minLength": 1,
+                            "format": "date-time"
                           }
-                        }
+                        },
+                        "required": [
+                          "endDate"
+                        ]
                       },
                       "documents": {
                         "type": "array",
@@ -6637,7 +6650,27 @@
                             },
                             "documentType": {
                               "type": "string",
-                              "minLength": 1
+                              "minLength": 1,
+                              "enum": [
+                                "tenderNotice",
+                                "biddingDocuments",
+                                "technicalSpecifications",
+                                "evaluationCriteria",
+                                "clarifications",
+                                "eligibilityCriteria",
+                                "riskProvisions",
+                                "billOfQuantity",
+                                "conflictOfInterest",
+                                "procurementPlan",
+                                "contractDraft",
+                                "complaints",
+                                "illustration",
+                                "cancellationDetails",
+                                "evaluationReports",
+                                "shortlistedFirms",
+                                "contractArrangements",
+                                "contractGuarantees"
+                              ]
                             },
                             "title": {
                               "type": "string",
@@ -6650,23 +6683,19 @@
                             "relatedLots": {
                               "type": "array",
                               "items": {
-                                "type": "object"
+                                "type": "string"
                               }
                             }
                           },
                           "required": [
                             "id",
                             "documentType",
-                            "title",
-                            "description"
+                            "title"
                           ]
                         }
                       },
                       "electronicAuctions": {
                         "type": "object",
-                        "required": [
-                          "details"
-                        ],
                         "properties": {
                           "details": {
                             "type": "array",
@@ -6692,32 +6721,43 @@
                                     "properties": {
                                       "eligibleMinimumDifference": {
                                         "type": "object",
+                                        "required": [
+                                          "currency"
+                                        ],
                                         "properties": {
                                           "currency": {
                                             "type": "string",
                                             "minLength": 1
                                           }
-                                        },
-                                        "required": [
-                                          "currency"
-                                        ]
+                                        }
                                       }
-                                    }
+                                    },
+                                    "required": [
+                                      "eligibleMinimumDifference"
+                                    ]
                                   }
                                 }
                               },
                               "required": [
                                 "id",
-                                "relatedLot"
+                                "relatedLot",
+                                "electronicAuctionModalities"
                               ]
                             }
                           }
-                        }
+                        },
+                        "required": [
+                          "details"
+                        ]
                       },
                       "procurementMethodModalities": {
                         "type": "array",
                         "items": {
-                          "type": "object"
+                          "type": "string",
+                          "enum": [
+                            "requiresElectronicCatalogue",
+                            "electronicAuction"
+                          ]
                         }
                       },
                       "conversions": {
@@ -6741,7 +6781,10 @@
                             },
                             "relatesTo": {
                               "type": "string",
-                              "minLength": 1
+                              "minLength": 1,
+                              "enum": [
+                                "requirement"
+                              ]
                             },
                             "relatedItem": {
                               "type": "string",
@@ -6759,8 +6802,8 @@
                                     "minLength": 1
                                   },
                                   "value": {
-                                    "type": "string",
-                                    "minLength": 1
+                                    "type": "number",
+                                    "example": "Can be other types: integer, boolean"
                                   },
                                   "coefficient": {
                                     "type": "number"
@@ -6776,20 +6819,30 @@
                           },
                           "required": [
                             "id",
-                            "description",
                             "rationale",
                             "relatesTo",
-                            "relatedItem"
+                            "relatedItem",
+                            "coefficients"
                           ]
                         }
                       },
                       "awardCriteria": {
                         "type": "string",
-                        "minLength": 1
+                        "minLength": 1,
+                        "enum": [
+                          "priceOnly",
+                          "costOnly",
+                          "qualityOnly",
+                          "ratedCriteria"
+                        ]
                       },
                       "awardCriteriaDetails": {
                         "type": "string",
-                        "minLength": 1
+                        "minLength": 1,
+                        "enum": [
+                          "automated",
+                          "manual"
+                        ]
                       }
                     }
                   }
