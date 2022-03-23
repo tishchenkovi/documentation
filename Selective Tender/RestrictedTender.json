@@ -3302,7 +3302,6 @@
                           },
                           "required": [
                             "id",
-                            "internalId",
                             "title",
                             "description",
                             "value",
