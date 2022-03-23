@@ -3825,11 +3825,21 @@
                       },
                       "awardCriteria": {
                         "type": "string",
-                        "minLength": 1
+                        "minLength": 1,
+                        "enum": [
+                          "priceOnly",
+                          "costOnly",
+                          "qualityOnly",
+                          "ratedCriteria"
+                        ]
                       },
                       "awardCriteriaDetails": {
                         "type": "string",
-                        "minLength": 1
+                        "minLength": 1,
+                        "enum": [
+                          "automated",
+                          "manual"
+                        ]
                       },
                       "procurementMethodModalities": {
                         "type": "array",
@@ -4723,11 +4733,19 @@
                           "qualificationSystemMethods": {
                             "type": "array",
                             "items": {
-                              "type": "string"
+                              "type": "string",
+                              "enum": [
+                                "automated",
+                                "manual"
+                              ]
                             }
                           },
                           "reductionCriteria": {
-                            "type": "string"
+                            "type": "string",
+                            "enum": [
+                              "scoring",
+                              "none"
+                            ]
                           }
                         }
                       }
@@ -5004,15 +5022,15 @@
                       },
                       "budget": {
                         "type": "object",
-                        "required": [
-                          "description"
-                        ],
                         "properties": {
                           "description": {
                             "type": "string",
                             "minLength": 1
                           }
-                        }
+                        },
+                        "required": [
+                          "description"
+                        ]
                       }
                     }
                   },
@@ -5025,13 +5043,9 @@
                       "period": {
                         "type": "object",
                         "required": [
-                          "startDate",
                           "endDate"
                         ],
                         "properties": {
-                          "startDate": {
-                            "type": "string"
-                          },
                           "endDate": {
                             "type": "string"
                           }
@@ -5610,21 +5624,29 @@
                       },
                       "otherCriteria": {
                         "type": "object",
-                        "required": [
-                          "qualificationSystemMethods",
-                          "reductionCriteria"
-                        ],
                         "properties": {
                           "qualificationSystemMethods": {
                             "type": "array",
                             "items": {
-                              "type": "string"
+                              "type": "string",
+                              "enum": [
+                                "automated",
+                                "manual"
+                              ]
                             }
                           },
                           "reductionCriteria": {
-                            "type": "string"
+                            "type": "string",
+                            "enum": [
+                              "scoring",
+                              "none"
+                            ]
                           }
-                        }
+                        },
+                        "required": [
+                          "qualificationSystemMethods",
+                          "reductionCriteria"
+                        ]
                       }
                     }
                   }
@@ -5901,7 +5923,12 @@
                             "properties": {
                               "scale": {
                                 "type": "string",
-                                "minLength": 1
+                                "minLength": 1,
+                                "enum": [
+                                  "micro",
+                                  "sme",
+                                  "large"
+                                ]
                               }
                             }
                           },
