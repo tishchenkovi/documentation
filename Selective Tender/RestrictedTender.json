@@ -3203,6 +3203,10 @@
                             },
                             "contractPeriod": {
                               "type": "object",
+                              "required": [
+                                "startDate",
+                                "endDate"
+                              ],
                               "properties": {
                                 "startDate": {
                                   "type": "string",
@@ -3212,20 +3216,18 @@
                                   "type": "string",
                                   "minLength": 1
                                 }
-                              },
-                              "required": [
-                                "startDate",
-                                "endDate"
-                              ]
+                              }
                             },
                             "placeOfPerformance": {
                               "type": "object",
+                              "required": [
+                                "address"
+                              ],
                               "properties": {
                                 "address": {
                                   "type": "object",
                                   "required": [
                                     "streetAddress",
-                                    "postalCode",
                                     "addressDetails"
                                   ],
                                   "properties": {
@@ -3295,10 +3297,7 @@
                                     }
                                   }
                                 }
-                              },
-                              "required": [
-                                "address"
-                              ]
+                              }
                             }
                           },
                           "required": [
@@ -3306,7 +3305,9 @@
                             "internalId",
                             "title",
                             "description",
-                            "value"
+                            "value",
+                            "contractPeriod",
+                            "placeOfPerformance"
                           ]
                         }
                       },
