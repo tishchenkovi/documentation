@@ -8887,6 +8887,9 @@
             "name": "X-TOKEN",
             "description": "Tender token"
           }
+        ],
+        "tags": [
+          "3.Tenders"
         ]
       }
     }
