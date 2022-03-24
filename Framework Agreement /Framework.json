@@ -936,6 +936,7 @@
       "post": {
         "summary": "Create Funding Source",
         "operationId": "post-do-fs-cpid",
+        "responses": {},
         "parameters": [
           {
             "schema": {
@@ -1530,8 +1531,7 @@
                 ]
               }
             }
-          },
-          "description": ""
+          }
         },
         "tags": [
           "1.Budget"
