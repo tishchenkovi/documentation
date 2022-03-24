@@ -2165,7 +2165,7 @@
     },
     "/do/pn": {
       "post": {
-        "summary": "Create PN",
+        "summary": "Create Planning Notice",
         "operationId": "post-do-pn",
         "responses": {
           "202": {
@@ -2185,7 +2185,9 @@
           {
             "schema": {
               "type": "string",
-              "example": "MD"
+              "enum": [
+                "MD"
+              ]
             },
             "in": "query",
             "name": "country",
@@ -2195,7 +2197,9 @@
           {
             "schema": {
               "type": "string",
-              "example": "RO RU EN"
+              "enum": [
+                "EN"
+              ]
             },
             "in": "query",
             "name": "lang",
@@ -2205,7 +2209,7 @@
           {
             "schema": {
               "type": "string",
-              "example": "Create PN for pmd = GPA, Test_GPA, RT, Test_RT"
+              "example": "RFQ, TEST_RFQ, DCO, TEST_DCO, MC, TEST_MC"
             },
             "in": "query",
             "name": "pmd",
@@ -2425,6 +2429,12 @@
                   },
                   "tender": {
                     "type": "object",
+                    "required": [
+                      "title",
+                      "description",
+                      "legalBasis",
+                      "tenderPeriod"
+                    ],
                     "properties": {
                       "title": {
                         "type": "string",
@@ -2455,181 +2465,6 @@
                           "startDate": {
                             "type": "string",
                             "minLength": 1
-                          }
-                        }
-                      },
-                      "procuringEntity": {
-                        "type": "object",
-                        "required": [
-                          "name",
-                          "identifier",
-                          "address",
-                          "contactPoint"
-                        ],
-                        "properties": {
-                          "name": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "identifier": {
-                            "type": "object",
-                            "required": [
-                              "id",
-                              "legalName",
-                              "scheme"
-                            ],
-                            "properties": {
-                              "id": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "legalName": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "scheme": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "uri": {
-                                "type": "string",
-                                "minLength": 1
-                              }
-                            }
-                          },
-                          "additionalIdentifiers": {
-                            "type": "array",
-                            "uniqueItems": true,
-                            "minItems": 1,
-                            "items": {
-                              "type": "object",
-                              "properties": {
-                                "id": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "legalName": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "scheme": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "uri": {
-                                  "type": "string",
-                                  "minLength": 1
-                                }
-                              },
-                              "required": [
-                                "id",
-                                "legalName",
-                                "scheme"
-                              ]
-                            }
-                          },
-                          "address": {
-                            "type": "object",
-                            "required": [
-                              "streetAddress",
-                              "addressDetails"
-                            ],
-                            "properties": {
-                              "streetAddress": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "postalCode": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "addressDetails": {
-                                "type": "object",
-                                "required": [
-                                  "country",
-                                  "region",
-                                  "locality"
-                                ],
-                                "properties": {
-                                  "country": {
-                                    "type": "object",
-                                    "required": [
-                                      "id"
-                                    ],
-                                    "properties": {
-                                      "id": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      }
-                                    }
-                                  },
-                                  "region": {
-                                    "type": "object",
-                                    "required": [
-                                      "id"
-                                    ],
-                                    "properties": {
-                                      "id": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      }
-                                    }
-                                  },
-                                  "locality": {
-                                    "type": "object",
-                                    "required": [
-                                      "id",
-                                      "scheme",
-                                      "description"
-                                    ],
-                                    "properties": {
-                                      "id": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      },
-                                      "scheme": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      },
-                                      "description": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          },
-                          "contactPoint": {
-                            "type": "object",
-                            "required": [
-                              "name",
-                              "email",
-                              "telephone"
-                            ],
-                            "properties": {
-                              "name": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "email": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "telephone": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "faxNumber": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "url": {
-                                "type": "string",
-                                "minLength": 1
-                              }
-                            }
                           }
                         }
                       },
@@ -2920,22 +2755,17 @@
                           ]
                         }
                       }
-                    },
-                    "required": [
-                      "title",
-                      "description",
-                      "legalBasis",
-                      "tenderPeriod",
-                      "procuringEntity"
-                    ]
+                    }
                   }
                 },
                 "required": [
-                  "planning"
+                  "planning",
+                  "tender"
                 ]
               }
             }
-          }
+          },
+          "description": ""
         },
         "description": "",
         "tags": [
@@ -2965,14 +2795,14 @@
         }
       ],
       "post": {
-        "summary": "Update PN",
+        "summary": "Update Planning Notice",
         "operationId": "post-do-pn-cpid-ocid",
         "responses": {
           "202": {
             "description": "Accepted"
           }
         },
-        "description": "Update PN for pmd = GPA, Test_GPA, RT, Test_RT",
+        "description": "Update PN for pmd = RFQ, TEST_RFQ, DCO, TEST_DCO, MC, TEST_MC",
         "parameters": [
           {
             "schema": {
@@ -3466,14 +3296,14 @@
         }
       ],
       "post": {
-        "summary": "Cancel Plan",
+        "summary": "Cancel Planning Notice",
         "operationId": "post-cancel-plan-cpid-ocid",
         "responses": {
           "202": {
             "description": "Accepted"
           }
         },
-        "description": "Cancel PN for pmd = GPA, Test_GPA, RT, Test_RT",
+        "description": "Cancel PN for pmd = RFQ, TEST_RFQ, DCO, TEST_DCO, MC, TEST_MC",
         "parameters": [
           {
             "schema": {
@@ -3511,12 +3341,15 @@
         "parameters": [
           {
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": [
+                "LT"
+              ]
             },
             "in": "query",
             "name": "country",
             "required": true,
-            "description": "MD"
+            "description": "country code by 3166-1 alpha-2"
           },
           {
             "schema": {
@@ -3525,23 +3358,28 @@
             },
             "in": "query",
             "name": "pmd",
-            "required": true
+            "required": true,
+            "description": "procurement method details"
           },
           {
             "schema": {
-              "type": "string"
+              "type": "boolean"
             },
             "in": "query",
-            "name": "testMode"
+            "name": "testMode",
+            "description": "Test entity creation flag"
           },
           {
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": [
+                "EN"
+              ]
             },
             "in": "query",
             "name": "lang",
             "required": true,
-            "description": "RO,RU,EN"
+            "description": "language code by ISO"
           },
           {
             "schema": {
@@ -3946,7 +3784,7 @@
           "name": "cpid",
           "in": "path",
           "required": true,
-          "description": "PN cpid"
+          "description": "Contract Process identifier"
         },
         {
           "schema": {
@@ -3955,11 +3793,11 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "PN ocid "
+          "description": "Planning Notice identifier"
         }
       ],
       "post": {
-        "summary": "Outsourcing PN",
+        "summary": "Outsourcing Planning Notice",
         "operationId": "post-do-outsourcing-cpid-ocid",
         "responses": {
           "202": {
@@ -3973,7 +3811,7 @@
             },
             "in": "query",
             "name": "FA",
-            "description": "MS AP is owning outsourced PN",
+            "description": "Aggregated Contract Process identifier",
             "required": true
           },
           {
@@ -3982,7 +3820,7 @@
             },
             "in": "query",
             "name": "AP",
-            "description": "ocid AP is owning outsourced PN",
+            "description": "Aggregated Plan Contract Process identifier",
             "required": true
           },
           {
@@ -4001,7 +3839,7 @@
             "in": "header",
             "name": "X-TOKEN",
             "required": true,
-            "description": "Plan token"
+            "description": "Planning Notice token"
           }
         ],
         "tags": [
@@ -4018,7 +3856,7 @@
           "name": "cpid",
           "in": "path",
           "required": true,
-          "description": "cpid FA"
+          "description": "Contract Process identifier"
         },
         {
           "schema": {
@@ -4027,11 +3865,11 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "ocid AP"
+          "description": "Aggregated Plan identifier"
         }
       ],
       "post": {
-        "summary": "Relation AP",
+        "summary": "Relation Aggregated Plan",
         "operationId": "post-do-relation-cpid-ocid",
         "responses": {
           "202": {
@@ -4046,7 +3884,7 @@
             },
             "in": "query",
             "name": "CP",
-            "description": "Contract process (cpid PN)",
+            "description": "Contract Process identifier",
             "required": true
           },
           {
@@ -4055,7 +3893,7 @@
             },
             "in": "query",
             "name": "PN",
-            "description": "ocid PN",
+            "description": "Planning Notice identifier",
             "required": true
           },
           {
@@ -4074,7 +3912,7 @@
             "in": "header",
             "name": "X-TOKEN",
             "required": true,
-            "description": "AP token"
+            "description": "Aggregated Plan token"
           }
         ],
         "tags": [
@@ -4090,7 +3928,8 @@
           },
           "name": "cpid",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Contract Process identifier"
         },
         {
           "schema": {
@@ -4098,11 +3937,12 @@
           },
           "name": "ocid",
           "in": "path",
+          "description": "Aggregated Plan identifier",
           "required": true
         }
       ],
       "post": {
-        "summary": "Update AP",
+        "summary": "Update Aggregated Plan",
         "operationId": "post-do-ap-cpid-ocid",
         "responses": {
           "202": {
@@ -4126,7 +3966,7 @@
             "in": "header",
             "name": "X-TOKEN",
             "required": true,
-            "description": "AP token"
+            "description": "Aggregated Plan token"
           }
         ],
         "requestBody": {
@@ -4604,7 +4444,7 @@
         }
       ],
       "post": {
-        "summary": "Create FE",
+        "summary": "Create Framework Establishment",
         "operationId": "post-do-fe-cpid-ocid",
         "responses": {
           "202": {
@@ -5547,7 +5387,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "Contract Notice identifier"
+          "description": "Framework Establishment identifier"
         }
       ],
       "post": {
@@ -6526,7 +6366,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "Contract Notice identifier"
+          "description": "Framework Establishment identifier"
         },
         {
           "schema": {
@@ -7008,7 +6848,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "Contract Notice identifier"
+          "description": "Framework Establishment identifier"
         },
         {
           "schema": {
@@ -7035,7 +6875,7 @@
             },
             "in": "header",
             "name": "X-OPERATION-ID ",
-            "description": "transaction ID",
+            "description": "Request identifier",
             "required": true
           },
           {
@@ -7297,7 +7137,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "Contract Notice identifier"
+          "description": "Framework Establishment identifier"
         },
         {
           "schema": {
@@ -7324,7 +7164,7 @@
             },
             "in": "header",
             "name": "X-OPERATION-ID",
-            "description": "transaction ID",
+            "description": "Request identifier",
             "required": true
           },
           {
@@ -7360,7 +7200,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "Contract Notice identifier"
+          "description": "Framework Establishment identifier"
         },
         {
           "schema": {
@@ -7515,7 +7355,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "Contract Notice identifier"
+          "description": "Framework Establishment identifier"
         }
       ],
       "post": {
@@ -7542,7 +7382,7 @@
             },
             "in": "header",
             "name": "X-TOKEN",
-            "description": "tender token",
+            "description": "Tender token",
             "required": true
           }
         ],
@@ -7569,7 +7409,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "Contract Notice identifier"
+          "description": "Framework Establishment identifier"
         }
       ],
       "post": {
@@ -7595,7 +7435,7 @@
               "type": "string"
             },
             "in": "header",
-            "description": "tender token ",
+            "description": "Tender token ",
             "required": true,
             "name": "X-TOKEN"
           }
@@ -7623,7 +7463,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "Contract Notice identifier of FE record "
+          "description": "Framework Establishment identifier of FE record "
         }
       ],
       "post": {
@@ -7651,7 +7491,7 @@
             "in": "header",
             "name": "X-TOKEN",
             "required": true,
-            "description": "FE token "
+            "description": "Framework Establishment token "
           }
         ],
         "tags": [
@@ -7829,7 +7669,7 @@
             },
             "in": "query",
             "name": "Role",
-            "description": "Who gives answer ",
+            "description": "Who gives response",
             "required": true
           }
         ],
@@ -8051,12 +7891,14 @@
       "parameters": [
         {
           "schema": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "contract"
+            ]
           },
           "name": "entity",
           "in": "path",
-          "required": true,
-          "description": "Available values : contract"
+          "required": true
         },
         {
           "schema": {
@@ -8097,12 +7939,16 @@
         "parameters": [
           {
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": [
+                "buyer",
+                "InvitedCandidate",
+                "supplier"
+              ]
             },
             "in": "query",
             "name": "role",
-            "required": true,
-            "description": "Available values : buyer, InvitedCandidate, supplier"
+            "required": true
           },
           {
             "schema": {
@@ -8120,133 +7966,7 @@
             "in": "header",
             "required": true,
             "name": "X-TOKEN",
-            "description": "confirmation request group token"
-          }
-        ],
-        "tags": [
-          "3.Tender"
-        ]
-      }
-    },
-    "/confirm/amendment/{cpid}/{ocid}/{amendment}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "cpid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Process identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "ocid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Notice identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "amendment",
-          "in": "path",
-          "required": true,
-          "description": "Amendment identifier"
-        }
-      ],
-      "post": {
-        "summary": "Tender or lot amendment confirmation",
-        "operationId": "post-confirm-amendment-cpid-ocid-amendment",
-        "responses": {
-          "202": {
-            "description": "Accepted"
-          }
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-OPERATION-ID",
-            "description": "Request identifier",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-TOKEN",
-            "description": "amendment token",
-            "required": true
-          }
-        ],
-        "tags": [
-          "3.Tender"
-        ]
-      }
-    },
-    "/cancel/amendment/{cpid}/{ocid}/{amendment}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "cpid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Process identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "ocid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Notice identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "amendment",
-          "in": "path",
-          "required": true,
-          "description": "Amendment identifier"
-        }
-      ],
-      "post": {
-        "summary": "Tender or lot amendment cancellation",
-        "operationId": "post-cancel-amendment-cpid-ocid-amendment",
-        "responses": {
-          "202": {
-            "description": "Accepted"
-          }
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-OPERATION-ID",
-            "description": "Request identifier",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-TOKEN",
-            "description": "amendment token",
-            "required": true
+            "description": "Confirmation request group token"
           }
         ],
         "tags": [
@@ -9164,7 +8884,7 @@
         ]
       }
     },
-    "/do/bidPCR/{cpid}/{ocid}": {
+    "/do/bid/{cpid}/{ocid}": {
       "parameters": [
         {
           "schema": {
@@ -9182,17 +8902,18 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "Contract Notice identifier "
+          "description": "Contract Notice identifier"
         }
       ],
       "post": {
-        "summary": "Submit Bid In PCR",
-        "operationId": "post-do-bidPCR-cpid-ocid",
+        "summary": "Submit Bid",
+        "operationId": "post-do-bid-cpid-ocid",
         "responses": {
           "202": {
             "description": "Accepted"
           }
         },
+        "description": "",
         "parameters": [
           {
             "schema": {
@@ -9214,19 +8935,15 @@
                   "example-1": {
                     "bid": {
                       "value": {
-                        "currency": "string",
-                        "amount": 0
+                        "amount": 0,
+                        "currency": "string"
                       },
                       "requirementResponses": [
                         {
                           "id": "string",
-                          "value": "Unknown Type: string,number,integer,boolean",
+                          "value": "string",
                           "requirement": {
                             "id": "string"
-                          },
-                          "period": {
-                            "startDate": "2022-03-23T11:13:41.966Z",
-                            "endDate": "2022-03-23T11:13:41.966Z"
                           },
                           "relatedTenderer": {
                             "name": "string",
@@ -9245,7 +8962,10 @@
                               }
                             }
                           ],
-                          "relatedItem": "string"
+                          "period": {
+                            "startDate": "2022-03-17T13:37:46.037Z",
+                            "endDate": "2022-03-17T13:37:46.037Z"
+                          }
                         }
                       ],
                       "tenderers": [
@@ -9335,8 +9055,8 @@
                             "scale": "micro",
                             "permits": [
                               {
-                                "scheme": "string",
                                 "id": "string",
+                                "scheme": "string",
                                 "url": "string",
                                 "permitDetails": {
                                   "issuedBy": {
@@ -9348,8 +9068,8 @@
                                     "name": "string"
                                   },
                                   "validityPeriod": {
-                                    "startDate": "string",
-                                    "endDate": "string"
+                                    "startDate": "2022-03-17T13:37:46.037Z",
+                                    "endDate": "2022-03-17T13:37:46.037Z"
                                   }
                                 }
                               }
@@ -9427,15 +9147,7 @@
                               "currency": "string"
                             },
                             "id": "string"
-                          },
-                          "description": "string",
-                          "quantity": 0,
-                          "additionalClassifications": [
-                            {
-                              "id": "string",
-                              "scheme": "CPVS"
-                            }
-                          ]
+                          }
                         }
                       ]
                     }
@@ -9445,24 +9157,24 @@
                   "bid": {
                     "type": "object",
                     "required": [
+                      "value",
                       "tenderers",
-                      "relatedLots",
-                      "items"
+                      "relatedLots"
                     ],
                     "properties": {
                       "value": {
                         "type": "object",
                         "required": [
-                          "currency",
-                          "amount"
+                          "amount",
+                          "currency"
                         ],
                         "properties": {
+                          "amount": {
+                            "type": "number"
+                          },
                           "currency": {
                             "type": "string",
                             "minLength": 1
-                          },
-                          "amount": {
-                            "type": "number"
                           }
                         }
                       },
@@ -9480,38 +9192,19 @@
                             "value": {
                               "type": "string",
                               "minLength": 1,
-                              "example": "Also can be other types: number, integer, boolean"
+                              "example": "Can be other type: number, integer, boolean"
                             },
                             "requirement": {
                               "type": "object",
+                              "required": [
+                                "id"
+                              ],
                               "properties": {
                                 "id": {
                                   "type": "string",
                                   "minLength": 1
                                 }
-                              },
-                              "required": [
-                                "id"
-                              ]
-                            },
-                            "period": {
-                              "type": "object",
-                              "properties": {
-                                "startDate": {
-                                  "type": "string",
-                                  "minLength": 1,
-                                  "format": "date-time"
-                                },
-                                "endDate": {
-                                  "type": "string",
-                                  "minLength": 1,
-                                  "format": "date-time"
-                                }
-                              },
-                              "required": [
-                                "startDate",
-                                "endDate"
-                              ]
+                              }
                             },
                             "relatedTenderer": {
                               "type": "object",
@@ -9581,14 +9274,30 @@
                                 ]
                               }
                             },
-                            "relatedItem": {
-                              "type": "string",
-                              "minLength": 1
+                            "period": {
+                              "type": "object",
+                              "properties": {
+                                "startDate": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "format": "date-time"
+                                },
+                                "endDate": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "format": "date-time"
+                                }
+                              },
+                              "required": [
+                                "startDate",
+                                "endDate"
+                              ]
                             }
                           },
                           "required": [
                             "id",
-                            "value"
+                            "value",
+                            "requirement"
                           ]
                         }
                       },
@@ -9849,15 +9558,15 @@
                                         },
                                         "period": {
                                           "type": "object",
-                                          "required": [
-                                            "startDate"
-                                          ],
                                           "properties": {
                                             "startDate": {
                                               "type": "string",
                                               "minLength": 1
                                             }
-                                          }
+                                          },
+                                          "required": [
+                                            "startDate"
+                                          ]
                                         },
                                         "documents": {
                                           "type": "array",
@@ -9889,7 +9598,8 @@
                                             "required": [
                                               "documentType",
                                               "id",
-                                              "title"
+                                              "title",
+                                              "description"
                                             ]
                                           }
                                         }
@@ -9897,8 +9607,7 @@
                                       "required": [
                                         "id",
                                         "type",
-                                        "jobTitle",
-                                        "period"
+                                        "jobTitle"
                                       ]
                                     }
                                   }
@@ -9906,8 +9615,7 @@
                                 "required": [
                                   "title",
                                   "name",
-                                  "identifier",
-                                  "businessFunctions"
+                                  "identifier"
                                 ]
                               }
                             },
@@ -9972,11 +9680,11 @@
                                   "items": {
                                     "type": "object",
                                     "properties": {
-                                      "scheme": {
+                                      "id": {
                                         "type": "string",
                                         "minLength": 1
                                       },
-                                      "id": {
+                                      "scheme": {
                                         "type": "string",
                                         "minLength": 1
                                       },
@@ -10029,16 +9737,19 @@
                                           "validityPeriod": {
                                             "type": "object",
                                             "required": [
-                                              "startDate"
+                                              "startDate",
+                                              "endDate"
                                             ],
                                             "properties": {
                                               "startDate": {
                                                 "type": "string",
-                                                "minLength": 1
+                                                "minLength": 1,
+                                                "format": "date-time"
                                               },
                                               "endDate": {
                                                 "type": "string",
-                                                "minLength": 1
+                                                "minLength": 1,
+                                                "format": "date-time"
                                               }
                                             }
                                           }
@@ -10046,8 +9757,8 @@
                                       }
                                     },
                                     "required": [
-                                      "scheme",
                                       "id",
+                                      "scheme",
                                       "permitDetails"
                                     ]
                                   }
@@ -10228,11 +9939,6 @@
                                 },
                                 "legalForm": {
                                   "type": "object",
-                                  "required": [
-                                    "scheme",
-                                    "id",
-                                    "description"
-                                  ],
                                   "properties": {
                                     "scheme": {
                                       "type": "string",
@@ -10250,7 +9956,12 @@
                                       "type": "string",
                                       "minLength": 1
                                     }
-                                  }
+                                  },
+                                  "required": [
+                                    "scheme",
+                                    "id",
+                                    "description"
+                                  ]
                                 }
                               }
                             }
@@ -10303,7 +10014,7 @@
                                 "submissionDocuments",
                                 "x_qualificationDocuments",
                                 "x_eligibilityDocuments",
-                                "x_technicalDocuments ]"
+                                "x_technicalDocuments"
                               ]
                             }
                           },
@@ -10353,44 +10064,11 @@
                                   "minLength": 1
                                 }
                               }
-                            },
-                            "description": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "quantity": {
-                              "type": "number"
-                            },
-                            "additionalClassifications": {
-                              "type": "array",
-                              "uniqueItems": true,
-                              "minItems": 1,
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "scheme": {
-                                    "type": "string",
-                                    "minLength": 1,
-                                    "enum": [
-                                      "CPVS"
-                                    ]
-                                  }
-                                },
-                                "required": [
-                                  "id",
-                                  "scheme"
-                                ]
-                              }
                             }
                           },
                           "required": [
                             "id",
-                            "unit",
-                            "quantity"
+                            "unit"
                           ]
                         }
                       }
@@ -10409,7 +10087,7 @@
         ]
       }
     },
-    "/cancel/bidPCR/{cpid}/{ocid}/{bidId}": {
+    "/cancel/bid/{cpid}/{ocid}/{bidId}": {
       "parameters": [
         {
           "schema": {
@@ -10440,8 +10118,8 @@
         }
       ],
       "post": {
-        "summary": "Withdraw Bid in PCR",
-        "operationId": "post-cancel-bidPCR-cpid-ocid-bidId",
+        "summary": "Withdraw Bid",
+        "operationId": "post-cancel-bid-cpid-ocid-bidId",
         "responses": {
           "202": {
             "description": "Accepted"
@@ -11748,11 +11426,11 @@
           "name": "lotId",
           "in": "path",
           "required": true,
-          "description": "id лота"
+          "description": "Lot identifier "
         }
       ],
       "post": {
-        "summary": "PCR Protocol",
+        "summary": "Create Pre-award Catalog Protocol",
         "operationId": "post-do-protocol-pcr-cpid-ocid-lotId",
         "responses": {
           "202": {
@@ -11780,7 +11458,7 @@
           }
         ],
         "tags": [
-          "4.Contract"
+          "3.Tender"
         ]
       }
     },
@@ -11815,7 +11493,7 @@
         }
       ],
       "post": {
-        "summary": "Withdraw PCR Protocol",
+        "summary": "Withdraw Create Pre-award Catalog Protocol",
         "operationId": "post-cancel-protocol-pcr-cpid-ocid-lotId",
         "responses": {
           "200": {
@@ -11843,7 +11521,7 @@
           }
         ],
         "tags": [
-          "4.Contract"
+          "3.Tender"
         ]
       }
     },
@@ -11883,7 +11561,7 @@
           "name": "entityId",
           "in": "path",
           "required": true,
-          "description": "entity identifier"
+          "description": "Pre-award Catalog identifier"
         }
       ],
       "post": {
@@ -11895,7 +11573,7 @@
           }
         },
         "tags": [
-          "4.Contract"
+          "3.Tender"
         ]
       }
     },
@@ -11908,7 +11586,7 @@
           "name": "cpid",
           "in": "path",
           "required": true,
-          "description": "cpid PN"
+          "description": "Planning Notice identifier "
         },
         {
           "schema": {
@@ -11917,11 +11595,11 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "ocid PN"
+          "description": "Planning Notice ocid"
         }
       ],
       "post": {
-        "summary": "Create RFQ",
+        "summary": "Create RFQ (Request for Price Quotation)",
         "operationId": "post-do-rfq-cpid-ocid",
         "responses": {
           "202": {
@@ -12410,7 +12088,7 @@
           "name": "cpid",
           "in": "path",
           "required": true,
-          "description": "cpid PN"
+          "description": "Planning Notice identifier "
         },
         {
           "schema": {
@@ -12419,11 +12097,11 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "ocid PN"
+          "description": "Planning Notice ocid"
         }
       ],
       "post": {
-        "summary": "Create MC",
+        "summary": "Create MC (Mini Competition)",
         "operationId": "post-do-mc-cpid-ocid",
         "responses": {
           "202": {
@@ -13460,7 +13138,7 @@
           "name": "cpid",
           "in": "path",
           "required": true,
-          "description": "cpid PN"
+          "description": "Planning Notice identifier "
         },
         {
           "schema": {
@@ -13469,11 +13147,11 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "ocid PN"
+          "description": "Planning Notice ocid"
         }
       ],
       "post": {
-        "summary": "Create DCO",
+        "summary": "Create DCO (Direct Call Off)",
         "operationId": "post-do-dco-cpid-ocid",
         "responses": {
           "202": {
@@ -14214,1272 +13892,6 @@
         ]
       }
     },
-    "/do/bid/{cpid}/{ocid}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "cpid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Process identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "ocid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Notice identifier"
-        }
-      ],
-      "post": {
-        "summary": "Submit Bid",
-        "operationId": "post-do-bid-cpid-ocid",
-        "responses": {
-          "202": {
-            "description": "Accepted"
-          }
-        },
-        "description": "",
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-OPERATION-ID",
-            "description": "Request identifier",
-            "required": true
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "description": "",
-                "type": "object",
-                "x-examples": {
-                  "example-1": {
-                    "bid": {
-                      "value": {
-                        "amount": 0,
-                        "currency": "string"
-                      },
-                      "requirementResponses": [
-                        {
-                          "id": "string",
-                          "value": "string",
-                          "requirement": {
-                            "id": "string"
-                          },
-                          "relatedTenderer": {
-                            "name": "string",
-                            "identifier": {
-                              "id": "string",
-                              "scheme": "string"
-                            }
-                          },
-                          "evidences": [
-                            {
-                              "id": "string",
-                              "title": "string",
-                              "description": "string",
-                              "relatedDocument": {
-                                "id": "string"
-                              }
-                            }
-                          ],
-                          "period": {
-                            "startDate": "2022-03-17T13:37:46.037Z",
-                            "endDate": "2022-03-17T13:37:46.037Z"
-                          }
-                        }
-                      ],
-                      "tenderers": [
-                        {
-                          "name": "string",
-                          "identifier": {
-                            "id": "string",
-                            "legalName": "string",
-                            "scheme": "string",
-                            "uri": "string"
-                          },
-                          "additionalIdentifiers": [
-                            {
-                              "id": "string",
-                              "legalName": "string",
-                              "scheme": "string",
-                              "uri": "string"
-                            }
-                          ],
-                          "address": {
-                            "streetAddress": "string",
-                            "postalCode": "string",
-                            "addressDetails": {
-                              "country": {
-                                "id": "string",
-                                "description": "string",
-                                "scheme": "string"
-                              },
-                              "region": {
-                                "id": "string",
-                                "description": "string",
-                                "scheme": "string"
-                              },
-                              "locality": {
-                                "id": "string",
-                                "description": "string",
-                                "scheme": "string"
-                              }
-                            }
-                          },
-                          "contactPoint": {
-                            "name": "string",
-                            "email": "string",
-                            "telephone": "string",
-                            "faxNumber": "string",
-                            "url": "string"
-                          },
-                          "persones": [
-                            {
-                              "title": "Mr.",
-                              "name": "string",
-                              "identifier": {
-                                "scheme": "string",
-                                "id": "string",
-                                "uri": "string"
-                              },
-                              "businessFunctions": [
-                                {
-                                  "id": "string",
-                                  "type": "authority",
-                                  "jobTitle": "string",
-                                  "period": {
-                                    "startDate": "string"
-                                  },
-                                  "documents": [
-                                    {
-                                      "documentType": "regulatoryDocument",
-                                      "id": "string",
-                                      "title": "string",
-                                      "description": "string"
-                                    }
-                                  ]
-                                }
-                              ]
-                            }
-                          ],
-                          "details": {
-                            "typeOfSupplier": "company",
-                            "mainEconomicActivities": [
-                              {
-                                "id": "string",
-                                "scheme": "string",
-                                "description": "string",
-                                "uri": "string"
-                              }
-                            ],
-                            "scale": "micro",
-                            "permits": [
-                              {
-                                "id": "string",
-                                "scheme": "string",
-                                "url": "string",
-                                "permitDetails": {
-                                  "issuedBy": {
-                                    "id": "string",
-                                    "name": "string"
-                                  },
-                                  "issuedThought": {
-                                    "id": "string",
-                                    "name": "string"
-                                  },
-                                  "validityPeriod": {
-                                    "startDate": "2022-03-17T13:37:46.037Z",
-                                    "endDate": "2022-03-17T13:37:46.037Z"
-                                  }
-                                }
-                              }
-                            ],
-                            "bankAccounts": [
-                              {
-                                "description": "string",
-                                "bankName": "string",
-                                "address": {
-                                  "streetAddress": "string",
-                                  "postalCode": "string",
-                                  "addressDetails": {
-                                    "country": {
-                                      "id": "string",
-                                      "description": "string",
-                                      "scheme": "string"
-                                    },
-                                    "region": {
-                                      "id": "string",
-                                      "description": "string",
-                                      "scheme": "string"
-                                    },
-                                    "locality": {
-                                      "id": "string",
-                                      "description": "string",
-                                      "scheme": "string"
-                                    }
-                                  }
-                                },
-                                "identifier": {
-                                  "scheme": "UA-MFO",
-                                  "id": "string"
-                                },
-                                "accountIdentification": {
-                                  "scheme": "IBAN",
-                                  "id": "string"
-                                },
-                                "additionalAccountIdentifiers": [
-                                  {
-                                    "scheme": "fiscal",
-                                    "id": "string"
-                                  }
-                                ]
-                              }
-                            ],
-                            "legalForm": {
-                              "scheme": "MD-CFOJ",
-                              "id": "string",
-                              "description": "string",
-                              "uri": "string"
-                            }
-                          }
-                        }
-                      ],
-                      "relatedLots": [
-                        "string"
-                      ],
-                      "documents": [
-                        {
-                          "id": "string",
-                          "title": "string",
-                          "description": "string",
-                          "relatedLots": [
-                            "string"
-                          ],
-                          "documentType": "illustration"
-                        }
-                      ],
-                      "items": [
-                        {
-                          "id": "string",
-                          "unit": {
-                            "value": {
-                              "amount": 0,
-                              "currency": "string"
-                            },
-                            "id": "string"
-                          }
-                        }
-                      ]
-                    }
-                  }
-                },
-                "properties": {
-                  "bid": {
-                    "type": "object",
-                    "required": [
-                      "value",
-                      "tenderers",
-                      "relatedLots"
-                    ],
-                    "properties": {
-                      "value": {
-                        "type": "object",
-                        "required": [
-                          "amount",
-                          "currency"
-                        ],
-                        "properties": {
-                          "amount": {
-                            "type": "number"
-                          },
-                          "currency": {
-                            "type": "string",
-                            "minLength": 1
-                          }
-                        }
-                      },
-                      "requirementResponses": {
-                        "type": "array",
-                        "uniqueItems": true,
-                        "minItems": 1,
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "value": {
-                              "type": "string",
-                              "minLength": 1,
-                              "example": "Can be other type: number, integer, boolean"
-                            },
-                            "requirement": {
-                              "type": "object",
-                              "required": [
-                                "id"
-                              ],
-                              "properties": {
-                                "id": {
-                                  "type": "string",
-                                  "minLength": 1
-                                }
-                              }
-                            },
-                            "relatedTenderer": {
-                              "type": "object",
-                              "properties": {
-                                "name": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "identifier": {
-                                  "type": "object",
-                                  "required": [
-                                    "id",
-                                    "scheme"
-                                  ],
-                                  "properties": {
-                                    "id": {
-                                      "type": "string",
-                                      "minLength": 1
-                                    },
-                                    "scheme": {
-                                      "type": "string",
-                                      "minLength": 1
-                                    }
-                                  }
-                                }
-                              },
-                              "required": [
-                                "name",
-                                "identifier"
-                              ]
-                            },
-                            "evidences": {
-                              "type": "array",
-                              "uniqueItems": true,
-                              "minItems": 1,
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "title": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "description": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "relatedDocument": {
-                                    "type": "object",
-                                    "properties": {
-                                      "id": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      }
-                                    },
-                                    "required": [
-                                      "id"
-                                    ]
-                                  }
-                                },
-                                "required": [
-                                  "id",
-                                  "title"
-                                ]
-                              }
-                            },
-                            "period": {
-                              "type": "object",
-                              "properties": {
-                                "startDate": {
-                                  "type": "string",
-                                  "minLength": 1,
-                                  "format": "date-time"
-                                },
-                                "endDate": {
-                                  "type": "string",
-                                  "minLength": 1,
-                                  "format": "date-time"
-                                }
-                              },
-                              "required": [
-                                "startDate",
-                                "endDate"
-                              ]
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "value",
-                            "requirement"
-                          ]
-                        }
-                      },
-                      "tenderers": {
-                        "type": "array",
-                        "uniqueItems": true,
-                        "minItems": 1,
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "name": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "identifier": {
-                              "type": "object",
-                              "required": [
-                                "id",
-                                "legalName",
-                                "scheme"
-                              ],
-                              "properties": {
-                                "id": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "legalName": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "scheme": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "uri": {
-                                  "type": "string",
-                                  "minLength": 1
-                                }
-                              }
-                            },
-                            "additionalIdentifiers": {
-                              "type": "array",
-                              "uniqueItems": true,
-                              "minItems": 1,
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "legalName": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "scheme": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "uri": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  }
-                                },
-                                "required": [
-                                  "id",
-                                  "legalName",
-                                  "scheme"
-                                ]
-                              }
-                            },
-                            "address": {
-                              "type": "object",
-                              "required": [
-                                "streetAddress",
-                                "addressDetails"
-                              ],
-                              "properties": {
-                                "streetAddress": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "postalCode": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "addressDetails": {
-                                  "type": "object",
-                                  "required": [
-                                    "country",
-                                    "region",
-                                    "locality"
-                                  ],
-                                  "properties": {
-                                    "country": {
-                                      "type": "object",
-                                      "required": [
-                                        "id",
-                                        "description",
-                                        "scheme"
-                                      ],
-                                      "properties": {
-                                        "id": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "description": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "scheme": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        }
-                                      }
-                                    },
-                                    "region": {
-                                      "type": "object",
-                                      "required": [
-                                        "id",
-                                        "description",
-                                        "scheme"
-                                      ],
-                                      "properties": {
-                                        "id": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "description": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "scheme": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        }
-                                      }
-                                    },
-                                    "locality": {
-                                      "type": "object",
-                                      "required": [
-                                        "id",
-                                        "description",
-                                        "scheme"
-                                      ],
-                                      "properties": {
-                                        "id": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "description": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "scheme": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            },
-                            "contactPoint": {
-                              "type": "object",
-                              "required": [
-                                "name",
-                                "email",
-                                "telephone"
-                              ],
-                              "properties": {
-                                "name": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "email": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "telephone": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "faxNumber": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "url": {
-                                  "type": "string",
-                                  "minLength": 1
-                                }
-                              }
-                            },
-                            "persones": {
-                              "type": "array",
-                              "uniqueItems": true,
-                              "minItems": 1,
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "title": {
-                                    "type": "string",
-                                    "minLength": 1,
-                                    "enum": [
-                                      "Mr.",
-                                      "Ms.",
-                                      "Mrs."
-                                    ]
-                                  },
-                                  "name": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "identifier": {
-                                    "type": "object",
-                                    "required": [
-                                      "scheme",
-                                      "id"
-                                    ],
-                                    "properties": {
-                                      "scheme": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      },
-                                      "id": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      },
-                                      "uri": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      }
-                                    }
-                                  },
-                                  "businessFunctions": {
-                                    "type": "array",
-                                    "uniqueItems": true,
-                                    "minItems": 1,
-                                    "items": {
-                                      "type": "object",
-                                      "properties": {
-                                        "id": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "type": {
-                                          "type": "string",
-                                          "minLength": 1,
-                                          "enum": [
-                                            "authority",
-                                            "contactPoint"
-                                          ]
-                                        },
-                                        "jobTitle": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "period": {
-                                          "type": "object",
-                                          "properties": {
-                                            "startDate": {
-                                              "type": "string",
-                                              "minLength": 1
-                                            }
-                                          },
-                                          "required": [
-                                            "startDate"
-                                          ]
-                                        },
-                                        "documents": {
-                                          "type": "array",
-                                          "uniqueItems": true,
-                                          "minItems": 1,
-                                          "items": {
-                                            "type": "object",
-                                            "properties": {
-                                              "documentType": {
-                                                "type": "string",
-                                                "minLength": 1,
-                                                "enum": [
-                                                  "regulatoryDocument"
-                                                ]
-                                              },
-                                              "id": {
-                                                "type": "string",
-                                                "minLength": 1
-                                              },
-                                              "title": {
-                                                "type": "string",
-                                                "minLength": 1
-                                              },
-                                              "description": {
-                                                "type": "string",
-                                                "minLength": 1
-                                              }
-                                            },
-                                            "required": [
-                                              "documentType",
-                                              "id",
-                                              "title",
-                                              "description"
-                                            ]
-                                          }
-                                        }
-                                      },
-                                      "required": [
-                                        "id",
-                                        "type",
-                                        "jobTitle"
-                                      ]
-                                    }
-                                  }
-                                },
-                                "required": [
-                                  "title",
-                                  "name",
-                                  "identifier"
-                                ]
-                              }
-                            },
-                            "details": {
-                              "type": "object",
-                              "required": [
-                                "scale"
-                              ],
-                              "properties": {
-                                "typeOfSupplier": {
-                                  "type": "string",
-                                  "minLength": 1,
-                                  "enum": [
-                                    "company",
-                                    "individual"
-                                  ]
-                                },
-                                "mainEconomicActivities": {
-                                  "type": "array",
-                                  "uniqueItems": true,
-                                  "minItems": 1,
-                                  "items": {
-                                    "type": "object",
-                                    "properties": {
-                                      "id": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      },
-                                      "scheme": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      },
-                                      "description": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      },
-                                      "uri": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      }
-                                    },
-                                    "required": [
-                                      "id",
-                                      "scheme",
-                                      "description"
-                                    ]
-                                  }
-                                },
-                                "scale": {
-                                  "type": "string",
-                                  "minLength": 1,
-                                  "enum": [
-                                    "micro",
-                                    "sme",
-                                    "large"
-                                  ]
-                                },
-                                "permits": {
-                                  "type": "array",
-                                  "uniqueItems": true,
-                                  "minItems": 1,
-                                  "items": {
-                                    "type": "object",
-                                    "properties": {
-                                      "id": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      },
-                                      "scheme": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      },
-                                      "url": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      },
-                                      "permitDetails": {
-                                        "type": "object",
-                                        "required": [
-                                          "issuedBy",
-                                          "issuedThought",
-                                          "validityPeriod"
-                                        ],
-                                        "properties": {
-                                          "issuedBy": {
-                                            "type": "object",
-                                            "required": [
-                                              "id",
-                                              "name"
-                                            ],
-                                            "properties": {
-                                              "id": {
-                                                "type": "string",
-                                                "minLength": 1
-                                              },
-                                              "name": {
-                                                "type": "string",
-                                                "minLength": 1
-                                              }
-                                            }
-                                          },
-                                          "issuedThought": {
-                                            "type": "object",
-                                            "required": [
-                                              "id",
-                                              "name"
-                                            ],
-                                            "properties": {
-                                              "id": {
-                                                "type": "string",
-                                                "minLength": 1
-                                              },
-                                              "name": {
-                                                "type": "string",
-                                                "minLength": 1
-                                              }
-                                            }
-                                          },
-                                          "validityPeriod": {
-                                            "type": "object",
-                                            "required": [
-                                              "startDate",
-                                              "endDate"
-                                            ],
-                                            "properties": {
-                                              "startDate": {
-                                                "type": "string",
-                                                "minLength": 1,
-                                                "format": "date-time"
-                                              },
-                                              "endDate": {
-                                                "type": "string",
-                                                "minLength": 1,
-                                                "format": "date-time"
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    },
-                                    "required": [
-                                      "id",
-                                      "scheme",
-                                      "permitDetails"
-                                    ]
-                                  }
-                                },
-                                "bankAccounts": {
-                                  "type": "array",
-                                  "uniqueItems": true,
-                                  "minItems": 1,
-                                  "items": {
-                                    "type": "object",
-                                    "properties": {
-                                      "description": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      },
-                                      "bankName": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      },
-                                      "address": {
-                                        "type": "object",
-                                        "required": [
-                                          "streetAddress",
-                                          "addressDetails"
-                                        ],
-                                        "properties": {
-                                          "streetAddress": {
-                                            "type": "string",
-                                            "minLength": 1
-                                          },
-                                          "postalCode": {
-                                            "type": "string",
-                                            "minLength": 1
-                                          },
-                                          "addressDetails": {
-                                            "type": "object",
-                                            "required": [
-                                              "country",
-                                              "region",
-                                              "locality"
-                                            ],
-                                            "properties": {
-                                              "country": {
-                                                "type": "object",
-                                                "required": [
-                                                  "id",
-                                                  "description",
-                                                  "scheme"
-                                                ],
-                                                "properties": {
-                                                  "id": {
-                                                    "type": "string",
-                                                    "minLength": 1
-                                                  },
-                                                  "description": {
-                                                    "type": "string",
-                                                    "minLength": 1
-                                                  },
-                                                  "scheme": {
-                                                    "type": "string",
-                                                    "minLength": 1
-                                                  }
-                                                }
-                                              },
-                                              "region": {
-                                                "type": "object",
-                                                "required": [
-                                                  "id",
-                                                  "description",
-                                                  "scheme"
-                                                ],
-                                                "properties": {
-                                                  "id": {
-                                                    "type": "string",
-                                                    "minLength": 1
-                                                  },
-                                                  "description": {
-                                                    "type": "string",
-                                                    "minLength": 1
-                                                  },
-                                                  "scheme": {
-                                                    "type": "string",
-                                                    "minLength": 1
-                                                  }
-                                                }
-                                              },
-                                              "locality": {
-                                                "type": "object",
-                                                "required": [
-                                                  "id",
-                                                  "description",
-                                                  "scheme"
-                                                ],
-                                                "properties": {
-                                                  "id": {
-                                                    "type": "string",
-                                                    "minLength": 1
-                                                  },
-                                                  "description": {
-                                                    "type": "string",
-                                                    "minLength": 1
-                                                  },
-                                                  "scheme": {
-                                                    "type": "string",
-                                                    "minLength": 1
-                                                  }
-                                                }
-                                              }
-                                            }
-                                          }
-                                        }
-                                      },
-                                      "identifier": {
-                                        "type": "object",
-                                        "required": [
-                                          "scheme",
-                                          "id"
-                                        ],
-                                        "properties": {
-                                          "scheme": {
-                                            "type": "string",
-                                            "minLength": 1
-                                          },
-                                          "id": {
-                                            "type": "string",
-                                            "minLength": 1
-                                          }
-                                        }
-                                      },
-                                      "accountIdentification": {
-                                        "type": "object",
-                                        "required": [
-                                          "scheme",
-                                          "id"
-                                        ],
-                                        "properties": {
-                                          "scheme": {
-                                            "type": "string",
-                                            "minLength": 1
-                                          },
-                                          "id": {
-                                            "type": "string",
-                                            "minLength": 1
-                                          }
-                                        }
-                                      },
-                                      "additionalAccountIdentifiers": {
-                                        "type": "array",
-                                        "uniqueItems": true,
-                                        "minItems": 1,
-                                        "items": {
-                                          "type": "object",
-                                          "properties": {
-                                            "scheme": {
-                                              "type": "string",
-                                              "minLength": 1
-                                            },
-                                            "id": {
-                                              "type": "string",
-                                              "minLength": 1
-                                            }
-                                          },
-                                          "required": [
-                                            "scheme",
-                                            "id"
-                                          ]
-                                        }
-                                      }
-                                    },
-                                    "required": [
-                                      "description",
-                                      "bankName",
-                                      "address",
-                                      "identifier",
-                                      "accountIdentification"
-                                    ]
-                                  }
-                                },
-                                "legalForm": {
-                                  "type": "object",
-                                  "properties": {
-                                    "scheme": {
-                                      "type": "string",
-                                      "minLength": 1
-                                    },
-                                    "id": {
-                                      "type": "string",
-                                      "minLength": 1
-                                    },
-                                    "description": {
-                                      "type": "string",
-                                      "minLength": 1
-                                    },
-                                    "uri": {
-                                      "type": "string",
-                                      "minLength": 1
-                                    }
-                                  },
-                                  "required": [
-                                    "scheme",
-                                    "id",
-                                    "description"
-                                  ]
-                                }
-                              }
-                            }
-                          },
-                          "required": [
-                            "name",
-                            "identifier",
-                            "address",
-                            "contactPoint",
-                            "details"
-                          ]
-                        }
-                      },
-                      "relatedLots": {
-                        "type": "array",
-                        "items": {
-                          "type": "string"
-                        }
-                      },
-                      "documents": {
-                        "type": "array",
-                        "uniqueItems": true,
-                        "minItems": 1,
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "title": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "description": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "relatedLots": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              }
-                            },
-                            "documentType": {
-                              "type": "string",
-                              "minLength": 1,
-                              "enum": [
-                                "illustration",
-                                "submissionDocuments",
-                                "x_qualificationDocuments",
-                                "x_eligibilityDocuments",
-                                "x_technicalDocuments"
-                              ]
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "title",
-                            "documentType"
-                          ]
-                        }
-                      },
-                      "items": {
-                        "type": "array",
-                        "uniqueItems": true,
-                        "minItems": 1,
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "unit": {
-                              "type": "object",
-                              "required": [
-                                "value",
-                                "id"
-                              ],
-                              "properties": {
-                                "value": {
-                                  "type": "object",
-                                  "required": [
-                                    "amount",
-                                    "currency"
-                                  ],
-                                  "properties": {
-                                    "amount": {
-                                      "type": "number"
-                                    },
-                                    "currency": {
-                                      "type": "string",
-                                      "minLength": 1
-                                    }
-                                  }
-                                },
-                                "id": {
-                                  "type": "string",
-                                  "minLength": 1
-                                }
-                              }
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "unit"
-                          ]
-                        }
-                      }
-                    }
-                  }
-                },
-                "required": [
-                  "bid"
-                ]
-              }
-            }
-          }
-        },
-        "tags": [
-          "3.Tender"
-        ]
-      }
-    },
-    "/cancel/bid/{cpid}/{ocid}/{bidId}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "cpid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Process identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "ocid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Notice identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "bidId",
-          "in": "path",
-          "required": true,
-          "description": "Bid identifier"
-        }
-      ],
-      "post": {
-        "summary": "Withdraw Bid",
-        "operationId": "post-cancel-bid-cpid-ocid-bidId",
-        "responses": {
-          "202": {
-            "description": "Accepted"
-          }
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-OPERATION-ID",
-            "required": true,
-            "description": "Request identifier"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-TOKEN",
-            "description": "Bid token",
-            "required": true
-          }
-        ],
-        "tags": [
-          "3.Tender"
-        ]
-      }
-    },
     "/cancel/tender/{cpid}/{ocid}": {
       "parameters": [
         {
@@ -15624,6 +14036,132 @@
             }
           }
         },
+        "tags": [
+          "3.Tender"
+        ]
+      }
+    },
+    "/confirm/amendment/{cpid}/{ocid}/{amendment}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Notice identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "amendment",
+          "in": "path",
+          "required": true,
+          "description": "Amendment identifier"
+        }
+      ],
+      "post": {
+        "summary": "Tender or lot amendment confirmation",
+        "operationId": "post-confirm-amendment-cpid-ocid-amendment",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "description": "Request identifier",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "description": "amendment token",
+            "required": true
+          }
+        ],
+        "tags": [
+          "3.Tender"
+        ]
+      }
+    },
+    "/cancel/amendment/{cpid}/{ocid}/{amendment}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Notice identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "amendment",
+          "in": "path",
+          "required": true,
+          "description": "Amendment identifier"
+        }
+      ],
+      "post": {
+        "summary": "Tender or lot amendment cancellation",
+        "operationId": "post-cancel-amendment-cpid-ocid-amendment",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "description": "Request identifier",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "description": "amendment token",
+            "required": true
+          }
+        ],
         "tags": [
           "3.Tender"
         ]
@@ -15933,7 +14471,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "Contract Notice identifier"
+          "description": "Second Stage Competition identifier"
         },
         {
           "schema": {
@@ -16065,7 +14603,7 @@
           }
         },
         "tags": [
-          "4.Contract"
+          "3.Tender"
         ]
       }
     },
@@ -16349,6 +14887,66 @@
         ]
       }
     },
+    "/do/protocol/{cpid}/{ocid}/{lotId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Notice identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "lotId",
+          "in": "path",
+          "required": true,
+          "description": "Lot identifier"
+        }
+      ],
+      "post": {
+        "summary": "Awarding Complete",
+        "operationId": "post-do-protocol-cpid-ocid-lotId",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "required": true,
+            "description": "Request identifier"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "required": true,
+            "name": "X-TOKEN",
+            "description": "Tender token"
+          }
+        ]
+      }
+    },
     "/do/contract/{cpid}/{ocid}": {
       "parameters": [
         {
@@ -16434,1980 +15032,6 @@
                     ]
                   }
                 }
-              },
-              "examples": {}
-            }
-          }
-        },
-        "tags": [
-          "4.Contract"
-        ]
-      }
-    },
-    "/do/contract/{cpid}/{ocid}update": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "cpid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Process identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "ocid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Notice identifier"
-        }
-      ],
-      "post": {
-        "summary": "Update Contract",
-        "operationId": "post-do-contract-cpid-ocid-update",
-        "responses": {
-          "202": {
-            "description": "Accepted"
-          }
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-OPERATION-ID ",
-            "description": "Request identifier",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-TOKEN",
-            "description": "Tender token",
-            "required": true
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "description": "",
-                "type": "object",
-                "x-examples": {
-                  "example-1": {
-                    "planning": {
-                      "budget": {
-                        "description": "string",
-                        "budgetBreakdown": [
-                          {
-                            "id": "string",
-                            "amount": {
-                              "amount": 0,
-                              "currency": "string"
-                            },
-                            "period": {
-                              "startDate": "2022-03-23T16:08:37.786Z",
-                              "endDate": "2022-03-23T16:08:37.786Z"
-                            },
-                            "classifications": {
-                              "type": "advance",
-                              "relatedItem": "string",
-                              "relatedFinance": "string",
-                              "durationInDays": 0
-                            }
-                          }
-                        ],
-                        "finance": [
-                          {
-                            "id": "string",
-                            "value": {
-                              "amount": 0,
-                              "currency": "string"
-                            }
-                          }
-                        ]
-                      }
-                    },
-                    "contract": {
-                      "id": "string",
-                      "title": "string",
-                      "description": "string",
-                      "period": {
-                        "startDate": "2022-03-23T16:08:37.786Z",
-                        "endDate": "2022-03-23T16:08:37.786Z"
-                      },
-                      "documents": [
-                        {
-                          "id": "string",
-                          "documentType": "contractNotice",
-                          "title": "string",
-                          "description": "string",
-                          "relatedLots": [
-                            "string"
-                          ]
-                        }
-                      ],
-                      "agreedMetrics": [
-                        {
-                          "id": "string",
-                          "observations": [
-                            {
-                              "id": "string",
-                              "measure": "Unknown Type: string,number,integer,boolean"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    "awards": [
-                      {
-                        "id": "string",
-                        "suppliers": [
-                          {
-                            "id": "string",
-                            "additionalIdentifiers": [
-                              {
-                                "id": "string",
-                                "legalName": "string",
-                                "scheme": "string",
-                                "uri": "string"
-                              }
-                            ],
-                            "persones": [
-                              {
-                                "id": "string",
-                                "title": "Mr.",
-                                "name": "string",
-                                "identifier": {
-                                  "scheme": "string",
-                                  "id": "string",
-                                  "uri": "string"
-                                },
-                                "businessFunctions": [
-                                  {
-                                    "id": "string",
-                                    "type": "authority",
-                                    "jobTitle": "string",
-                                    "period": {
-                                      "startDate": "2022-03-23T16:08:37.786Z"
-                                    },
-                                    "documents": [
-                                      {
-                                        "id": "string",
-                                        "documentType": "regulatoryDocument",
-                                        "title": "string",
-                                        "description": "string"
-                                      }
-                                    ]
-                                  }
-                                ]
-                              }
-                            ],
-                            "details": {
-                              "typeOfSupplier": "company",
-                              "mainEconomicActivities": [
-                                {
-                                  "scheme": "MD-CAEM",
-                                  "id": "string",
-                                  "description": "string",
-                                  "uri": "string"
-                                }
-                              ],
-                              "scale": "micro",
-                              "permits": [
-                                {
-                                  "id": "string",
-                                  "scheme": "string",
-                                  "url": "string",
-                                  "permitDetails": {
-                                    "issuedBy": {
-                                      "id": "string",
-                                      "name": "string"
-                                    },
-                                    "issuedThought": {
-                                      "id": "string",
-                                      "name": "string"
-                                    },
-                                    "validityPeriod": {
-                                      "startDate": "2022-03-23T16:08:37.786Z",
-                                      "enddate": "2022-03-23T16:08:37.786Z"
-                                    }
-                                  }
-                                }
-                              ],
-                              "bankAccounts": [
-                                {
-                                  "description": "string",
-                                  "bankName": "string",
-                                  "address": {
-                                    "streetAddress": "string",
-                                    "postalCode": "string",
-                                    "addressDetails": {
-                                      "country": {
-                                        "id": "string",
-                                        "description": "string",
-                                        "scheme": "string"
-                                      },
-                                      "region": {
-                                        "id": "string",
-                                        "description": "string",
-                                        "scheme": "string"
-                                      },
-                                      "locality": {
-                                        "id": "string",
-                                        "description": "string",
-                                        "scheme": "string"
-                                      }
-                                    }
-                                  },
-                                  "identifier": {
-                                    "scheme": "UA-MFO",
-                                    "id": "string"
-                                  },
-                                  "accountIdentification": {
-                                    "scheme": "IBAN",
-                                    "id": "string"
-                                  },
-                                  "additionalAccountIdentifiers": [
-                                    {
-                                      "scheme": "fiscal",
-                                      "id": "string"
-                                    }
-                                  ]
-                                }
-                              ],
-                              "legalForm": {
-                                "scheme": "MD-CFOJ",
-                                "id": "string",
-                                "description": "string",
-                                "uri": "string"
-                              }
-                            }
-                          }
-                        ],
-                        "documents": [
-                          {
-                            "id": "string",
-                            "documentType": "awardNotice",
-                            "title": "string",
-                            "description": "string",
-                            "relatedLots": [
-                              "string"
-                            ]
-                          }
-                        ],
-                        "value": {
-                          "amount": 0,
-                          "currency": "string",
-                          "amountNet": 0,
-                          "valueAddedTaxIncluded": true
-                        },
-                        "items": [
-                          {
-                            "id": "string",
-                            "quantity": 0,
-                            "unit": {
-                              "value": {
-                                "amount": 0,
-                                "amountNet": 0,
-                                "currency": "string",
-                                "valueAddedTaxIncluded": true
-                              }
-                            },
-                            "deliveryAddress": {
-                              "streetAddress": "string",
-                              "postalCode": "string",
-                              "addressDetails": {
-                                "country": {
-                                  "id": "string",
-                                  "description": "string",
-                                  "scheme": "string"
-                                },
-                                "region": {
-                                  "id": "string",
-                                  "description": "string",
-                                  "scheme": "string"
-                                },
-                                "locality": {
-                                  "id": "string",
-                                  "description": "string",
-                                  "scheme": "string"
-                                }
-                              }
-                            }
-                          }
-                        ]
-                      }
-                    ],
-                    "buyer": {
-                      "id": "string",
-                      "additionalIdentifiers": [
-                        {
-                          "id": "string",
-                          "legalName": "string",
-                          "scheme": "string",
-                          "uri": "string"
-                        }
-                      ],
-                      "persones": [
-                        {
-                          "id": "string",
-                          "title": "Mr.",
-                          "name": "string",
-                          "identifier": {
-                            "scheme": "string",
-                            "id": "string",
-                            "uri": "string"
-                          },
-                          "businessFunctions": [
-                            {
-                              "id": "string",
-                              "type": "chairman",
-                              "jobTitle": "string",
-                              "period": {
-                                "startDate": "2022-03-23T16:08:37.787Z"
-                              },
-                              "documents": [
-                                {
-                                  "id": "string",
-                                  "documentType": "regulatoryDocument",
-                                  "title": "string",
-                                  "description": "string"
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ],
-                      "details": {
-                        "typeOfBuyer": "BODY_PUBLIC",
-                        "mainGeneralActivity": "DEFENCE",
-                        "mainSectoralActivity": "AIRPORT_RELATED_ACTIVITIES",
-                        "bankAccounts": [
-                          {
-                            "description": "string",
-                            "bankName": "string",
-                            "address": {
-                              "streetAddress": "string",
-                              "postalCode": "string",
-                              "addressDetails": {
-                                "country": {
-                                  "id": "string",
-                                  "description": "string",
-                                  "scheme": "string"
-                                },
-                                "region": {
-                                  "id": "string",
-                                  "description": "string",
-                                  "scheme": "string"
-                                },
-                                "locality": {
-                                  "id": "string",
-                                  "description": "string",
-                                  "scheme": "string"
-                                }
-                              }
-                            },
-                            "identifier": {
-                              "scheme": "UA-MFO",
-                              "id": "string"
-                            },
-                            "accountIdentification": {
-                              "scheme": "IBAN",
-                              "id": "string"
-                            },
-                            "additionalAccountIdentifiers": [
-                              {
-                                "scheme": "fiscal",
-                                "id": "string"
-                              }
-                            ]
-                          }
-                        ],
-                        "legalForm": {
-                          "scheme": "MD-CFOJ",
-                          "id": "string",
-                          "description": "string",
-                          "uri": "string"
-                        }
-                      }
-                    }
-                  }
-                },
-                "properties": {
-                  "planning": {
-                    "type": "object",
-                    "required": [
-                      "budget"
-                    ],
-                    "properties": {
-                      "budget": {
-                        "type": "object",
-                        "required": [
-                          "budgetBreakdown",
-                          "finance"
-                        ],
-                        "properties": {
-                          "description": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "budgetBreakdown": {
-                            "type": "array",
-                            "uniqueItems": true,
-                            "minItems": 1,
-                            "items": {
-                              "type": "object",
-                              "properties": {
-                                "id": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "amount": {
-                                  "type": "object",
-                                  "required": [
-                                    "amount",
-                                    "currency"
-                                  ],
-                                  "properties": {
-                                    "amount": {
-                                      "type": "number"
-                                    },
-                                    "currency": {
-                                      "type": "string",
-                                      "minLength": 1
-                                    }
-                                  }
-                                },
-                                "period": {
-                                  "type": "object",
-                                  "properties": {
-                                    "startDate": {
-                                      "type": "string",
-                                      "minLength": 1,
-                                      "format": "date-time"
-                                    },
-                                    "endDate": {
-                                      "type": "string",
-                                      "minLength": 1,
-                                      "format": "date-time"
-                                    }
-                                  },
-                                  "required": [
-                                    "startDate",
-                                    "endDate"
-                                  ]
-                                },
-                                "classifications": {
-                                  "type": "object",
-                                  "required": [
-                                    "type"
-                                  ],
-                                  "properties": {
-                                    "type": {
-                                      "type": "string",
-                                      "minLength": 1,
-                                      "enum": [
-                                        "advance",
-                                        "budgetPart"
-                                      ]
-                                    },
-                                    "relatedItem": {
-                                      "type": "string",
-                                      "minLength": 1
-                                    },
-                                    "relatedFinance": {
-                                      "type": "string",
-                                      "minLength": 1,
-                                      "example": "ocid FS"
-                                    },
-                                    "durationInDays": {
-                                      "type": "number"
-                                    }
-                                  }
-                                }
-                              },
-                              "required": [
-                                "id",
-                                "amount",
-                                "classifications"
-                              ]
-                            }
-                          },
-                          "finance": {
-                            "type": "array",
-                            "uniqueItems": true,
-                            "minItems": 1,
-                            "items": {
-                              "type": "object",
-                              "properties": {
-                                "id": {
-                                  "type": "string",
-                                  "minLength": 1,
-                                  "example": "ocid FS"
-                                },
-                                "value": {
-                                  "type": "object",
-                                  "required": [
-                                    "amount",
-                                    "currency"
-                                  ],
-                                  "properties": {
-                                    "amount": {
-                                      "type": "number"
-                                    },
-                                    "currency": {
-                                      "type": "string",
-                                      "minLength": 1
-                                    }
-                                  }
-                                }
-                              },
-                              "required": [
-                                "id",
-                                "value"
-                              ]
-                            }
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "contract": {
-                    "type": "object",
-                    "required": [
-                      "id",
-                      "title",
-                      "description",
-                      "period",
-                      "agreedMetrics"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "title": {
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "description": {
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "period": {
-                        "type": "object",
-                        "required": [
-                          "startDate",
-                          "endDate"
-                        ],
-                        "properties": {
-                          "startDate": {
-                            "type": "string",
-                            "minLength": 1,
-                            "format": "date-time"
-                          },
-                          "endDate": {
-                            "type": "string",
-                            "minLength": 1
-                          }
-                        }
-                      },
-                      "documents": {
-                        "type": "array",
-                        "uniqueItems": true,
-                        "minItems": 1,
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "documentType": {
-                              "type": "string",
-                              "minLength": 1,
-                              "enum": [
-                                "contractNotice",
-                                "completionCertificate",
-                                "contractDraft",
-                                "contractArrangements",
-                                "contractSchedule",
-                                "environmentalImpact",
-                                "contractAnnexe",
-                                "contractGuarantees",
-                                "subContract",
-                                "illustration",
-                                "contractSummary"
-                              ]
-                            },
-                            "title": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "description": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "relatedLots": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              }
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "documentType",
-                            "title"
-                          ]
-                        }
-                      },
-                      "agreedMetrics": {
-                        "type": "array",
-                        "uniqueItems": true,
-                        "minItems": 1,
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "observations": {
-                              "type": "array",
-                              "uniqueItems": true,
-                              "minItems": 1,
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "measure": {
-                                    "type": "string",
-                                    "minLength": 1,
-                                    "example": "Can also be other types: number, integer, boolean"
-                                  }
-                                },
-                                "required": [
-                                  "id",
-                                  "measure"
-                                ]
-                              }
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "observations"
-                          ]
-                        }
-                      }
-                    }
-                  },
-                  "awards": {
-                    "type": "array",
-                    "uniqueItems": true,
-                    "minItems": 1,
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "suppliers": {
-                          "type": "array",
-                          "uniqueItems": true,
-                          "minItems": 1,
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "id": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "additionalIdentifiers": {
-                                "type": "array",
-                                "uniqueItems": true,
-                                "minItems": 1,
-                                "items": {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string",
-                                      "minLength": 1
-                                    },
-                                    "legalName": {
-                                      "type": "string",
-                                      "minLength": 1
-                                    },
-                                    "scheme": {
-                                      "type": "string",
-                                      "minLength": 1
-                                    },
-                                    "uri": {
-                                      "type": "string",
-                                      "minLength": 1
-                                    }
-                                  },
-                                  "required": [
-                                    "id",
-                                    "legalName",
-                                    "scheme"
-                                  ]
-                                }
-                              },
-                              "persones": {
-                                "type": "array",
-                                "uniqueItems": true,
-                                "minItems": 1,
-                                "items": {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string",
-                                      "minLength": 1
-                                    },
-                                    "title": {
-                                      "type": "string",
-                                      "minLength": 1,
-                                      "enum": [
-                                        "Mr.",
-                                        "Ms.",
-                                        "Mrs."
-                                      ]
-                                    },
-                                    "name": {
-                                      "type": "string",
-                                      "minLength": 1
-                                    },
-                                    "identifier": {
-                                      "type": "object",
-                                      "required": [
-                                        "scheme",
-                                        "id"
-                                      ],
-                                      "properties": {
-                                        "scheme": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "id": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "uri": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        }
-                                      }
-                                    },
-                                    "businessFunctions": {
-                                      "type": "array",
-                                      "uniqueItems": true,
-                                      "minItems": 1,
-                                      "items": {
-                                        "type": "object",
-                                        "properties": {
-                                          "id": {
-                                            "type": "string",
-                                            "minLength": 1
-                                          },
-                                          "type": {
-                                            "type": "string",
-                                            "minLength": 1,
-                                            "enum": [
-                                              "authority",
-                                              "contactPoint"
-                                            ]
-                                          },
-                                          "jobTitle": {
-                                            "type": "string",
-                                            "minLength": 1
-                                          },
-                                          "period": {
-                                            "type": "object",
-                                            "required": [
-                                              "startDate"
-                                            ],
-                                            "properties": {
-                                              "startDate": {
-                                                "type": "string",
-                                                "minLength": 1,
-                                                "format": "date-time"
-                                              }
-                                            }
-                                          },
-                                          "documents": {
-                                            "type": "array",
-                                            "uniqueItems": true,
-                                            "minItems": 1,
-                                            "items": {
-                                              "type": "object",
-                                              "properties": {
-                                                "id": {
-                                                  "type": "string",
-                                                  "minLength": 1
-                                                },
-                                                "documentType": {
-                                                  "type": "string",
-                                                  "minLength": 1,
-                                                  "enum": [
-                                                    "regulatoryDocument"
-                                                  ]
-                                                },
-                                                "title": {
-                                                  "type": "string",
-                                                  "minLength": 1
-                                                },
-                                                "description": {
-                                                  "type": "string",
-                                                  "minLength": 1
-                                                }
-                                              },
-                                              "required": [
-                                                "id",
-                                                "documentType",
-                                                "title"
-                                              ]
-                                            }
-                                          }
-                                        },
-                                        "required": [
-                                          "id",
-                                          "type",
-                                          "jobTitle",
-                                          "period"
-                                        ]
-                                      }
-                                    }
-                                  },
-                                  "required": [
-                                    "id",
-                                    "title",
-                                    "name",
-                                    "identifier",
-                                    "businessFunctions"
-                                  ]
-                                }
-                              },
-                              "details": {
-                                "type": "object",
-                                "properties": {
-                                  "typeOfSupplier": {
-                                    "type": "string",
-                                    "minLength": 1,
-                                    "enum": [
-                                      "company",
-                                      "individual"
-                                    ]
-                                  },
-                                  "mainEconomicActivities": {
-                                    "type": "array",
-                                    "uniqueItems": true,
-                                    "minItems": 1,
-                                    "items": {
-                                      "type": "object",
-                                      "properties": {
-                                        "scheme": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "id": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "description": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "uri": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        }
-                                      },
-                                      "required": [
-                                        "scheme",
-                                        "id",
-                                        "description"
-                                      ]
-                                    }
-                                  },
-                                  "scale": {
-                                    "type": "string",
-                                    "minLength": 1,
-                                    "enum": [
-                                      "micro",
-                                      "sme",
-                                      "large"
-                                    ]
-                                  },
-                                  "permits": {
-                                    "type": "array",
-                                    "uniqueItems": true,
-                                    "minItems": 1,
-                                    "items": {
-                                      "type": "object",
-                                      "properties": {
-                                        "id": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "scheme": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "url": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "permitDetails": {
-                                          "type": "object",
-                                          "required": [
-                                            "issuedBy",
-                                            "issuedThought",
-                                            "validityPeriod"
-                                          ],
-                                          "properties": {
-                                            "issuedBy": {
-                                              "type": "object",
-                                              "required": [
-                                                "id",
-                                                "name"
-                                              ],
-                                              "properties": {
-                                                "id": {
-                                                  "type": "string",
-                                                  "minLength": 1
-                                                },
-                                                "name": {
-                                                  "type": "string",
-                                                  "minLength": 1
-                                                }
-                                              }
-                                            },
-                                            "issuedThought": {
-                                              "type": "object",
-                                              "required": [
-                                                "id",
-                                                "name"
-                                              ],
-                                              "properties": {
-                                                "id": {
-                                                  "type": "string",
-                                                  "minLength": 1
-                                                },
-                                                "name": {
-                                                  "type": "string",
-                                                  "minLength": 1
-                                                }
-                                              }
-                                            },
-                                            "validityPeriod": {
-                                              "type": "object",
-                                              "required": [
-                                                "startDate"
-                                              ],
-                                              "properties": {
-                                                "startDate": {
-                                                  "type": "string",
-                                                  "minLength": 1
-                                                },
-                                                "enddate": {
-                                                  "type": "string",
-                                                  "minLength": 1
-                                                }
-                                              }
-                                            }
-                                          }
-                                        }
-                                      },
-                                      "required": [
-                                        "id",
-                                        "scheme",
-                                        "permitDetails"
-                                      ]
-                                    }
-                                  },
-                                  "bankAccounts": {
-                                    "type": "array",
-                                    "uniqueItems": true,
-                                    "minItems": 1,
-                                    "items": {
-                                      "type": "object",
-                                      "properties": {
-                                        "description": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "bankName": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "address": {
-                                          "type": "object",
-                                          "required": [
-                                            "streetAddress",
-                                            "addressDetails"
-                                          ],
-                                          "properties": {
-                                            "streetAddress": {
-                                              "type": "string",
-                                              "minLength": 1
-                                            },
-                                            "postalCode": {
-                                              "type": "string",
-                                              "minLength": 1
-                                            },
-                                            "addressDetails": {
-                                              "type": "object",
-                                              "required": [
-                                                "country",
-                                                "region",
-                                                "locality"
-                                              ],
-                                              "properties": {
-                                                "country": {
-                                                  "type": "object",
-                                                  "required": [
-                                                    "id",
-                                                    "description",
-                                                    "scheme"
-                                                  ],
-                                                  "properties": {
-                                                    "id": {
-                                                      "type": "string",
-                                                      "minLength": 1
-                                                    },
-                                                    "description": {
-                                                      "type": "string",
-                                                      "minLength": 1
-                                                    },
-                                                    "scheme": {
-                                                      "type": "string",
-                                                      "minLength": 1
-                                                    }
-                                                  }
-                                                },
-                                                "region": {
-                                                  "type": "object",
-                                                  "required": [
-                                                    "id",
-                                                    "description",
-                                                    "scheme"
-                                                  ],
-                                                  "properties": {
-                                                    "id": {
-                                                      "type": "string",
-                                                      "minLength": 1
-                                                    },
-                                                    "description": {
-                                                      "type": "string",
-                                                      "minLength": 1
-                                                    },
-                                                    "scheme": {
-                                                      "type": "string",
-                                                      "minLength": 1
-                                                    }
-                                                  }
-                                                },
-                                                "locality": {
-                                                  "type": "object",
-                                                  "required": [
-                                                    "id",
-                                                    "description",
-                                                    "scheme"
-                                                  ],
-                                                  "properties": {
-                                                    "id": {
-                                                      "type": "string",
-                                                      "minLength": 1
-                                                    },
-                                                    "description": {
-                                                      "type": "string",
-                                                      "minLength": 1
-                                                    },
-                                                    "scheme": {
-                                                      "type": "string",
-                                                      "minLength": 1
-                                                    }
-                                                  }
-                                                }
-                                              }
-                                            }
-                                          }
-                                        },
-                                        "identifier": {
-                                          "type": "object",
-                                          "required": [
-                                            "scheme",
-                                            "id"
-                                          ],
-                                          "properties": {
-                                            "scheme": {
-                                              "type": "string",
-                                              "minLength": 1
-                                            },
-                                            "id": {
-                                              "type": "string",
-                                              "minLength": 1
-                                            }
-                                          }
-                                        },
-                                        "accountIdentification": {
-                                          "type": "object",
-                                          "required": [
-                                            "scheme",
-                                            "id"
-                                          ],
-                                          "properties": {
-                                            "scheme": {
-                                              "type": "string",
-                                              "minLength": 1
-                                            },
-                                            "id": {
-                                              "type": "string",
-                                              "minLength": 1
-                                            }
-                                          }
-                                        },
-                                        "additionalAccountIdentifiers": {
-                                          "type": "array",
-                                          "uniqueItems": true,
-                                          "minItems": 1,
-                                          "items": {
-                                            "type": "object",
-                                            "properties": {
-                                              "scheme": {
-                                                "type": "string",
-                                                "minLength": 1
-                                              },
-                                              "id": {
-                                                "type": "string",
-                                                "minLength": 1
-                                              }
-                                            },
-                                            "required": [
-                                              "scheme",
-                                              "id"
-                                            ]
-                                          }
-                                        }
-                                      },
-                                      "required": [
-                                        "description",
-                                        "bankName",
-                                        "address",
-                                        "identifier",
-                                        "accountIdentification"
-                                      ]
-                                    }
-                                  },
-                                  "legalForm": {
-                                    "type": "object",
-                                    "required": [
-                                      "scheme",
-                                      "id",
-                                      "description"
-                                    ],
-                                    "properties": {
-                                      "scheme": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      },
-                                      "id": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      },
-                                      "description": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      },
-                                      "uri": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            },
-                            "required": [
-                              "id"
-                            ]
-                          }
-                        },
-                        "documents": {
-                          "type": "array",
-                          "uniqueItems": true,
-                          "minItems": 1,
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "id": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "documentType": {
-                                "type": "string",
-                                "minLength": 1,
-                                "enum": [
-                                  "awardNotice",
-                                  "evaluationReports",
-                                  "contractDraft",
-                                  "winningBid",
-                                  "complaints",
-                                  "bidders",
-                                  "conflictOfInterest",
-                                  "cancellationDetails",
-                                  "submissionDocuments",
-                                  "contractArrangements",
-                                  "contractSchedule",
-                                  "shortlistedFirms"
-                                ]
-                              },
-                              "title": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "description": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "relatedLots": {
-                                "type": "array",
-                                "items": {
-                                  "type": "string"
-                                }
-                              }
-                            },
-                            "required": [
-                              "id",
-                              "documentType",
-                              "title"
-                            ]
-                          }
-                        },
-                        "value": {
-                          "type": "object",
-                          "required": [
-                            "amount",
-                            "currency",
-                            "amountNet",
-                            "valueAddedTaxIncluded"
-                          ],
-                          "properties": {
-                            "amount": {
-                              "type": "number"
-                            },
-                            "currency": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "amountNet": {
-                              "type": "number"
-                            },
-                            "valueAddedTaxIncluded": {
-                              "type": "boolean"
-                            }
-                          }
-                        },
-                        "items": {
-                          "type": "array",
-                          "uniqueItems": true,
-                          "minItems": 1,
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "id": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "quantity": {
-                                "type": "number"
-                              },
-                              "unit": {
-                                "type": "object",
-                                "required": [
-                                  "value"
-                                ],
-                                "properties": {
-                                  "value": {
-                                    "type": "object",
-                                    "required": [
-                                      "amount",
-                                      "amountNet",
-                                      "currency",
-                                      "valueAddedTaxIncluded"
-                                    ],
-                                    "properties": {
-                                      "amount": {
-                                        "type": "number"
-                                      },
-                                      "amountNet": {
-                                        "type": "number"
-                                      },
-                                      "currency": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      },
-                                      "valueAddedTaxIncluded": {
-                                        "type": "boolean"
-                                      }
-                                    }
-                                  }
-                                }
-                              },
-                              "deliveryAddress": {
-                                "type": "object",
-                                "required": [
-                                  "streetAddress",
-                                  "addressDetails"
-                                ],
-                                "properties": {
-                                  "streetAddress": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "postalCode": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "addressDetails": {
-                                    "type": "object",
-                                    "required": [
-                                      "country",
-                                      "region",
-                                      "locality"
-                                    ],
-                                    "properties": {
-                                      "country": {
-                                        "type": "object",
-                                        "required": [
-                                          "id",
-                                          "description",
-                                          "scheme"
-                                        ],
-                                        "properties": {
-                                          "id": {
-                                            "type": "string",
-                                            "minLength": 1
-                                          },
-                                          "description": {
-                                            "type": "string",
-                                            "minLength": 1
-                                          },
-                                          "scheme": {
-                                            "type": "string",
-                                            "minLength": 1
-                                          }
-                                        }
-                                      },
-                                      "region": {
-                                        "type": "object",
-                                        "required": [
-                                          "id",
-                                          "description",
-                                          "scheme"
-                                        ],
-                                        "properties": {
-                                          "id": {
-                                            "type": "string",
-                                            "minLength": 1
-                                          },
-                                          "description": {
-                                            "type": "string",
-                                            "minLength": 1
-                                          },
-                                          "scheme": {
-                                            "type": "string",
-                                            "minLength": 1
-                                          }
-                                        }
-                                      },
-                                      "locality": {
-                                        "type": "object",
-                                        "required": [
-                                          "id",
-                                          "description",
-                                          "scheme"
-                                        ],
-                                        "properties": {
-                                          "id": {
-                                            "type": "string",
-                                            "minLength": 1
-                                          },
-                                          "description": {
-                                            "type": "string",
-                                            "minLength": 1
-                                          },
-                                          "scheme": {
-                                            "type": "string",
-                                            "minLength": 1
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            },
-                            "required": [
-                              "id",
-                              "quantity",
-                              "unit",
-                              "deliveryAddress"
-                            ]
-                          }
-                        }
-                      },
-                      "required": [
-                        "id",
-                        "value",
-                        "items"
-                      ]
-                    }
-                  },
-                  "buyer": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "additionalIdentifiers": {
-                        "type": "array",
-                        "uniqueItems": true,
-                        "minItems": 1,
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "legalName": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "scheme": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "uri": {
-                              "type": "string",
-                              "minLength": 1
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "legalName",
-                            "scheme"
-                          ]
-                        }
-                      },
-                      "persones": {
-                        "type": "array",
-                        "uniqueItems": true,
-                        "minItems": 1,
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "title": {
-                              "type": "string",
-                              "minLength": 1,
-                              "enum": [
-                                "Mr.",
-                                "Ms.",
-                                "Mrs."
-                              ]
-                            },
-                            "name": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "identifier": {
-                              "type": "object",
-                              "required": [
-                                "scheme",
-                                "id"
-                              ],
-                              "properties": {
-                                "scheme": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "id": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "uri": {
-                                  "type": "string",
-                                  "minLength": 1
-                                }
-                              }
-                            },
-                            "businessFunctions": {
-                              "type": "array",
-                              "uniqueItems": true,
-                              "minItems": 1,
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "type": {
-                                    "type": "string",
-                                    "minLength": 1,
-                                    "enum": [
-                                      "chairman",
-                                      "contactPoint",
-                                      "technicalOpener",
-                                      "priceOpener",
-                                      "priceEvaluator",
-                                      "technicalEvaluator",
-                                      "procurementOfficer"
-                                    ]
-                                  },
-                                  "jobTitle": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "period": {
-                                    "type": "object",
-                                    "required": [
-                                      "startDate"
-                                    ],
-                                    "properties": {
-                                      "startDate": {
-                                        "type": "string",
-                                        "minLength": 1,
-                                        "format": "date-time"
-                                      }
-                                    }
-                                  },
-                                  "documents": {
-                                    "type": "array",
-                                    "uniqueItems": true,
-                                    "minItems": 1,
-                                    "items": {
-                                      "type": "object",
-                                      "properties": {
-                                        "id": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "documentType": {
-                                          "type": "string",
-                                          "minLength": 1,
-                                          "enum": [
-                                            "regulatoryDocument"
-                                          ]
-                                        },
-                                        "title": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "description": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        }
-                                      },
-                                      "required": [
-                                        "id",
-                                        "documentType",
-                                        "title"
-                                      ]
-                                    }
-                                  }
-                                },
-                                "required": [
-                                  "id",
-                                  "type",
-                                  "jobTitle",
-                                  "period"
-                                ]
-                              }
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "title",
-                            "name",
-                            "identifier",
-                            "businessFunctions"
-                          ]
-                        }
-                      },
-                      "details": {
-                        "type": "object",
-                        "properties": {
-                          "typeOfBuyer": {
-                            "type": "string",
-                            "minLength": 1,
-                            "enum": [
-                              "BODY_PUBLIC",
-                              "EU_INSTITUTION",
-                              "MINISTRY",
-                              "NATIONAL_AGENCY",
-                              "REGIONAL_AGENCY",
-                              "REGIONAL_AUTHORITY"
-                            ]
-                          },
-                          "mainGeneralActivity": {
-                            "type": "string",
-                            "minLength": 1,
-                            "enum": [
-                              "DEFENCE",
-                              "ECONOMIC_AND_FINANCIAL_AFFAIRS",
-                              "EDUCATION",
-                              "ENVIRONMENT",
-                              "GENERAL_PUBLIC_SERVICES",
-                              "HEALTH",
-                              "HOUSING_AND_COMMUNITY_AMENITIES",
-                              "PUBLIC_ORDER_AND_SAFETY",
-                              "RECREATION_CULTURE_AND_RELIGION",
-                              "SOCIAL_PROTECTION"
-                            ]
-                          },
-                          "mainSectoralActivity": {
-                            "type": "string",
-                            "minLength": 1,
-                            "enum": [
-                              "AIRPORT_RELATED_ACTIVITIES",
-                              "ELECTRICITY",
-                              "EXPLORATION_EXTRACTION_COAL_OTHER_SOLID_FUEL",
-                              "EXPLORATION_EXTRACTION_GAS_OIL",
-                              "PORT_RELATED_ACTIVITIES",
-                              "POSTAL_SERVICES",
-                              "PRODUCTION_TRANSPORT_DISTRIBUTION_GAS_HEAT",
-                              "RAILWAY_SERVICES",
-                              "URBAN_RAILWAY_TRAMWAY_TROLLEYBUS_BUS_SERVICES",
-                              "WATER"
-                            ]
-                          },
-                          "bankAccounts": {
-                            "type": "array",
-                            "uniqueItems": true,
-                            "minItems": 1,
-                            "items": {
-                              "type": "object",
-                              "properties": {
-                                "description": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "bankName": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "address": {
-                                  "type": "object",
-                                  "required": [
-                                    "streetAddress",
-                                    "addressDetails"
-                                  ],
-                                  "properties": {
-                                    "streetAddress": {
-                                      "type": "string",
-                                      "minLength": 1
-                                    },
-                                    "postalCode": {
-                                      "type": "string",
-                                      "minLength": 1
-                                    },
-                                    "addressDetails": {
-                                      "type": "object",
-                                      "required": [
-                                        "country",
-                                        "region",
-                                        "locality"
-                                      ],
-                                      "properties": {
-                                        "country": {
-                                          "type": "object",
-                                          "required": [
-                                            "id",
-                                            "description",
-                                            "scheme"
-                                          ],
-                                          "properties": {
-                                            "id": {
-                                              "type": "string",
-                                              "minLength": 1
-                                            },
-                                            "description": {
-                                              "type": "string",
-                                              "minLength": 1
-                                            },
-                                            "scheme": {
-                                              "type": "string",
-                                              "minLength": 1
-                                            }
-                                          }
-                                        },
-                                        "region": {
-                                          "type": "object",
-                                          "required": [
-                                            "id",
-                                            "description",
-                                            "scheme"
-                                          ],
-                                          "properties": {
-                                            "id": {
-                                              "type": "string",
-                                              "minLength": 1
-                                            },
-                                            "description": {
-                                              "type": "string",
-                                              "minLength": 1
-                                            },
-                                            "scheme": {
-                                              "type": "string",
-                                              "minLength": 1
-                                            }
-                                          }
-                                        },
-                                        "locality": {
-                                          "type": "object",
-                                          "required": [
-                                            "id",
-                                            "description",
-                                            "scheme"
-                                          ],
-                                          "properties": {
-                                            "id": {
-                                              "type": "string",
-                                              "minLength": 1
-                                            },
-                                            "description": {
-                                              "type": "string",
-                                              "minLength": 1
-                                            },
-                                            "scheme": {
-                                              "type": "string",
-                                              "minLength": 1
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                },
-                                "identifier": {
-                                  "type": "object",
-                                  "required": [
-                                    "scheme",
-                                    "id"
-                                  ],
-                                  "properties": {
-                                    "scheme": {
-                                      "type": "string",
-                                      "minLength": 1
-                                    },
-                                    "id": {
-                                      "type": "string",
-                                      "minLength": 1
-                                    }
-                                  }
-                                },
-                                "accountIdentification": {
-                                  "type": "object",
-                                  "required": [
-                                    "scheme",
-                                    "id"
-                                  ],
-                                  "properties": {
-                                    "scheme": {
-                                      "type": "string",
-                                      "minLength": 1
-                                    },
-                                    "id": {
-                                      "type": "string",
-                                      "minLength": 1
-                                    }
-                                  }
-                                },
-                                "additionalAccountIdentifiers": {
-                                  "type": "array",
-                                  "uniqueItems": true,
-                                  "minItems": 1,
-                                  "items": {
-                                    "type": "object",
-                                    "properties": {
-                                      "scheme": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      },
-                                      "id": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      }
-                                    },
-                                    "required": [
-                                      "scheme",
-                                      "id"
-                                    ]
-                                  }
-                                }
-                              },
-                              "required": [
-                                "description",
-                                "bankName",
-                                "address",
-                                "identifier",
-                                "accountIdentification"
-                              ]
-                            }
-                          },
-                          "legalForm": {
-                            "type": "object",
-                            "required": [
-                              "scheme",
-                              "id",
-                              "description"
-                            ],
-                            "properties": {
-                              "scheme": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "id": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "description": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "uri": {
-                                "type": "string",
-                                "minLength": 1
-                              }
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "required": [
-                      "id"
-                    ]
-                  }
-                },
-                "required": [
-                  "planning",
-                  "contract",
-                  "awards"
-                ]
-              },
-              "examples": {}
-            }
-          }
-        },
-        "tags": [
-          "4.Contract"
-        ],
-        "description": ""
-      }
-    },
-    "/issue/contract/{cpid}/{ocid}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "cpid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Process identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "ocid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Notice identifier"
-        }
-      ],
-      "post": {
-        "summary": "Issuing Contract",
-        "operationId": "post-issue-contract-cpid-ocid",
-        "responses": {
-          "202": {
-            "description": "Accepted"
-          }
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-OPERATION-ID",
-            "required": true,
-            "description": "Request identifier"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-TOKEN",
-            "required": true,
-            "description": "contract token"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "description": "",
-                "type": "object",
-                "x-examples": {
-                  "example-1": {
-                    "contract": {
-                      "id": "string",
-                      "internalId": "string"
-                    }
-                  }
-                },
-                "properties": {
-                  "contract": {
-                    "type": "object",
-                    "required": [
-                      "id"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "internalId": {
-                        "type": "string",
-                        "minLength": 1
-                      }
-                    }
-                  }
-                },
-                "required": [
-                  "contract"
-                ]
               }
             }
           }
