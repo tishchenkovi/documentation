@@ -936,7 +936,11 @@
       "post": {
         "summary": "Create Funding Source",
         "operationId": "post-do-fs-cpid",
-        "responses": {},
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
         "parameters": [
           {
             "schema": {
