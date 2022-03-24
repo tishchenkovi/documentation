@@ -616,7 +616,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "1.Budget"
+        ]
       }
     },
     "/do/ei/{cpid}": {
@@ -912,7 +915,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "1.Budget"
+        ]
       }
     },
     "/do/fs/{cpid}": {
@@ -1538,7 +1544,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "1.Budget"
+        ]
       }
     },
     "/do/fs/{ocid}/{cpid}": {
@@ -2160,7 +2169,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "1.Budget"
+        ]
       }
     },
     "/do/pn": {
@@ -2933,7 +2945,10 @@
             }
           }
         },
-        "description": "Create PN for pmd = GPA, TestGPA, RT, TestRT"
+        "description": "Create PN for pmd = GPA, TestGPA, RT, TestRT",
+        "tags": [
+          "2.Plan"
+        ]
       }
     },
     "/do/pn/{cpid}/{ocid}": {
@@ -3439,7 +3454,7 @@
           }
         },
         "tags": [
-          "Plan"
+          "2.Plan"
         ]
       }
     },
@@ -3492,6 +3507,9 @@
             "description": "Planning Notice token",
             "name": "X-TOKEN"
           }
+        ],
+        "tags": [
+          "2.Plan"
         ]
       }
     },
@@ -3927,7 +3945,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "2.Plan"
+        ]
       }
     },
     "/do/outsourcing/{cpid}/{ocid}": {
@@ -3996,6 +4017,9 @@
             "required": true,
             "description": "Plan token"
           }
+        ],
+        "tags": [
+          "2.Plan"
         ]
       }
     },
@@ -4066,6 +4090,9 @@
             "required": true,
             "description": "AP token"
           }
+        ],
+        "tags": [
+          "2.Plan"
         ]
       }
     },
@@ -4563,7 +4590,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "2.Plan"
+        ]
       }
     },
     "/do/fe/{cpid}/{ocid}": {
@@ -5178,7 +5208,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "3.Tender"
+        ]
       }
     },
     "/amend/fe/{cpid}/{ocid}": {
@@ -5504,7 +5537,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "3.Tender"
+        ]
       }
     },
     "/do/submission/{cpid}/{ocid}": {
@@ -6481,7 +6517,10 @@
               "examples": {}
             }
           }
-        }
+        },
+        "tags": [
+          "3.Tender"
+        ]
       }
     },
     "/cancel/submission/{cpid}/{ocid}/{submissionId}": {
@@ -6541,6 +6580,9 @@
             "name": "X-TOKEN",
             "description": "submission token"
           }
+        ],
+        "tags": [
+          "3.Tender"
         ]
       }
     },
@@ -6860,7 +6902,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "3.Tender"
+        ]
       }
     },
     "/do/enquiry/{cpid}/{ocid}/{enquiryId}": {
@@ -6954,7 +6999,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "3.Tender"
+        ]
       }
     },
     "/do/qualification/{cpid}/{ocid}/{qualification}": {
@@ -7240,7 +7288,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "3.Tender"
+        ]
       }
     },
     "/do/consideration/qualification/{cpid}/{ocid}/{qualificationId}": {
@@ -7300,6 +7351,9 @@
             "description": "qualification token",
             "required": true
           }
+        ],
+        "tags": [
+          "3.Tender"
         ]
       }
     },
@@ -7452,7 +7506,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "3.Tender"
+        ]
       }
     },
     "/do/protocol/qualification/{cpid}/{ocid}": {
@@ -7503,6 +7560,9 @@
             "description": "qualification token",
             "required": true
           }
+        ],
+        "tags": [
+          "3.Tender"
         ]
       }
     },
@@ -7554,6 +7614,9 @@
             "required": true,
             "name": "X-TOKEN"
           }
+        ],
+        "tags": [
+          "3.Tender"
         ]
       }
     },
@@ -7605,6 +7668,9 @@
             "required": true,
             "description": "FE token "
           }
+        ],
+        "tags": [
+          "3.Tender"
         ]
       }
     },
@@ -7699,7 +7765,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "3.Tender"
+        ]
       }
     },
     "/do/confirmation/{entity}/{cpid}/{ocid}/{entityId}": {
@@ -7987,7 +8056,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "3.Tender"
+        ]
       }
     },
     "/complete/confirmationStage/{entity}/{cpid}/{ocid}/{entityId}": {
@@ -8065,6 +8137,9 @@
             "name": "X-TOKEN",
             "description": "confirmation request group token"
           }
+        ],
+        "tags": [
+          "3.Tender"
         ]
       }
     },
@@ -8125,6 +8200,9 @@
             "description": "amendment token",
             "required": true
           }
+        ],
+        "tags": [
+          "3.Tender"
         ]
       }
     },
@@ -8185,6 +8263,9 @@
             "description": "amendment token",
             "required": true
           }
+        ],
+        "tags": [
+          "3.Tender"
         ]
       }
     },
@@ -9092,7 +9173,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "3.Tender"
+        ]
       }
     },
     "/do/bidPCR/{cpid}/{ocid}": {
@@ -10334,7 +10418,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "3.Tender"
+        ]
       }
     },
     "/cancel/bidPCR/{cpid}/{ocid}/{bidId}": {
@@ -10369,7 +10456,7 @@
       ],
       "post": {
         "summary": "Withdraw Bid in PCR",
-        "operationId": "post-cancel-bid-cpid-ocid-bidId",
+        "operationId": "post-cancel-bidPCR-cpid-ocid-bidId",
         "responses": {
           "202": {
             "description": "Accepted"
@@ -10394,6 +10481,9 @@
             "description": "Bid token",
             "required": true
           }
+        ],
+        "tags": [
+          "3.Tender"
         ]
       }
     },
@@ -10454,6 +10544,9 @@
             "description": "Award token",
             "required": true
           }
+        ],
+        "tags": [
+          "3.Tender"
         ]
       }
     },
@@ -11468,7 +11561,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "3.Tender"
+        ]
       }
     },
     "/do/award/{cpid}/{ocid}/{awardId}": {
@@ -11634,7 +11730,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "3.Tender"
+        ]
       }
     },
     "/do/protocol/pcr/{cpid}/{ocid}/{lotId}": {
@@ -11694,6 +11793,9 @@
             "name": "X-TOKEN",
             "description": "PCR token "
           }
+        ],
+        "tags": [
+          "4.Contract"
         ]
       }
     },
@@ -11754,6 +11856,9 @@
             "required": true,
             "description": "PCR token "
           }
+        ],
+        "tags": [
+          "4.Contract"
         ]
       }
     },
@@ -11803,7 +11908,10 @@
           "202": {
             "description": "Accepted"
           }
-        }
+        },
+        "tags": [
+          "4.Contract"
+        ]
       }
     },
     "/do/rfq/{cpid}/{ocid}": {
@@ -12302,7 +12410,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "3.Tender"
+        ]
       }
     },
     "/do/mc/{cpid}/{ocid} ": {
@@ -12328,7 +12439,7 @@
       ],
       "post": {
         "summary": "Create MC",
-        "operationId": "post-do-rfq-cpid-ocid",
+        "operationId": "post-do-mc-cpid-ocid",
         "responses": {
           "202": {
             "description": "Accepted"
@@ -13349,7 +13460,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "3.Tender"
+        ]
       }
     },
     "/do/dco/{cpid}/{ocid} ": {
@@ -13375,7 +13489,7 @@
       ],
       "post": {
         "summary": "Create DCO",
-        "operationId": "post-do-rfq-cpid-ocid",
+        "operationId": "post-do-dco-cpid-ocid",
         "responses": {
           "202": {
             "description": "Accepted"
@@ -14109,7 +14223,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "3.Tender"
+        ]
       }
     },
     "/do/bid/{cpid}/{ocid}": {
@@ -15304,7 +15421,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "3.Tender"
+        ]
       }
     },
     "/cancel/bid/{cpid}/{ocid}/{bidId}": {
@@ -15364,6 +15484,9 @@
             "description": "Bid token",
             "required": true
           }
+        ],
+        "tags": [
+          "3.Tender"
         ]
       }
     },
@@ -15510,7 +15633,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "3.Tender"
+        ]
       }
     },
     "/do/declaration/{cpid}/{ocid}/{awardId}": {
@@ -15947,7 +16073,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "4.Contract"
+        ]
       }
     },
     "/do/document/bid/{cpid}/{ocid}/{bidId}": {
@@ -16090,7 +16219,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "3.Tender"
+        ]
       }
     },
     "/do/document/can/{cpid}/{ocid}/{canId}": {
@@ -16220,7 +16352,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "3.Tender"
+        ]
       }
     },
     "/do/contract/{cpid}/{ocid}": {
@@ -16312,7 +16447,10 @@
               "examples": {}
             }
           }
-        }
+        },
+        "tags": [
+          "4.Contract"
+        ]
       }
     },
     "/do/contract/{cpid}/{ocid}update": {
@@ -16338,7 +16476,7 @@
       ],
       "post": {
         "summary": "Update Contract",
-        "operationId": "post-do-contract-cpid-ocid",
+        "operationId": "post-do-contract-cpid-ocid-update",
         "responses": {
           "202": {
             "description": "Accepted"
@@ -18188,7 +18326,11 @@
               "examples": {}
             }
           }
-        }
+        },
+        "tags": [
+          "4.Contract"
+        ],
+        "description": ""
       }
     },
     "/issue/contract/{cpid}/{ocid}": {
@@ -18278,7 +18420,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "4.Contract"
+        ]
       }
     }
   },
@@ -18293,16 +18438,16 @@
   },
   "tags": [
     {
-      "name": "Budget"
+      "name": "1.Budget"
     },
     {
-      "name": "Contract"
+      "name": "2.Plan"
     },
     {
-      "name": "Plan"
+      "name": "3.Tender"
     },
     {
-      "name": "Tender"
+      "name": "4.Contract"
     }
   ],
   "security": [
