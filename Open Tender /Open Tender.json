@@ -3539,7 +3539,7 @@
         }
       ],
       "post": {
-        "summary": "Create CN on PN",
+        "summary": "Create Contract Notice on PN",
         "operationId": "post-do-cn-cpid-ocid",
         "responses": {
           "202": {
@@ -6394,6 +6394,132 @@
         ]
       }
     },
+    "/confirm/amendment/{cpid}/{ocid}/{amendment}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Notice identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "amendment",
+          "in": "path",
+          "required": true,
+          "description": "Amendment identifier"
+        }
+      ],
+      "post": {
+        "summary": "Tender or lot amendment confirmation",
+        "operationId": "post-confirm-amendment-cpid-ocid-amendment",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "description": "Request identifier",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "description": "amendment token",
+            "required": true
+          }
+        ],
+        "tags": [
+          "3.Tenders"
+        ]
+      }
+    },
+    "/cancel/amendment/{cpid}/{ocid}/{amendment}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Notice identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "amendment",
+          "in": "path",
+          "required": true,
+          "description": "Amendment identifier"
+        }
+      ],
+      "post": {
+        "summary": "Tender or lot amendment cancellation",
+        "operationId": "post-cancel-amendment-cpid-ocid-amendment",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "description": "Request identifier",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "description": "amendment token",
+            "required": true
+          }
+        ],
+        "tags": [
+          "3.Tenders"
+        ]
+      }
+    },
     "/do/bid/{cpid}/{ocid}": {
       "parameters": [
         {
@@ -7613,238 +7739,6 @@
         ]
       }
     },
-    "/do/award/{cpid}/{ocid}/{awardId}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "cpid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Process identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "ocid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Notice identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "awardId",
-          "in": "path",
-          "required": true,
-          "description": "Award identifier"
-        }
-      ],
-      "post": {
-        "summary": "Evaluate Award",
-        "operationId": "post-do-award-cpid-ocid-awardId",
-        "responses": {
-          "202": {
-            "description": "Accepted"
-          }
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-OPERATION-ID",
-            "description": "Request identifier",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-TOKEN ",
-            "description": "Award token",
-            "required": true
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "description": "",
-                "type": "object",
-                "x-examples": {
-                  "example-1": {
-                    "award": {
-                      "statusDetails": "active",
-                      "description": "string",
-                      "documents": [
-                        {
-                          "documentType": "string",
-                          "id": "string",
-                          "title": "string",
-                          "description": "string",
-                          "relatedLots": [
-                            "string"
-                          ]
-                        }
-                      ]
-                    }
-                  }
-                },
-                "properties": {
-                  "award": {
-                    "type": "object",
-                    "required": [
-                      "statusDetails",
-                      "documents"
-                    ],
-                    "properties": {
-                      "statusDetails": {
-                        "type": "string",
-                        "minLength": 1,
-                        "enum": [
-                          "active",
-                          "unsuccesful"
-                        ]
-                      },
-                      "description": {
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "documents": {
-                        "type": "array",
-                        "uniqueItems": true,
-                        "minItems": 1,
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "documentType": {
-                              "type": "string",
-                              "minLength": 1,
-                              "enum": [
-                                "awardNotice",
-                                "evaluationReports",
-                                "contractDraft",
-                                "winningBid",
-                                "complaints",
-                                "bidders",
-                                "conflictOfInterest",
-                                "cancellationDetails",
-                                "submissionDocuments",
-                                "contractArrangements",
-                                "contractSchedule",
-                                "shortlistedFirms"
-                              ]
-                            },
-                            "id": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "title": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "description": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "relatedLots": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              }
-                            }
-                          },
-                          "required": [
-                            "documentType",
-                            "id",
-                            "title"
-                          ]
-                        }
-                      }
-                    }
-                  }
-                },
-                "required": [
-                  "award"
-                ]
-              }
-            }
-          }
-        },
-        "tags": [
-          "3.Tenders"
-        ]
-      }
-    },
-    "/do/consideration/{cpid}/{ocid}/{awardId}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "cpid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Process identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "ocid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Notice identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "awardId",
-          "in": "path",
-          "required": true,
-          "description": "Award identifier"
-        }
-      ],
-      "post": {
-        "summary": "Award Consideration",
-        "operationId": "post-do-consideration-cpid-ocid-awardId",
-        "responses": {
-          "202": {
-            "description": "Accepted"
-          }
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-OPERATION-ID ",
-            "description": "Request identifier",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-TOKEN",
-            "description": "Award token",
-            "required": true
-          }
-        ],
-        "tags": [
-          "3.Tenders"
-        ]
-      }
-    },
     "/do/declaration/{cpid}/{ocid}/{awardId}": {
       "parameters": [
         {
@@ -8118,6 +8012,301 @@
         }
       }
     },
+    "/do/consideration/{cpid}/{ocid}/{awardId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Notice identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "awardId",
+          "in": "path",
+          "required": true,
+          "description": "Award identifier"
+        }
+      ],
+      "post": {
+        "summary": "Award Consideration",
+        "operationId": "post-do-consideration-cpid-ocid-awardId",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID ",
+            "description": "Request identifier",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "description": "Award token",
+            "required": true
+          }
+        ],
+        "tags": [
+          "3.Tenders"
+        ]
+      }
+    },
+    "/do/award/{cpid}/{ocid}/{awardId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Notice identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "awardId",
+          "in": "path",
+          "required": true,
+          "description": "Award identifier"
+        }
+      ],
+      "post": {
+        "summary": "Evaluate Award",
+        "operationId": "post-do-award-cpid-ocid-awardId",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "description": "Request identifier",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN ",
+            "description": "Award token",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "award": {
+                      "statusDetails": "active",
+                      "description": "string",
+                      "documents": [
+                        {
+                          "documentType": "string",
+                          "id": "string",
+                          "title": "string",
+                          "description": "string",
+                          "relatedLots": [
+                            "string"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                },
+                "properties": {
+                  "award": {
+                    "type": "object",
+                    "required": [
+                      "statusDetails",
+                      "documents"
+                    ],
+                    "properties": {
+                      "statusDetails": {
+                        "type": "string",
+                        "minLength": 1,
+                        "enum": [
+                          "active",
+                          "unsuccesful"
+                        ]
+                      },
+                      "description": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "documents": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "minItems": 1,
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "documentType": {
+                              "type": "string",
+                              "minLength": 1,
+                              "enum": [
+                                "awardNotice",
+                                "evaluationReports",
+                                "contractDraft",
+                                "winningBid",
+                                "complaints",
+                                "bidders",
+                                "conflictOfInterest",
+                                "cancellationDetails",
+                                "submissionDocuments",
+                                "contractArrangements",
+                                "contractSchedule",
+                                "shortlistedFirms"
+                              ]
+                            },
+                            "id": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "title": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "description": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "relatedLots": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "required": [
+                            "documentType",
+                            "id",
+                            "title"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "award"
+                ]
+              }
+            }
+          }
+        },
+        "tags": [
+          "3.Tenders"
+        ]
+      }
+    },
+    "/do/protocol/{cpid}/{ocid}/{lotId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Notice identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "lotId",
+          "in": "path",
+          "required": true,
+          "description": "Lot identifier"
+        }
+      ],
+      "post": {
+        "summary": "Complete Evaluation",
+        "operationId": "post-do-protocol-cpid-ocid-lotId",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "description": "Request identifier",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "required": true,
+            "name": "X-TOKEN",
+            "description": "Tender token"
+          }
+        ],
+        "tags": [
+          "3.Tenders"
+        ]
+      }
+    },
     "/cancel/can/{cpid}/{ocid}/{canId}": {
       "parameters": [
         {
@@ -8328,132 +8517,6 @@
             "required": true,
             "name": "X-TOKEN",
             "description": "CAN token"
-          }
-        ],
-        "tags": [
-          "3.Tenders"
-        ]
-      }
-    },
-    "/confirm/amendment/{cpid}/{ocid}/{amendment}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "cpid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Process identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "ocid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Notice identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "amendment",
-          "in": "path",
-          "required": true,
-          "description": "Amendment identifier"
-        }
-      ],
-      "post": {
-        "summary": "Tender or lot amendment confirmation",
-        "operationId": "post-confirm-amendment-cpid-ocid-amendment",
-        "responses": {
-          "202": {
-            "description": "Accepted"
-          }
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-OPERATION-ID",
-            "description": "Request identifier",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-TOKEN",
-            "description": "amendment token",
-            "required": true
-          }
-        ],
-        "tags": [
-          "3.Tenders"
-        ]
-      }
-    },
-    "/cancel/amendment/{cpid}/{ocid}/{amendment}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "cpid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Process identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "ocid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Notice identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "amendment",
-          "in": "path",
-          "required": true,
-          "description": "Amendment identifier"
-        }
-      ],
-      "post": {
-        "summary": "Tender or lot amendment cancellation",
-        "operationId": "post-cancel-amendment-cpid-ocid-amendment",
-        "responses": {
-          "202": {
-            "description": "Accepted"
-          }
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-OPERATION-ID",
-            "description": "Request identifier",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-TOKEN",
-            "description": "amendment token",
-            "required": true
           }
         ],
         "tags": [
@@ -8828,69 +8891,6 @@
             }
           }
         }
-      }
-    },
-    "/do/protocol/{cpid}/{ocid}/{lotId}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "cpid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Process identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "ocid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Notice identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "lotId",
-          "in": "path",
-          "required": true,
-          "description": "Lot identifier"
-        }
-      ],
-      "post": {
-        "summary": "Complete Evaluation",
-        "operationId": "post-do-protocol-cpid-ocid-lotId",
-        "responses": {
-          "202": {
-            "description": "Accepted"
-          }
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-OPERATION-ID",
-            "description": "Request identifier",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "required": true,
-            "name": "X-TOKEN",
-            "description": "Tender token"
-          }
-        ],
-        "tags": [
-          "3.Tenders"
-        ]
       }
     }
   },
