@@ -2994,7 +2994,7 @@
             "description": "Accepted"
           }
         },
-        "description": "Update PN for pmd = GPA, TEST_GPA, RT, TEST_RT",
+        "description": "pmd = DA, NP, CD, DC, IP",
         "parameters": [
           {
             "schema": {
