@@ -3711,7 +3711,27 @@
                           "properties": {
                             "documentType": {
                               "type": "string",
-                              "minLength": 1
+                              "minLength": 1,
+                              "enum": [
+                                "tenderNotice",
+                                "biddingDocuments",
+                                "technicalSpecifications",
+                                "evaluationCriteria",
+                                "clarifications",
+                                "eligibilityCriteria",
+                                "riskProvisions",
+                                "billOfQuantity",
+                                "conflictOfInterest",
+                                "procurementPlan",
+                                "contractDraft",
+                                "complaints",
+                                "illustration",
+                                "cancellationDetails",
+                                "evaluationReports",
+                                "shortlistedFirms",
+                                "contractArrangements",
+                                "contractGuarantees"
+                              ]
                             },
                             "id": {
                               "type": "string",
@@ -7448,7 +7468,10 @@
             "description": "Tender token"
           }
         ],
-        "description": ""
+        "description": "",
+        "tags": [
+          "3.Tender"
+        ]
       }
     },
     "/cancel/protocol/{cpid}/{ocid}": {
@@ -7958,8 +7981,7 @@
           },
           "name": "entity",
           "in": "path",
-          "required": true,
-          "description": "Contract Token"
+          "required": true
         },
         {
           "schema": {
@@ -8027,7 +8049,7 @@
             "in": "header",
             "required": true,
             "name": "X-TOKEN",
-            "description": "Confirmation request group token"
+            "description": "Сontract token"
           }
         ],
         "tags": [
@@ -9218,7 +9240,6 @@
                   "bid": {
                     "type": "object",
                     "required": [
-                      "value",
                       "tenderers",
                       "relatedLots"
                     ],
