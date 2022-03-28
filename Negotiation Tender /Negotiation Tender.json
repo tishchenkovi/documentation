@@ -2226,7 +2226,7 @@
           {
             "schema": {
               "type": "string",
-              "example": "GPA, TEST_GPA, RT, TEST_RT"
+              "example": "IP, CD, DC, DA, NP, TEST_IP, TEST_CD, TEST_DC, TEST_DA, TEST_NP"
             },
             "in": "query",
             "name": "pmd",
@@ -2994,7 +2994,7 @@
             "description": "Accepted"
           }
         },
-        "description": "pmd = DA, NP, CD, DC, IP",
+        "description": "pmd = IP, CD, DC, DA, NP, TEST_IP, TEST_CD, TEST_DC, TEST_DA, TEST_NP",
         "parameters": [
           {
             "schema": {
