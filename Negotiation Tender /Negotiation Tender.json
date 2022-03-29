@@ -1556,7 +1556,7 @@
         }
       ]
     },
-    "/do/fs/{ocid}/{cpid}": {
+    "/do/fs/{cpid}/{ocid}": {
       "post": {
         "summary": "Update Funding Source",
         "operationId": "do-fs-ocid-cpid",
@@ -1574,6 +1574,15 @@
             "name": "X-OPERATION-ID",
             "required": true,
             "description": "Request identifier"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "description": "Funding Source token",
+            "required": true
           }
         ],
         "requestBody": {

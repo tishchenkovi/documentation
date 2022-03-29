@@ -1542,7 +1542,7 @@
         ]
       }
     },
-    "/do/fs/{ocid}/{cpid}": {
+    "/do/fs/{cpid}/{ocid}": {
       "parameters": [
         {
           "schema": {
@@ -1579,6 +1579,15 @@
             "in": "header",
             "name": "X-OPERATION-ID",
             "description": "Request identifier",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "description": "Funding Source token",
             "required": true
           }
         ],
