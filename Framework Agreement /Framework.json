@@ -761,20 +761,15 @@
                             },
                             "classification": {
                               "type": "object",
+                              "required": [
+                                "id"
+                              ],
                               "properties": {
                                 "id": {
                                   "type": "string",
                                   "minLength": 1
-                                },
-                                "scheme": {
-                                  "type": "string",
-                                  "minLength": 1
                                 }
-                              },
-                              "required": [
-                                "id",
-                                "scheme"
-                              ]
+                              }
                             },
                             "additionalClassifications": {
                               "type": "array",
@@ -908,7 +903,8 @@
                             }
                           },
                           "required": [
-                            "id"
+                            "id",
+                            "classification"
                           ]
                         }
                       }
