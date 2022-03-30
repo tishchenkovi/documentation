@@ -4041,6 +4041,7 @@
                       "awardCriteriaDetails",
                       "tenderPeriod",
                       "enquiryPeriod",
+                      "procuringEntity",
                       "lots",
                       "items",
                       "documents"
@@ -4167,6 +4168,9 @@
                       },
                       "procuringEntity": {
                         "type": "object",
+                        "required": [
+                          "id"
+                        ],
                         "properties": {
                           "id": {
                             "type": "string",
@@ -4301,10 +4305,7 @@
                               ]
                             }
                           }
-                        },
-                        "required": [
-                          "id"
-                        ]
+                        }
                       },
                       "criteria": {
                         "type": "array",
