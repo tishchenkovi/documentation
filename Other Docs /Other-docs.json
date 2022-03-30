@@ -1,0 +1,128 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Other docs",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://{host}:8900/api/v1"
+    }
+  ],
+  "paths": {
+    "/registration": {
+      "post": {
+        "summary": "Register document",
+        "operationId": "",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fileName": {
+                    "type": "string",
+                    "example": "document_name.txt"
+                  },
+                  "hash": {
+                    "type": "string",
+                    "example": "a document md5sum - d2b5ace11008572bc765ed38eac9b06b"
+                  },
+                  "weight": {
+                    "type": "number",
+                    "example": "document weight in bytes"
+                  }
+                },
+                "required": [
+                  "fileName",
+                  "hash",
+                  "weight"
+                ]
+              },
+              "examples": {}
+            },
+            "application/xml": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "202": {
+            "description": "Accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "data": {
+                        "id": "4c10bfd5-fc93-42c5-981d-ff90b0c6cf3c-1647868588242",
+                        "url": "http://storage.domain.name/get/4c10bfd5-fc93-42c5-981d-ff90b0c6cf3c-1647868588242",
+                        "dateModified": "2022-03-21T13:16:28Z",
+                        "datePublished": null
+                      }
+                    }
+                  },
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "id",
+                        "url",
+                        "dateModified",
+                        "datePublished"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "url": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "dateModified": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "datePublished": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {},
+    "securitySchemes": {
+      "accessToken": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

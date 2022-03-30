@@ -3925,19 +3925,12 @@
                 "properties": {
                   "planning": {
                     "type": "object",
-                    "required": [
-                      "rationale",
-                      "budget"
-                    ],
                     "properties": {
                       "rationale": {
                         "type": "string"
                       },
                       "budget": {
                         "type": "object",
-                        "required": [
-                          "description"
-                        ],
                         "properties": {
                           "description": {
                             "type": "string"
@@ -3949,14 +3942,20 @@
                   "tender": {
                     "type": "object",
                     "required": [
-                      "procurementMethodRationale",
-                      "procurementMethodAdditionalInfo",
+                      "title",
+                      "description",
                       "awardCriteria",
                       "lots",
                       "items",
                       "documents"
                     ],
                     "properties": {
+                      "title": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
                       "procurementMethodRationale": {
                         "type": "string"
                       },
@@ -4026,7 +4025,6 @@
                                   "type": "object",
                                   "required": [
                                     "streetAddress",
-                                    "postalCode",
                                     "addressDetails"
                                   ],
                                   "properties": {
@@ -4198,7 +4196,6 @@
                           },
                           "required": [
                             "id",
-                            "internalId",
                             "title",
                             "description",
                             "value",
@@ -4218,6 +4215,9 @@
                               "type": "string"
                             },
                             "internalId": {
+                              "type": "string"
+                            },
+                            "description": {
                               "type": "string"
                             },
                             "classification": {
@@ -4261,21 +4261,16 @@
                                 }
                               }
                             },
-                            "description": {
-                              "type": "string"
-                            },
                             "relatedLot": {
                               "type": "string"
                             }
                           },
                           "required": [
                             "id",
-                            "internalId",
+                            "description",
                             "classification",
-                            "additionalClassifications",
                             "quantity",
                             "unit",
-                            "description",
                             "relatedLot"
                           ]
                         }
@@ -4309,9 +4304,7 @@
                           "required": [
                             "documentType",
                             "id",
-                            "title",
-                            "description",
-                            "relatedLots"
+                            "title"
                           ]
                         }
                       }
@@ -4319,7 +4312,6 @@
                   }
                 },
                 "required": [
-                  "planning",
                   "tender"
                 ]
               }
