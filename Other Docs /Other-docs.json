@@ -88,18 +88,22 @@
                       "properties": {
                         "id": {
                           "type": "string",
-                          "minLength": 1
+                          "minLength": 1,
+                          "example": "4c10bfd5-fc93-42c5-981d-ff90b0c6cf3c-1647868588242"
                         },
                         "url": {
                           "type": "string",
-                          "minLength": 1
+                          "minLength": 1,
+                          "example": "http://storage.domain.name/get/4c10bfd5-fc93-42c5-981d-ff90b0c6cf3c-1647868588242"
                         },
                         "dateModified": {
                           "type": "string",
-                          "minLength": 1
+                          "minLength": 1,
+                          "format": "date-time"
                         },
                         "datePublished": {
-                          "type": "string"
+                          "format": "date-time",
+                          "nullable": true
                         }
                       }
                     }
@@ -114,6 +118,24 @@
         }
       },
       "parameters": []
+    },
+    "/upload": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {},
+        "operationId": "get-upload",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
