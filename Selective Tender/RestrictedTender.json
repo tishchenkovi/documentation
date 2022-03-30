@@ -9656,6 +9656,69 @@
         ]
       }
     },
+    "/do/consideration/{cpid}/{ocid}/{awardId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Notice identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "awardId",
+          "in": "path",
+          "required": true,
+          "description": "Award identifier"
+        }
+      ],
+      "post": {
+        "summary": "Award Consideration",
+        "operationId": "post-do-consideration-cpid-ocid-awardId",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID ",
+            "description": "Request identifier",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "description": "Award token",
+            "required": true
+          }
+        ],
+        "tags": [
+          "3.Tenders"
+        ]
+      }
+    },
     "/do/award/{cpid}/{ocid}/{awardId}": {
       "parameters": [
         {
@@ -9819,69 +9882,6 @@
             }
           }
         },
-        "tags": [
-          "3.Tenders"
-        ]
-      }
-    },
-    "/do/consideration/{cpid}/{ocid}/{awardId}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "cpid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Process identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "ocid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Notice identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "awardId",
-          "in": "path",
-          "required": true,
-          "description": "Award identifier"
-        }
-      ],
-      "post": {
-        "summary": "Award Consideration",
-        "operationId": "post-do-consideration-cpid-ocid-awardId",
-        "responses": {
-          "202": {
-            "description": "Accepted"
-          }
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-OPERATION-ID ",
-            "description": "Request identifier",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-TOKEN",
-            "description": "Award token",
-            "required": true
-          }
-        ],
         "tags": [
           "3.Tenders"
         ]
