@@ -733,7 +733,8 @@
                   "tender": {
                     "type": "object",
                     "required": [
-                      "title"
+                      "title",
+                      "classification"
                     ],
                     "properties": {
                       "title": {
@@ -906,6 +907,17 @@
                             "id",
                             "classification"
                           ]
+                        }
+                      },
+                      "classification": {
+                        "type": "object",
+                        "required": [
+                          "id"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
                         }
                       }
                     }
@@ -3464,8 +3476,7 @@
                           "required": [
                             "id",
                             "title",
-                            "documentType",
-                            "description"
+                            "documentType"
                           ]
                         }
                       }
@@ -3504,7 +3515,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "Planning Notice ocid"
+          "description": "Planning Notice identifier"
         }
       ],
       "post": {
@@ -3522,7 +3533,7 @@
               "type": "string"
             },
             "in": "header",
-            "description": "transaction id",
+            "description": "Request identifier",
             "required": true,
             "name": "X-OPERATION-ID "
           },

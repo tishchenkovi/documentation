@@ -738,7 +738,8 @@
                   "tender": {
                     "type": "object",
                     "required": [
-                      "title"
+                      "title",
+                      "classification"
                     ],
                     "properties": {
                       "title": {
@@ -748,6 +749,17 @@
                       "description": {
                         "type": "string",
                         "minLength": 1
+                      },
+                      "classification": {
+                        "type": "object",
+                        "required": [
+                          "id"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        }
                       },
                       "items": {
                         "type": "array",
@@ -988,11 +1000,6 @@
                           },
                           "addressDetails": {
                             "type": "object",
-                            "required": [
-                              "country",
-                              "region",
-                              "locality"
-                            ],
                             "properties": {
                               "country": {
                                 "type": "object",
@@ -1051,7 +1058,12 @@
                                   }
                                 }
                               }
-                            }
+                            },
+                            "required": [
+                              "country",
+                              "region",
+                              "locality"
+                            ]
                           }
                         }
                       },
@@ -2445,7 +2457,7 @@
           {
             "schema": {
               "type": "string",
-              "example": "GPA, TEST_GPA, RT, TEST_RT"
+              "example": " OT, TEST_OT , SV, TEST_SV, MV, TEST_MV"
             },
             "in": "query",
             "name": "pmd",
@@ -3213,7 +3225,7 @@
             "description": "Accepted"
           }
         },
-        "description": "Update PN for pmd = GPA, TEST_GPA, RT, TEST_RT",
+        "description": "Update PN for pmd =  OT, TEST_OT , SV, TEST_SV, MV, TEST_MV",
         "parameters": [
           {
             "schema": {
@@ -3659,8 +3671,7 @@
                           "required": [
                             "id",
                             "title",
-                            "documentType",
-                            "description"
+                            "documentType"
                           ]
                         }
                       }
@@ -3699,7 +3710,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "Planning Notice ocid"
+          "description": "Planning Notice identifier"
         }
       ],
       "post": {
@@ -3710,14 +3721,14 @@
             "description": "Accepted"
           }
         },
-        "description": "Cancel PN for pmd = GPA, TEST_GPA, RT, TEST_RT",
+        "description": "Cancel PN for pmd = OT, TEST_OT , SV, TEST_SV, MV, TEST_MV",
         "parameters": [
           {
             "schema": {
               "type": "string"
             },
             "in": "header",
-            "description": "transaction id",
+            "description": "Request identifier",
             "required": true,
             "name": "X-OPERATION-ID "
           },
@@ -3765,7 +3776,7 @@
             "description": "Accepted"
           }
         },
-        "description": "create CN on PN for pmd = GPA, TEST_GPA, RT, TEST_RT",
+        "description": "create CN on PN for pmd =  OT, TEST_OT , SV, TEST_SV, MV, TEST_MV",
         "parameters": [
           {
             "schema": {
@@ -4028,10 +4039,11 @@
                       "procurementMethodAdditionalInfo",
                       "awardCriteria",
                       "awardCriteriaDetails",
+                      "tenderPeriod",
+                      "enquiryPeriod",
                       "lots",
                       "items",
-                      "documents",
-                      "otherCriteria"
+                      "documents"
                     ],
                     "properties": {
                       "procurementMethodRationale": {
@@ -4059,6 +4071,30 @@
                           "automated",
                           "manual"
                         ]
+                      },
+                      "tenderPeriod": {
+                        "type": "object",
+                        "required": [
+                          "endDate"
+                        ],
+                        "properties": {
+                          "endDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        }
+                      },
+                      "enquiryPeriod": {
+                        "type": "object",
+                        "required": [
+                          "endDate"
+                        ],
+                        "properties": {
+                          "endDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        }
                       },
                       "procurementMethodModalities": {
                         "type": "array",
@@ -4930,69 +4966,12 @@
                             "documentType"
                           ]
                         }
-                      },
-                      "secondStage": {
-                        "type": "object",
-                        "properties": {
-                          "minimumCandidates": {
-                            "type": "number"
-                          },
-                          "maximumCandidates": {
-                            "type": "number"
-                          }
-                        }
-                      },
-                      "otherCriteria": {
-                        "type": "object",
-                        "required": [
-                          "qualificationSystemMethods",
-                          "reductionCriteria"
-                        ],
-                        "properties": {
-                          "qualificationSystemMethods": {
-                            "type": "array",
-                            "items": {
-                              "type": "string",
-                              "enum": [
-                                "automated",
-                                "manual"
-                              ]
-                            }
-                          },
-                          "reductionCriteria": {
-                            "type": "string",
-                            "enum": [
-                              "scoring",
-                              "none"
-                            ]
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "preQualification": {
-                    "type": "object",
-                    "required": [
-                      "period"
-                    ],
-                    "properties": {
-                      "period": {
-                        "type": "object",
-                        "required": [
-                          "endDate"
-                        ],
-                        "properties": {
-                          "endDate": {
-                            "type": "string"
-                          }
-                        }
                       }
                     }
                   }
                 },
                 "required": [
-                  "tender",
-                  "preQualification"
+                  "tender"
                 ]
               }
             }
@@ -5253,30 +5232,13 @@
                       }
                     }
                   },
-                  "preQualification": {
-                    "type": "object",
-                    "required": [
-                      "period"
-                    ],
-                    "properties": {
-                      "period": {
-                        "type": "object",
-                        "required": [
-                          "endDate"
-                        ],
-                        "properties": {
-                          "endDate": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    }
-                  },
                   "tender": {
                     "type": "object",
                     "required": [
                       "procurementMethodRationale",
                       "procurementMethodAdditionalInfo",
+                      "tenderPeriod",
+                      "enquiryPeriod",
                       "lots",
                       "items"
                     ],
@@ -5288,6 +5250,84 @@
                       "procurementMethodAdditionalInfo": {
                         "type": "string",
                         "minLength": 1
+                      },
+                      "tenderPeriod": {
+                        "type": "object",
+                        "required": [
+                          "endDate"
+                        ],
+                        "properties": {
+                          "endDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        }
+                      },
+                      "enquiryPeriod": {
+                        "type": "object",
+                        "required": [
+                          "endDate"
+                        ],
+                        "properties": {
+                          "endDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        }
+                      },
+                      "procurementMethodModalities": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "enum": [
+                            "electronicAuction"
+                          ]
+                        }
+                      },
+                      "electronicAuctions": {
+                        "type": "object",
+                        "properties": {
+                          "details": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "relatedLot": {
+                                  "type": "string"
+                                },
+                                "electronicAuctionModalities": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "amount": {
+                                        "type": "number"
+                                      },
+                                      "currency": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "amount",
+                                      "currency"
+                                    ]
+                                  }
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "relatedLot",
+                                "electronicAuctionModalities"
+                              ]
+                            }
+                          }
+                        },
+                        "required": [
+                          "details"
+                        ]
                       },
                       "procuringEntity": {
                         "type": "object",
@@ -5829,49 +5869,11 @@
                             "description"
                           ]
                         }
-                      },
-                      "secondStage": {
-                        "type": "object",
-                        "properties": {
-                          "minimumCandidates": {
-                            "type": "number"
-                          },
-                          "maximumCandidates": {
-                            "type": "number"
-                          }
-                        }
-                      },
-                      "otherCriteria": {
-                        "type": "object",
-                        "properties": {
-                          "qualificationSystemMethods": {
-                            "type": "array",
-                            "items": {
-                              "type": "string",
-                              "enum": [
-                                "automated",
-                                "manual"
-                              ]
-                            }
-                          },
-                          "reductionCriteria": {
-                            "type": "string",
-                            "enum": [
-                              "scoring",
-                              "none"
-                            ]
-                          }
-                        },
-                        "required": [
-                          "qualificationSystemMethods",
-                          "reductionCriteria"
-                        ]
                       }
                     }
                   }
                 },
                 "required": [
-                  "preQualification",
                   "tender"
                 ]
               }
@@ -7453,8 +7455,7 @@
                                             "required": [
                                               "documentType",
                                               "id",
-                                              "title",
-                                              "description"
+                                              "title"
                                             ]
                                           }
                                         }
@@ -8381,8 +8382,7 @@
                   "award": {
                     "type": "object",
                     "required": [
-                      "statusDetails",
-                      "documents"
+                      "statusDetails"
                     ],
                     "properties": {
                       "statusDetails": {
@@ -9102,7 +9102,10 @@
                           "type": "string",
                           "minLength": 1
                         }
-                      }
+                      },
+                      "required": [
+                        "id"
+                      ]
                     }
                   }
                 }
