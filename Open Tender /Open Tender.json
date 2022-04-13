@@ -11119,6 +11119,330 @@
           "4.Contracts"
         ]
       }
+    },
+    "/complete/confirmationStage/{contract}/{cpid}/{ocid}/{contractId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "contract",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "tender process cpid"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "contract process ocid"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "contractId",
+          "in": "path",
+          "required": true,
+          "description": "Contract identifier"
+        }
+      ],
+      "post": {
+        "summary": "Next Confirmation Step",
+        "operationId": "post-complete-confirmationStage-contract-cpid-ocid-contractId",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "buyer",
+                "InvitedCandidate",
+                "supplier"
+              ]
+            },
+            "in": "query",
+            "name": "role",
+            "required": true,
+            "description": "Who gives response"
+          }
+        ],
+        "tags": [
+          "4.Contracts"
+        ]
+      }
+    },
+    "/do/confirmation/{contract}/{cpid}/{ocid}/{contractId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "contract",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "tender process cpid"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "contract process ocid"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "contractId",
+          "in": "path",
+          "required": true,
+          "description": "Contract identifier"
+        }
+      ],
+      "post": {
+        "summary": "Create Confirmation Response",
+        "operationId": "post-do-confirmation-contract-cpid-ocid-contractId",
+        "responses": {
+          "202": {
+            "description": "Accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "confirmationResponse": {
+                        "requestId": "string",
+                        "type": "document",
+                        "value": "string",
+                        "relatedPerson": {
+                          "title": "Mr.",
+                          "name": "string",
+                          "identifier": {
+                            "scheme": "string",
+                            "id": "string",
+                            "uri": "string"
+                          },
+                          "businessFunctions": [
+                            {
+                              "type": "authority",
+                              "jobTitle": "string",
+                              "period": {
+                                "startDate": "2022-04-13T09:12:49.674Z"
+                              },
+                              "documents": [
+                                {
+                                  "id": "string",
+                                  "documentType": "regulatoryDocument",
+                                  "title": "string",
+                                  "description": "string"
+                                }
+                              ],
+                              "id": "string"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "properties": {
+                    "confirmationResponse": {
+                      "type": "object",
+                      "required": [
+                        "requestId",
+                        "type",
+                        "value",
+                        "relatedPerson"
+                      ],
+                      "properties": {
+                        "requestId": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "type": {
+                          "type": "string",
+                          "minLength": 1,
+                          "enum": [
+                            "document",
+                            "hash"
+                          ]
+                        },
+                        "value": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "relatedPerson": {
+                          "type": "object",
+                          "required": [
+                            "title",
+                            "name",
+                            "identifier",
+                            "businessFunctions"
+                          ],
+                          "properties": {
+                            "title": {
+                              "type": "string",
+                              "minLength": 1,
+                              "enum": [
+                                "Mr.",
+                                "Ms.",
+                                "Mrs."
+                              ]
+                            },
+                            "name": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "identifier": {
+                              "type": "object",
+                              "required": [
+                                "scheme",
+                                "id"
+                              ],
+                              "properties": {
+                                "scheme": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "id": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "uri": {
+                                  "type": "string",
+                                  "minLength": 1
+                                }
+                              }
+                            },
+                            "businessFunctions": {
+                              "type": "array",
+                              "uniqueItems": true,
+                              "minItems": 1,
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "enum": [
+                                      "authority",
+                                      "contactPoint",
+                                      "chairman",
+                                      "procurementOfficer",
+                                      "technicalEvaluator",
+                                      "technicalOpener",
+                                      "priceOpener",
+                                      "priceEvaluator"
+                                    ]
+                                  },
+                                  "jobTitle": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "period": {
+                                    "type": "object",
+                                    "required": [
+                                      "startDate"
+                                    ],
+                                    "properties": {
+                                      "startDate": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "format": "date-time"
+                                      }
+                                    }
+                                  },
+                                  "documents": {
+                                    "type": "array",
+                                    "uniqueItems": true,
+                                    "minItems": 1,
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string",
+                                          "minLength": 1
+                                        },
+                                        "documentType": {
+                                          "type": "string",
+                                          "minLength": 1,
+                                          "enum": [
+                                            "regulatoryDocument"
+                                          ]
+                                        },
+                                        "title": {
+                                          "type": "string",
+                                          "minLength": 1
+                                        },
+                                        "description": {
+                                          "type": "string",
+                                          "minLength": 1
+                                        }
+                                      },
+                                      "required": [
+                                        "id",
+                                        "documentType",
+                                        "title"
+                                      ]
+                                    }
+                                  },
+                                  "id": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  }
+                                },
+                                "required": [
+                                  "type",
+                                  "jobTitle",
+                                  "period",
+                                  "id"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "confirmationResponse"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "4.Contracts"
+        ]
+      }
     }
   },
   "components": {
