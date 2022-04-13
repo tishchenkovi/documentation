@@ -9033,7 +9033,7 @@
           "name": "cpid",
           "in": "path",
           "required": true,
-          "description": "tender process cpid"
+          "description": "Contract Process identifier"
         },
         {
           "schema": {
@@ -9042,7 +9042,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "tender process ocid"
+          "description": "Contract Notice identifier"
         }
       ],
       "post": {
@@ -9073,7 +9073,7 @@
             "in": "header",
             "name": "X-TOKEN",
             "required": true,
-            "description": "tender token "
+            "description": "Tender token "
           }
         ],
         "requestBody": {
@@ -9116,7 +9116,7 @@
         }
       }
     },
-    "/do/contract/{cpid}/{ocid}/update": {
+    "/do/contract/{cpid}/{ocidContract}": {
       "parameters": [
         {
           "schema": {
@@ -9125,16 +9125,16 @@
           "name": "cpid",
           "in": "path",
           "required": true,
-          "description": "Tender process cpid"
+          "description": "Contract Process identifier"
         },
         {
           "schema": {
             "type": "string"
           },
-          "name": "ocid",
+          "name": "ocidContract",
           "in": "path",
           "required": true,
-          "description": "Contract process ocid"
+          "description": "Contract Notice identifier"
         }
       ],
       "post": {
@@ -9573,7 +9573,8 @@
                                       },
                                       "relatedFinance": {
                                         "type": "string",
-                                        "minLength": 1
+                                        "minLength": 1,
+                                        "description": "ocid FS"
                                       },
                                       "durationInDays": {
                                         "type": "number"
@@ -9597,7 +9598,8 @@
                                 "properties": {
                                   "id": {
                                     "type": "string",
-                                    "minLength": 1
+                                    "minLength": 1,
+                                    "description": "ocid FS"
                                   },
                                   "value": {
                                     "type": "object",
@@ -10263,11 +10265,6 @@
                                     },
                                     "legalForm": {
                                       "type": "object",
-                                      "required": [
-                                        "scheme",
-                                        "id",
-                                        "description"
-                                      ],
                                       "properties": {
                                         "scheme": {
                                           "type": "string",
@@ -10285,7 +10282,12 @@
                                           "type": "string",
                                           "minLength": 1
                                         }
-                                      }
+                                      },
+                                      "required": [
+                                        "scheme",
+                                        "id",
+                                        "description"
+                                      ]
                                     }
                                   }
                                 }
@@ -10342,8 +10344,7 @@
                               "required": [
                                 "id",
                                 "documentType",
-                                "title",
-                                "description"
+                                "title"
                               ]
                             }
                           },
@@ -10529,9 +10530,6 @@
                     },
                     "buyer": {
                       "type": "object",
-                      "required": [
-                        "id"
-                      ],
                       "properties": {
                         "id": {
                           "type": "string",
@@ -10911,11 +10909,6 @@
                             },
                             "legalForm": {
                               "type": "object",
-                              "required": [
-                                "scheme",
-                                "id",
-                                "description"
-                              ],
                               "properties": {
                                 "scheme": {
                                   "type": "string",
@@ -10933,11 +10926,19 @@
                                   "type": "string",
                                   "minLength": 1
                                 }
-                              }
+                              },
+                              "required": [
+                                "scheme",
+                                "id",
+                                "description"
+                              ]
                             }
                           }
                         }
-                      }
+                      },
+                      "required": [
+                        "id"
+                      ]
                     }
                   },
                   "required": [
@@ -10984,7 +10985,7 @@
           "name": "cpid",
           "in": "path",
           "required": true,
-          "description": "tender process cpid"
+          "description": "Contract Process identifier"
         },
         {
           "schema": {
@@ -10993,7 +10994,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "contract process ocid"
+          "description": "Contract Notice identifier"
         }
       ],
       "post": {
@@ -11058,7 +11059,7 @@
             "in": "header",
             "required": true,
             "name": "X-TOKEN",
-            "description": "Data type in request body"
+            "description": "Contract token"
           }
         ],
         "tags": [
@@ -11066,7 +11067,7 @@
         ]
       }
     },
-    "/launch/contract/{cpid}/{ocid}": {
+    "/do/confirmation/contract/{cpid}/{ocid}/{contractId}": {
       "parameters": [
         {
           "schema": {
@@ -11075,7 +11076,7 @@
           "name": "cpid",
           "in": "path",
           "required": true,
-          "description": "tender process cpid"
+          "description": "Contract Process identifier"
         },
         {
           "schema": {
@@ -11084,136 +11085,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "contract process ocid"
-        }
-      ],
-      "post": {
-        "summary": "Awarded Contract Activation",
-        "operationId": "post-launch-contract-cpid-ocid",
-        "responses": {
-          "202": {
-            "description": "Accepted"
-          }
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-OPERATION-ID",
-            "description": "Request identifier",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-TOKEN",
-            "description": "Awarded Contract token",
-            "required": true
-          }
-        ],
-        "tags": [
-          "4.Contracts"
-        ]
-      }
-    },
-    "/complete/confirmationStage/{contract}/{cpid}/{ocid}/{contractId}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "contract",
-          "in": "path",
-          "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "cpid",
-          "in": "path",
-          "required": true,
-          "description": "tender process cpid"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "ocid",
-          "in": "path",
-          "required": true,
-          "description": "contract process ocid"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "contractId",
-          "in": "path",
-          "required": true,
-          "description": "Contract identifier"
-        }
-      ],
-      "post": {
-        "summary": "Next Confirmation Step",
-        "operationId": "post-complete-confirmationStage-contract-cpid-ocid-contractId",
-        "responses": {
-          "202": {
-            "description": "Accepted"
-          }
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string",
-              "enum": [
-                "buyer",
-                "InvitedCandidate",
-                "supplier"
-              ]
-            },
-            "in": "query",
-            "name": "role",
-            "required": true,
-            "description": "Who gives response"
-          }
-        ],
-        "tags": [
-          "4.Contracts"
-        ]
-      }
-    },
-    "/do/confirmation/{contract}/{cpid}/{ocid}/{contractId}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "contract",
-          "in": "path",
-          "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "cpid",
-          "in": "path",
-          "required": true,
-          "description": "tender process cpid"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "ocid",
-          "in": "path",
-          "required": true,
-          "description": "contract process ocid"
+          "description": "Contract Notice identifier"
         },
         {
           "schema": {
@@ -11439,6 +11311,169 @@
             }
           }
         },
+        "tags": [
+          "4.Contracts"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "description": "Request identifier",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "required": true,
+            "name": "X-TOKEN",
+            "description": "Contract token"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "buyer",
+                "supplier"
+              ]
+            },
+            "in": "query",
+            "name": "role",
+            "required": true,
+            "description": "Who gives response"
+          }
+        ]
+      }
+    },
+    "/complete/confirmationStage/contract/{cpid}/{ocid}/{contractId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Notice identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "contractId",
+          "in": "path",
+          "required": true,
+          "description": "Contract identifier"
+        }
+      ],
+      "post": {
+        "summary": "Next Confirmation Step",
+        "operationId": "post-complete-confirmationStage-contract-cpid-ocid-contractId",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "buyer",
+                "supplier"
+              ]
+            },
+            "in": "query",
+            "name": "role",
+            "required": true,
+            "description": "Who gives response"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID ",
+            "description": "Request identifier",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "required": true,
+            "description": "Contract token"
+          }
+        ],
+        "tags": [
+          "4.Contracts"
+        ]
+      }
+    },
+    "/launch/contract/{cpid}/{ocid}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Contract identifier"
+        }
+      ],
+      "post": {
+        "summary": "Contract Activation",
+        "operationId": "post-launch-contract-cpid-ocid",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "description": "Request identifier",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "description": "Contract token",
+            "required": true
+          }
+        ],
         "tags": [
           "4.Contracts"
         ]
