@@ -10683,7 +10683,7 @@
           "name": "ocidContract",
           "in": "path",
           "required": true,
-          "description": "Contract Notice identifier"
+          "description": "Awarded Contract identifier"
         }
       ],
       "post": {
@@ -12136,6 +12136,10 @@
                               },
                               "identifier": {
                                 "type": "object",
+                                "required": [
+                                  "scheme",
+                                  "id"
+                                ],
                                 "properties": {
                                   "scheme": {
                                     "type": "string",
@@ -12149,12 +12153,7 @@
                                     "type": "string",
                                     "minLength": 1
                                   }
-                                },
-                                "required": [
-                                  "scheme",
-                                  "id",
-                                  "uri"
-                                ]
+                                }
                               },
                               "businessFunctions": {
                                 "type": "array",
@@ -12169,7 +12168,16 @@
                                     },
                                     "type": {
                                       "type": "string",
-                                      "minLength": 1
+                                      "minLength": 1,
+                                      "enum": [
+                                        "chairman",
+                                        "contactPoint",
+                                        "technicalOpener",
+                                        "priceOpener",
+                                        "priceEvaluator",
+                                        "technicalEvaluator",
+                                        "procurementOfficer"
+                                      ]
                                     },
                                     "jobTitle": {
                                       "type": "string",
@@ -12177,15 +12185,15 @@
                                     },
                                     "period": {
                                       "type": "object",
+                                      "required": [
+                                        "startDate"
+                                      ],
                                       "properties": {
                                         "startDate": {
                                           "type": "string",
                                           "minLength": 1
                                         }
-                                      },
-                                      "required": [
-                                        "startDate"
-                                      ]
+                                      }
                                     },
                                     "documents": {
                                       "type": "array",
@@ -12214,8 +12222,7 @@
                                         "required": [
                                           "id",
                                           "documentType",
-                                          "title",
-                                          "description"
+                                          "title"
                                         ]
                                       }
                                     }
@@ -12223,7 +12230,8 @@
                                   "required": [
                                     "id",
                                     "type",
-                                    "jobTitle"
+                                    "jobTitle",
+                                    "period"
                                   ]
                                 }
                               }
@@ -12231,7 +12239,9 @@
                             "required": [
                               "id",
                               "title",
-                              "name"
+                              "name",
+                              "identifier",
+                              "businessFunctions"
                             ]
                           }
                         },
