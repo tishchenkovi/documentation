@@ -11004,7 +11004,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "Contract Notice identifier"
+          "description": "Awarded Contract identifier"
         }
       ],
       "post": {
@@ -11095,7 +11095,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "Contract Notice identifier"
+          "description": "Awarded Contract identifier"
         },
         {
           "schema": {
@@ -11377,7 +11377,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "Contract Notice identifier"
+          "description": "Awarded Contract identifier"
         },
         {
           "schema": {
@@ -11453,7 +11453,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "Contract identifier"
+          "description": "Awarded Contract identifier"
         }
       ],
       "post": {

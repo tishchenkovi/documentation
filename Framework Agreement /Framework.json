@@ -16286,7 +16286,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "Contract Notice identifier"
+          "description": "Purchase Order identifier"
         }
       ],
       "post": {
@@ -16377,7 +16377,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "Contract Notice identifier"
+          "description": "Purchase Order identifier"
         },
         {
           "schema": {
@@ -16659,7 +16659,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "Contract Notice identifier"
+          "description": "Purchase Order identifier"
         },
         {
           "schema": {
@@ -16735,7 +16735,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "Contract identifier"
+          "description": "Purchase Order identifier"
         }
       ],
       "post": {
