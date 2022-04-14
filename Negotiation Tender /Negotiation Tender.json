@@ -9486,7 +9486,7 @@
             "in": "header",
             "required": true,
             "name": "X-TOKEN",
-            "description": "Contract token"
+            "description": "Confirmation request group token"
           },
           {
             "schema": {

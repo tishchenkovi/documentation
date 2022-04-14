@@ -16264,7 +16264,7 @@
           }
         ],
         "tags": [
-          "4.Contracts"
+          "4.Contract"
         ]
       }
     },
@@ -16355,7 +16355,7 @@
           }
         ],
         "tags": [
-          "4.Contracts"
+          "4.Contract"
         ]
       }
     },
@@ -16603,9 +16603,6 @@
             }
           }
         },
-        "tags": [
-          "4.Contracts"
-        ],
         "parameters": [
           {
             "schema": {
@@ -16623,7 +16620,7 @@
             "in": "header",
             "required": true,
             "name": "X-TOKEN",
-            "description": "Contract token"
+            "description": "Confirmation request group token"
           },
           {
             "schema": {
@@ -16638,6 +16635,9 @@
             "required": true,
             "description": "Who gives response"
           }
+        ],
+        "tags": [
+          "4.Contract"
         ]
       }
     },
@@ -16713,7 +16713,7 @@
           }
         ],
         "tags": [
-          "4.Contracts"
+          "4.Contract"
         ]
       }
     },
@@ -16767,7 +16767,7 @@
           }
         ],
         "tags": [
-          "4.Contracts"
+          "4.Contract"
         ]
       }
     }
